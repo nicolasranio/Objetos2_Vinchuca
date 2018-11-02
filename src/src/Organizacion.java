@@ -2,12 +2,11 @@ package src;
 
 public class Organizacion {
 
-	private PosicionGeografica ubicacion;
+	private Ubicacion ubicacion;
 	private TipoOrganizacion tipo;
 	private Integer trabajadores;
 	
-	public Organizacion(PosicionGeografica ubicacion, TipoOrganizacion tipo, Integer trabajadores) {
-		super();
+	public Organizacion(Ubicacion ubicacion, TipoOrganizacion tipo, Integer trabajadores) {
 		this.ubicacion = ubicacion;
 		this.tipo = tipo;
 		this.trabajadores = trabajadores;
