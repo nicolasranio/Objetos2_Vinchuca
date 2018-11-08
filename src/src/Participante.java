@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Participante {
@@ -12,6 +13,8 @@ public class Participante {
 	public Participante(String alias){
 		this.alias = alias;
 		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
+		this.muestrasEnviadas = new ArrayList <Muestra> ();
+		this.muestrasVerificadas = new ArrayList <Muestra> ();
 	}
 	
 	//esto me sirve para instanciar un experto

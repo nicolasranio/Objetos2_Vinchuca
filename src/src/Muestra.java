@@ -39,7 +39,7 @@ public class Muestra {
 		return verificaciones;
 	}
 	
-	private Ubicacion getUbicacion() {
+	public Ubicacion getUbicacion() {
 		return this.ubicacion;
 	}
 
