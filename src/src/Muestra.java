@@ -18,16 +18,14 @@ public class Muestra {
 	private String aliasRecolector;
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	private Map<Participante, TipoVinchuca> verificaciones;  //map con veredictos de validacion
-	private ArrayList<Participante> verificadores;
-	
 
+	
 	public Muestra(String tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
 		this.tipoVinchuca=tipoVinchuca;
 		this.fotoVinchuca= fotoVinchuca;
 		this.ubicacion= ubicacion;
 		this.aliasRecolector=alias;
-		this.nivelVerificacion= new NivelVerificacionBajo(this);
-		this.verificadores= new ArrayList<Participante>();  
+		this.nivelVerificacion= new NivelVerificacionBajo(this); //ver esto con prof.
 		this.verificaciones = new HashMap<Participante, TipoVinchuca>();
 	}
 	
@@ -61,7 +59,10 @@ public class Muestra {
 	}
 	
 	public ArrayList<Participante> getVerificadores() {
-		return verificadores;
+		verificaciones.keySet();
+		Collection<Participante> keys = verificaciones.keySet();		         
+		ArrayList <Participante> participantes = new ArrayList<Participante>(keys);
+		return participantes;
 	}
 	
 	public Integer verificacionesValidas(){
@@ -78,8 +79,14 @@ public class Muestra {
 	                										.sorted((Map.Entry.<TipoVinchuca, Long>comparingByValue().reversed()))
 	                										.limit(1)  //solo el primer resultado
 	                										.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+		
 		return Integer.valueOf(maxFrecuencia.values().stream().findFirst().get().intValue());
 	}
+
 	
+	public void verificar(Participante participante, TipoVinchuca validacion) {
+		this.verificaciones.put(participante, validacion);
+		
+	}	
 	
 }

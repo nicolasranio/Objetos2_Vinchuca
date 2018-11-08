@@ -12,4 +12,18 @@ public class NivelConocimientoExperto extends INivelConocimiento {
 		//por ahora no hace nada...
 	}
 
+
+	@Override
+	public void verificarMuestra(Muestra muestra) {
+		muestra.setNivelVerificacion(new NivelVerificacionAlto(muestra));
+	}
+
+
+	@Override
+	public void enviarMuestra(Muestra muestra) {
+		this.verificarMuestra(muestra);
+	}
+	
+	
+
 }
