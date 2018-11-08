@@ -11,15 +11,17 @@ public class Muestra {
 	private Ubicacion ubicacion;
 	private String aliasRecolector;
 	private INivelVerificacion nivelVerificacion;  //Patron state
-	private List<Participante> verificadores;
+	private List<Verificacion> verificaciones;
+	private ArrayList<Participante> verificadores;
 	
+
 	public Muestra(String tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
 		this.tipoVinchuca=tipoVinchuca;
 		this.fotoVinchuca= fotoVinchuca;
 		this.ubicacion= ubicacion;
 		this.aliasRecolector=alias;
-		this.nivelVerificacion=null;
-		this.verificadores= new ArrayList<Participante>();
+		this.nivelVerificacion= new NivelVerificacionBajo(this);
+		this.verificadores= new ArrayList<Participante>();  
 	}
 	
 	public Double distanciaAMuestra(Muestra muestraB){
@@ -43,4 +45,13 @@ public class Muestra {
 				.filter(muestra -> this.distanciaAMuestra(muestra)<distancia)
 				.collect(Collectors.toList());
 	}
+
+	public void setNivelVerificacion(INivelVerificacion nivelVerificacion) {
+		this.nivelVerificacion=nivelVerificacion;
+	}
+	
+	public ArrayList<Participante> getVerificadores() {
+		return verificadores;
+	}
+	
 }

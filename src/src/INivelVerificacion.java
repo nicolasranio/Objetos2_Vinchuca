@@ -1,6 +1,12 @@
 package src;
 
-public interface INivelVerificacion {
+public abstract class INivelVerificacion {
 
-	public void verifcarMuestra(Muestra muestra); 
+	Muestra muestra;
+	
+	public INivelVerificacion(Muestra muestra) {
+		this.muestra = muestra;
+	}
+
+	public abstract void cambiarEstado(Muestra muestra); 
 }

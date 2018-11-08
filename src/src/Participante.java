@@ -11,7 +11,7 @@ public class Participante {
 	
 	public Participante(String alias){
 		this.alias = alias;
-		this.nivelConocimiento = new NivelConocimientoBasico(this);
+		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
 	}
 	
 	public List<Muestra> getMuestrasEnviadas(){

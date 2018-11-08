@@ -1,7 +1,13 @@
 package src;
 
-public interface INivelConocimiento {
+public abstract class INivelConocimiento {
 
-	public void cambiarEstado();
+	private Participante participante;
+
+	public INivelConocimiento(Participante participante){
+		this.participante = participante;	
+	}
+	
+	public abstract void cambiarEstado();
 	
 }

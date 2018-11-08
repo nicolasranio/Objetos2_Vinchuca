@@ -1,14 +1,13 @@
 package src;
 
-public class NivelConocimientoExperto implements INivelConocimiento {
+public class NivelConocimientoExperto extends INivelConocimiento {
 
-	private Participante participante;
-
+	
 	public NivelConocimientoExperto(Participante participante) {
-		this.participante = participante;
+		super(participante);
 	}
 
-	@Override
+	
 	public void cambiarEstado() {
 		//por ahora no hace nada...
 	}
