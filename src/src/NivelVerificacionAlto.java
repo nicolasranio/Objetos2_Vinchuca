@@ -8,7 +8,7 @@ public class NivelVerificacionAlto extends INivelVerificacion {
 	}
 
 	@Override
-	public void cambiarEstado(Muestra muestra) {
+	public void cambiarEstado() {
 		// TODO Auto-generated method stub
 		
 	}

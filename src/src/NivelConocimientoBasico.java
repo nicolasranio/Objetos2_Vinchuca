@@ -10,7 +10,6 @@ public class NivelConocimientoBasico extends INivelConocimiento {
 
 	@Override
 	public void cambiarEstado() {
-		// TODO Auto-generated method stub
 		if ((participante.getMuestrasEnviadas().size()>10) && (participante.getMuestrasVerificadas().size()>20)){
 			participante.setEstado(new NivelConocimientoExperto(participante));
 		}

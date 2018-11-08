@@ -14,6 +14,12 @@ public class Participante {
 		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
 	}
 	
+	//esto me sirve para instanciar un experto
+	public Participante(String alias, INivelConocimiento nivelConocimiento){
+		this.alias = alias;
+		this.nivelConocimiento=nivelConocimiento;
+	}
+	
 	public List<Muestra> getMuestrasEnviadas(){
 		return muestrasEnviadas;
 	}

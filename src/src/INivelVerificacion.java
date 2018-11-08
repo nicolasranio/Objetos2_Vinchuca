@@ -8,5 +8,5 @@ public abstract class INivelVerificacion {
 		this.muestra = muestra;
 	}
 
-	public abstract void cambiarEstado(Muestra muestra); 
+	public abstract void cambiarEstado(); 
 }

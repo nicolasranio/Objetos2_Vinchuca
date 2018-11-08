@@ -8,8 +8,8 @@ public class NivelVerificacionBajo extends INivelVerificacion {
 	}
 
 	//cambia a estado Medio cuando se den las condiciones, alcanza con validar que existan dos validadores
-	public void cambiarEstado(Muestra muestra) {
-		if (muestra.getVerificadores().size()>=2) muestra.setNivelVerificacion(new NivelVerificacionMedio(muestra));
+	public void cambiarEstado() {
+		if (this.muestra.verificacionesValidas()==2) this.muestra.setNivelVerificacion(new NivelVerificacionMedio(this.muestra));
 	}
 	
 }

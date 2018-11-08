@@ -7,9 +7,8 @@ public class NivelVerificacionMedio extends INivelVerificacion {
 	}
 
 	@Override
-	public void cambiarEstado(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
+	public void cambiarEstado() {
+		if (this.muestra.getVerificadores().size()==3) this.muestra.setNivelVerificacion(new NivelVerificacionAlto(this.muestra));
 	}
 
 }
