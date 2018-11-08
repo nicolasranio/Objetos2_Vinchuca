@@ -14,8 +14,5 @@ public class AplicacionWeb {
 	public void agregarMuestra(Muestra muestra) {
 		this.muestras.add(muestra);
 	}
-	
-	
-	
-	
+
 }

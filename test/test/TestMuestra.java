@@ -1,6 +1,8 @@
 package test;
 
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,18 +44,18 @@ public class TestMuestra {
 	public void testMuestraFiltraMuestrasCercanasA1800km() {
 		
 		List <Muestra> listaMuestras = new ArrayList <Muestra>();
+		Mockito.when(ubicacion.calcularDistancia(muestra.getUbicacion())).thenReturn(900.00);
 		listaMuestras.add(muestraB);
 		listaMuestras.add(muestraC);
 		
-		muestra.muestrasCercanas(listaMuestras, new Double(1800.00));
 		
+		List<Muestra> muestras = muestra.muestrasCercanas(listaMuestras, new Double(1800.00));
+		
+		assertEquals(2,muestras.size());
 		//Hay que verificar las ubicaciones de las muestra 
 	}
 	
-	@Test
-	public void test_creacion_muestra() {
-		
-	}
+
 	
 	
 }
