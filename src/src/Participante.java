@@ -10,7 +10,7 @@ public class Participante {
 	private List <Muestra> muestrasEnviadas;
 	private List <Muestra> muestrasVerificadas;
 	
-	public Participante(String alias, AplicacionWeb aplicacion){
+	public Participante(String alias){
 		this.alias = alias;
 		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
@@ -18,7 +18,7 @@ public class Participante {
 	}
 	
 	//esto me sirve para instanciar un experto
-	public Participante(String alias, INivelConocimiento nivelConocimiento, AplicacionWeb aplicacion){
+	public Participante(String alias, INivelConocimiento nivelConocimiento){
 		this.alias = alias;
 		this.nivelConocimiento=nivelConocimiento;
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
@@ -45,7 +45,11 @@ public class Participante {
 	
 	
 	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion){
-		if (!(muestrasEnviadas.contains(muestra) || muestrasVerificadas.contains(muestra))){
+		if (muestrasEnviadas.contains(muestra) || muestrasVerificadas.contains(muestra)){
+			new RuntimeException("No se puede verificar");
+			
+		}
+		else {
 			this.nivelConocimiento.verificarMuestra(muestra);
 			muestra.verificar(this,validacion);
 		}	
