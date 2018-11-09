@@ -40,6 +40,18 @@ public class Muestra {
 	public Ubicacion getUbicacion() {
 		return this.ubicacion;
 	}
+	
+	public String getTipoVinchuca() {
+		return this.tipoVinchuca;
+	}
+	
+	public String getFotoVinchuca() {
+		return this.fotoVinchuca;
+	}
+	
+	public String getAliasRecolector() {
+		return this.aliasRecolector;
+	}
 
 	
 	public List<Muestra> muestrasCercanas(List<Muestra> muestras, Double distancia){

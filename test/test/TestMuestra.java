@@ -18,17 +18,23 @@ import src.Ubicacion;
 public class TestMuestra {
 	
 	private Muestra muestra;
-	private Ubicacion ubicacion;
 	private Muestra muestraB;
 	private Muestra muestraC;
+	private Ubicacion ubicacion;
+	private Ubicacion ubicacionB;
+	private Participante participante;
+	private TipoVinchuca tipoVinchuca;
 	
 	@Before
 	public void setUp() {
 		
 		ubicacion = Mockito.mock(Ubicacion.class);
+		ubicacionB = Mockito.mock(Ubicacion.class);
 		muestra = new Muestra("Chinche_Foliada","foto",ubicacion,"Rogelio");
-		muestraB = new Muestra("Ninguna","foto",ubicacion,"Fort");
+		muestraB = new Muestra("Ninguna","foto",ubicacionB,"Fort");
 		muestraC = new Muestra("Vinchuca","foto",ubicacion,"Comandante");
+		participante = Mockito.mock(Participante.class);
+		
 	}
 	
 	@Test
@@ -44,17 +50,35 @@ public class TestMuestra {
 	public void testMuestraFiltraMuestrasCercanasA1800km() {
 		
 		List <Muestra> listaMuestras = new ArrayList <Muestra>();
-		Mockito.when(ubicacion.calcularDistancia(muestra.getUbicacion())).thenReturn(900.00);
 		listaMuestras.add(muestraB);
 		listaMuestras.add(muestraC);
 		
+		Mockito.when(ubicacion.calcularDistancia(muestraB.getUbicacion())).thenReturn(900.00);
+		Mockito.when(ubicacion.calcularDistancia(muestraC.getUbicacion())).thenReturn(1900.00);
 		
 		List<Muestra> muestras = muestra.muestrasCercanas(listaMuestras, new Double(1800.00));
 		
-		assertEquals(2,muestras.size());
-		//Hay que verificar las ubicaciones de las muestra 
+		assertEquals(1,muestras.size());
 	}
 	
+	@Test
+	public void testMuestraEsVerificadaYAgregaAParicipanteComoVerificador() {
+		muestra.verificar(participante,tipoVinchuca);
+		
+		assertEquals(true,muestra.getVerificadores().contains(participante));
+	}
+	
+	
+	@Test
+	public void testMuestraASidoVerificadoPorUnParticipante() {
+		
+		int cantVerificaciones = muestra.getVerificaciones().size();
+		
+		muestra.verificar(participante,tipoVinchuca);
+		
+		assertEquals(cantVerificaciones+1,muestra.getVerificaciones().size());
+		
+	}
 
 	
 	

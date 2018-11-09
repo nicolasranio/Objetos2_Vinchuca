@@ -14,12 +14,13 @@ public class TestUbicacion {
 
 	private Ubicacion ubicacionA;
 	private Ubicacion ubicacionB;
+	private Ubicacion ubicacionC;
 	
 	@Before
 	public void setUp() throws Exception {
-		ubicacionA = new Ubicacion(100.00,100.00);
-	 	ubicacionB = new Ubicacion (200.00,200.00);
-	 	
+		ubicacionA = new Ubicacion(36.00,47.00);
+	 	ubicacionB = new Ubicacion(23.00,11.00);
+	 	ubicacionC = new Ubicacion(41.00,39.00);
 		
 	}
 
@@ -30,19 +31,22 @@ public class TestUbicacion {
 	
 	@Test
 	public void testDistintaUbicacion() {
-		//assertEquals(new Double(12400.97), this.ubicacionA.calcularDistancia(ubicacionB));
-		assertEquals(12400.97,this.ubicacionA.calcularDistancia(ubicacionB),15.00);
+		assertEquals(new Double(3745.09), this.ubicacionA.calcularDistancia(ubicacionB));
 	}
 	
 	@Test
-	public void testUbicacionesAMenosDe100Km(){
-		Ubicacion ubicacionC = new Ubicacion(99.99,99.99);
+	public void testUbicacionesAMenosDe1000Km(){
+
 		List<Ubicacion> ubicaciones = new ArrayList<Ubicacion>();
 		ubicaciones.add(ubicacionC);
 		ubicaciones.add(ubicacionB);
-		List<Ubicacion> ubicacionesCercanas = ubicacionA.ubicacionesCercanas(ubicaciones, 10.00);
+		
+		List<Ubicacion> ubicacionesCercanas = ubicacionA.ubicacionesCercanas(ubicaciones, 1000.00);
+		
 		assertEquals(1,ubicacionesCercanas.size());
 		
 	}
+	
+
 	
 }
