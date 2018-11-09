@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import src.Muestra;
+import src.Participante;
+import src.TipoVinchuca;
 import src.Ubicacion;
 
 
@@ -65,9 +67,8 @@ public class TestMuestra {
 	public void testMuestraEsVerificadaYAgregaAParicipanteComoVerificador() {
 		muestra.verificar(participante,tipoVinchuca);
 		
-		assertEquals(true,muestra.getVerificadores().contains(participante));
+		assertTrue(muestra.getVerificadores().contains(participante));
 	}
-	
 	
 	@Test
 	public void testMuestraASidoVerificadoPorUnParticipante() {

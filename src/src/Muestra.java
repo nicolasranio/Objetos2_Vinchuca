@@ -77,7 +77,7 @@ public class Muestra {
 		return participantes;
 	}
 	
-	public Integer verificacionesValidas(){
+	public int verificacionesValidas(){
 		
 		//me quedo con las verificaciones que se hicieron sobre la muestra y cuento coincidencias
 		Collection<TipoVinchuca> values = verificaciones.values();		         
