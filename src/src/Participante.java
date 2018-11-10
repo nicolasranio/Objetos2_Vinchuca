@@ -3,6 +3,8 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.MuestraYaEnviadaException;
+
 public class Participante {
 
 	private String alias;
@@ -44,10 +46,9 @@ public class Participante {
 	}
 	
 	
-	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion){
+	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion) throws MuestraYaEnviadaException{
 		if (muestrasEnviadas.contains(muestra) || muestrasVerificadas.contains(muestra)){
-			new RuntimeException("No se puede verificar");
-			
+			throw new MuestraYaEnviadaException();
 		}
 		else {
 			this.nivelConocimiento.verificarMuestra(muestra);
