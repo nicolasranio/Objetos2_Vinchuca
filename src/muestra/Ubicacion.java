@@ -1,4 +1,4 @@
-package src;
+package muestra;
 
 import java.util.List;
 import java.util.stream.Collectors;

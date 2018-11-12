@@ -10,10 +10,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import src.Muestra;
-import src.Participante;
-import src.TipoVinchuca;
-import src.Ubicacion;
+import muestra.Muestra;
+import muestra.TipoVinchuca;
+import muestra.Ubicacion;
+import participante.Participante;
 
 
 

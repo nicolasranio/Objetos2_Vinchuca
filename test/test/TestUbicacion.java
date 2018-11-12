@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import src.Ubicacion;
+import muestra.Ubicacion;
 
 public class TestUbicacion {
 

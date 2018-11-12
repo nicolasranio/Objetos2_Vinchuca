@@ -1,4 +1,7 @@
-package src;
+package participante;
+
+import muestra.Muestra;
+import muestra.NivelVerificacionAlto;
 
 public class NivelConocimientoExperto extends INivelConocimiento {
 

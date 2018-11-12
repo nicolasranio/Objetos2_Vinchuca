@@ -9,11 +9,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import app.AplicacionWeb;
 import exceptions.MuestraYaEnviadaException;
-import src.AplicacionWeb;
-import src.Muestra;
-import src.Participante;
-import src.TipoVinchuca;
+import muestra.Muestra;
+import muestra.TipoVinchuca;
+import participante.Participante;
 
 public class TestParticipante {
 	

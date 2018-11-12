@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="src.Muestra" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/Muestra.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="muestra.Muestra" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/Muestra.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="333" width="301" x="1260" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="src.Organizacion" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/Organizacion.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="organizacion.Organizacion" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/organizacion/Organizacion.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="988" y="307"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="src.NivelVerificacionBajo" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/NivelVerificacionBajo.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="muestra.NivelVerificacionBajo" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/NivelVerificacionBajo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="174" x="305" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="4" language="java" name="src.TipoVinchuca" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/TipoVinchuca.java" binary="false" corner="BOTTOM_RIGHT">    
+  <enumeration id="4" language="java" name="muestra.TipoVinchuca" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/TipoVinchuca.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="171" width="192" x="1322" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="5" language="java" name="src.INivelConocimiento" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/INivelConocimiento.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="participante.INivelConocimiento" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/participante/INivelConocimiento.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1784" y="289"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="6" language="java" name="src.TipoOrganizacion" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/TipoOrganizacion.java" binary="false" corner="BOTTOM_RIGHT">    
+  <enumeration id="6" language="java" name="organizacion.TipoOrganizacion" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/organizacion/TipoOrganizacion.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="153" width="165" x="747" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="7" language="java" name="src.NivelConocimientoBasico" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/NivelConocimientoBasico.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="participante.NivelConocimientoBasico" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/participante/NivelConocimientoBasico.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="210" x="1554" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="src.INivelVerificacion" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/INivelVerificacion.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="muestra.INivelVerificacion" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/INivelVerificacion.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="155" x="740" y="-126"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="src.NivelVerificacionMedio" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/NivelVerificacionMedio.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="muestra.NivelVerificacionMedio" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/NivelVerificacionMedio.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="181" x="519" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="src.NivelConocimientoExperto" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/NivelConocimientoExperto.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="participante.NivelConocimientoExperto" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/participante/NivelConocimientoExperto.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="214" x="1804" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,8 +91,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="src.Ubicacion" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/Ubicacion.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="muestra.Ubicacion" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/Ubicacion.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="225" width="330" x="952" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,8 +100,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="src.Participante" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/Participante.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="participante.Participante" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/participante/Participante.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="207" width="244" x="1473" y="-126"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="src.AplicacionWeb" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/AplicacionWeb.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="app.AplicacionWeb" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/AplicacionWeb.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="173" x="1260" y="-126"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="src.NivelVerificacionAlto" project="Objetos2_Vinchuca" 
-    file="/Objetos2_Vinchuca/src/src/NivelVerificacionAlto.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="muestra.NivelVerificacionAlto" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/muestra/NivelVerificacionAlto.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="172" x="740" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -137,11 +137,15 @@
     </display>  
   </class>  
   <association id="16">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="17" name="verificaciones"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="17" name="muestra">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="19">    
@@ -149,99 +153,139 @@
     <end type="TARGET" refId="5"/>  
   </generalization>  
   <association id="20">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="21" name="ubicacion"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="23">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="24">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="25" name="muestras"/>      
-      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="28">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="29" name="nivelVerificacion"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="32" name="muestrasVerificadas"/>      
-      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="34">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="35" name="ubicacion"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="38">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="39" name="participante"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="41">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <association id="42">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="43" name="muestrasEnviadas"/>      
-      <multiplicity id="44" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="45">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="46" name="tipo"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="49" name="nivelConocimiento"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
+      <attribute id="21" name="nivelConocimiento">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="51">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="52" name="muestra"/>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
+  <association id="23">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="24" name="verificaciones">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="ubicacion">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="32">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="33" name="ubicacion">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="36">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="37" name="muestrasVerificadas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="38" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="40" name="muestrasEnviadas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="43" name="participante">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="46" name="muestras">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="49" name="nivelVerificacion">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="52" name="tipo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

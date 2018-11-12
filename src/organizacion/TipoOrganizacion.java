@@ -1,4 +1,4 @@
-package src;
+package organizacion;
 
 public enum TipoOrganizacion {
 	

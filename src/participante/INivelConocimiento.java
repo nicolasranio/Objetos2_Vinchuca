@@ -1,4 +1,6 @@
-package src;
+package participante;
+
+import muestra.Muestra;
 
 public abstract class INivelConocimiento {
 

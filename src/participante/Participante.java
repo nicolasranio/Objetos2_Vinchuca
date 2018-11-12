@@ -1,9 +1,12 @@
-package src;
+package participante;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import app.AplicacionWeb;
 import exceptions.MuestraYaEnviadaException;
+import muestra.Muestra;
+import muestra.TipoVinchuca;
 
 public class Participante {
 
@@ -17,8 +20,8 @@ public class Participante {
 		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
 		this.muestrasVerificadas = new ArrayList <Muestra> ();
-	}
-	
+	} 
+	 
 	//esto me sirve para instanciar un experto
 	public Participante(String alias, INivelConocimiento nivelConocimiento){
 		this.alias = alias;

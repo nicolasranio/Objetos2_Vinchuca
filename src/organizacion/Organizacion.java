@@ -1,4 +1,6 @@
-package src;
+package organizacion;
+
+import muestra.Ubicacion;
 
 public class Organizacion {
 
