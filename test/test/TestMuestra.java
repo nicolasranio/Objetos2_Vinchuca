@@ -32,9 +32,9 @@ public class TestMuestra {
 		
 		ubicacion = Mockito.mock(Ubicacion.class);
 		ubicacionB = Mockito.mock(Ubicacion.class);
-		muestra = new Muestra("Chinche_Foliada","foto",ubicacion,"Rogelio");
-		muestraB = new Muestra("Ninguna","foto",ubicacionB,"Fort");
-		muestraC = new Muestra("Vinchuca","foto",ubicacion,"Comandante");
+		muestra = new Muestra(TipoVinchuca.Chinche_Foliada,"foto",ubicacion,"Rogelio");
+		muestraB = new Muestra(TipoVinchuca.Imagen_poco_clara,"foto",ubicacionB,"Fort");
+		muestraC = new Muestra(TipoVinchuca.Ninguna,"foto",ubicacion,"Comandante");
 		participante = Mockito.mock(Participante.class);
 		
 	}

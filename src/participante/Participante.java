@@ -5,6 +5,7 @@ import java.util.List;
 
 import app.AplicacionWeb;
 import exceptions.MuestraYaEnviadaException;
+import exceptions.MuestraYaVerificadaException;
 import muestra.Muestra;
 import muestra.TipoVinchuca;
 
@@ -35,7 +36,7 @@ public class Participante {
 	}
 	
 	public List<Muestra> getMuestrasVerificadas(){
-		return muestrasEnviadas;
+		return muestrasVerificadas;
 	}
 
 	public void setEstado(INivelConocimiento nivelConocimiento) {
@@ -49,14 +50,23 @@ public class Participante {
 	}
 	
 	
-	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion) throws MuestraYaEnviadaException{
-		if (muestrasEnviadas.contains(muestra) || muestrasVerificadas.contains(muestra)){
-			throw new MuestraYaEnviadaException();
-		}
-		else {
-			this.nivelConocimiento.verificarMuestra(muestra);
-			muestra.verificar(this,validacion);
-		}	
+	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion) throws Exception{
+		this.validarQueNoHayaSidoEnviada(muestra);
+		this.validarQueNoHayaSidoVerificada(muestra);
+		this.muestrasVerificadas.add(muestra);
+		muestra.verificar(this,validacion);
+		this.nivelConocimiento.verificarMuestra(muestra);	
 	}
 	
+	public void validarQueNoHayaSidoEnviada(Muestra muestra) throws Exception{
+		if (muestrasEnviadas.contains(muestra)){
+			throw new MuestraYaEnviadaException();
+		}
+	}
+	
+	public void validarQueNoHayaSidoVerificada(Muestra muestra) throws Exception{
+		if  (muestrasVerificadas.contains(muestra)){
+			throw new MuestraYaVerificadaException();
+		}
+	}
 }

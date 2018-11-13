@@ -13,7 +13,7 @@ import participante.Participante;
 
 public class Muestra {
 
-	private String tipoVinchuca;
+	private TipoVinchuca tipoVinchuca;
 	private String fotoVinchuca;  //url de la imagen
 	private Ubicacion ubicacion;
 	private String aliasRecolector;
@@ -21,7 +21,7 @@ public class Muestra {
 	private Map<Participante, TipoVinchuca> verificaciones;  //map con veredictos de validacion
 
 	
-	public Muestra(String tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
+	public Muestra(TipoVinchuca tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
 		this.tipoVinchuca=tipoVinchuca;
 		this.fotoVinchuca= fotoVinchuca;
 		this.ubicacion= ubicacion;
@@ -42,7 +42,7 @@ public class Muestra {
 		return this.ubicacion;
 	}
 	
-	public String getTipoVinchuca() {
+	public TipoVinchuca getTipoVinchuca() {
 		return this.tipoVinchuca;
 	}
 	
