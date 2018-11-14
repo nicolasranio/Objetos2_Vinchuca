@@ -30,12 +30,12 @@ public class Ubicacion {
 		this.longitud = longitud;
 	}
 
-
-	/*
-	 * Calcula distancia entre el punto en cuestion y un punto B
-	 * Parametro: una PosicionGeografica
-	 * Return: Distancia entre los puntos (Double)
-	 * */
+	
+	/**
+	 * Calcula distancia entre este punto y un punto B
+	 * @param ubicacionB
+	 * @return Distancia entre los puntos (Double)
+	 */
 	public Double calcularDistancia(Ubicacion ubicacionB){
         double radioTierra = 6371;//en kilómetros  
         double dLat = Math.toRadians(ubicacionB.getLatitud() - this.latitud);  
@@ -50,7 +50,12 @@ public class Ubicacion {
         return distancia;  
 	}
 
-	//lo hacemos en kilometros
+	/**
+	 * Devuelve las ubicaciones cercanas en {distancia} kilometros a esta ubicacion
+	 * @param ubicaciones (lista)
+	 * @param distancia
+	 * @return Lista de ubicaciones cercanas
+	 */
 	public List<Ubicacion> ubicacionesCercanas(List<Ubicacion> ubicaciones, Double distancia){
 		
 		return ubicaciones.stream()

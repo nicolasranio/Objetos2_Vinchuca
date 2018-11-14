@@ -16,6 +16,10 @@ public class Participante {
 	private List <Muestra> muestrasEnviadas;
 	private List <Muestra> muestrasVerificadas;
 	
+	/**
+	 * Constructor por default
+	 * @param alias
+	 */
 	public Participante(String alias){
 		this.alias = alias;
 		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
@@ -23,7 +27,11 @@ public class Participante {
 		this.muestrasVerificadas = new ArrayList <Muestra> ();
 	} 
 	 
-	//esto me sirve para instanciar un experto
+	/**
+	 * Sobrecarga del constructor para instanciar expertos
+	 * @param alias
+	 * @param nivelConocimiento
+	 */
 	public Participante(String alias, INivelConocimiento nivelConocimiento){
 		this.alias = alias;
 		this.nivelConocimiento=nivelConocimiento;
@@ -43,13 +51,24 @@ public class Participante {
 		this.nivelConocimiento = nivelConocimiento;
 	}
 	
+	
+	/**
+	 * Agrega la muestra a la coleccion del participante 
+	 * @param muestra
+	 * @param aplicacion
+	 */
 	public void enviarMuestra(Muestra muestra, AplicacionWeb aplicacion){
 		this.nivelConocimiento.verificarMuestra(muestra);
 		aplicacion.agregarMuestra(muestra);
 		this.muestrasEnviadas.add(muestra);
 	}
 	
-	
+	/**
+	 * Valida la muestra
+	 * @param muestra
+	 * @param validacion
+	 * @throws Exception
+	 */
 	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion) throws Exception{
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
