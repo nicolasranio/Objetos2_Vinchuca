@@ -88,4 +88,8 @@ public class Participante {
 			throw new MuestraYaVerificadaException();
 		}
 	}
+
+	public INivelConocimiento getNivel() {
+		return this.nivelConocimiento;
+	}
 }
