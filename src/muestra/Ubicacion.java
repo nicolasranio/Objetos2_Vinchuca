@@ -18,18 +18,20 @@ public class Ubicacion {
 		return latitud;
 	}
 
+	/*
 	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
+	*/
 
 	public Double getLongitud() {
 		return longitud;
 	}
-
+	/*
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
-
+	*/
 	
 	/**
 	 * Calcula distancia entre este punto y un punto B
