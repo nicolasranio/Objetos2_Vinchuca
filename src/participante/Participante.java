@@ -22,7 +22,7 @@ public class Participante {
 	 */
 	public Participante(String alias){
 		this.alias = alias;
-		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
+		this.nivelConocimiento = new NivelConocimientoBasico(); //siempre inicia con nivel básico
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
 		this.muestrasVerificadas = new ArrayList <Muestra> ();
 	} 
@@ -43,12 +43,25 @@ public class Participante {
 		return muestrasEnviadas;
 	}
 	
+	public void agregarMuestraEnviada(Muestra muestra) {
+		this.muestrasEnviadas.add(muestra);
+	}
+	
 	public List<Muestra> getMuestrasVerificadas(){
 		return muestrasVerificadas;
 	}
+	
+	public void agregarMuestraVerificada(Muestra muestra) {
+		this.muestrasVerificadas.add(muestra);
+	}
 
-	public void setEstado(INivelConocimiento nivelConocimiento) {
-		this.nivelConocimiento = nivelConocimiento;
+	public void verificarEstado() {
+		if ((this.getMuestrasEnviadas().size()>10) && (this.getMuestrasVerificadas().size()>20)){
+			this.nivelConocimiento = new NivelConocimientoExperto();
+		}
+		else {
+			this.nivelConocimiento = new NivelConocimientoBasico();
+		}
 	}
 	
 	
@@ -60,7 +73,8 @@ public class Participante {
 	public void enviarMuestra(Muestra muestra, AplicacionWeb aplicacion){
 		this.nivelConocimiento.verificarMuestra(muestra);
 		aplicacion.agregarMuestra(muestra);
-		this.muestrasEnviadas.add(muestra);
+		this.agregarMuestraEnviada(muestra);
+		this.verificarEstado();
 	}
 	
 	/**
@@ -72,9 +86,10 @@ public class Participante {
 	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion) throws Exception{
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
-		this.muestrasVerificadas.add(muestra);
+		this.agregarMuestraVerificada(muestra);
 		muestra.verificar(this,validacion);
-		this.nivelConocimiento.verificarMuestra(muestra);	
+		this.nivelConocimiento.verificarMuestra(muestra);
+		this.verificarEstado();
 	}
 	
 	public void validarQueNoHayaSidoEnviada(Muestra muestra) throws Exception{

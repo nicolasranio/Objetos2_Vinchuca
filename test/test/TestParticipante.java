@@ -30,7 +30,7 @@ public class TestParticipante {
 	public void setUp() throws Exception {
 		
 		participante = new Participante("Ricky");
-		pro = new NivelConocimientoExperto(participantePro);
+		pro = new NivelConocimientoExperto();
 		participantePro = new Participante("MacriCat", pro); 
 		aplicacion = mock(AplicacionWeb.class);
 		muestra = mock(Muestra.class);

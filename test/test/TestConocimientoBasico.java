@@ -28,38 +28,7 @@ public class TestConocimientoBasico {
 	public void setUp() throws Exception {
 		mockList = mock(ArrayList.class);
 		participante = mock(Participante.class);
-		rookie = new NivelConocimientoBasico(participante);
-	}
-	@Test
-	public void testParticipanteCambiaEstado() {
-		when(mockList.size()).thenReturn(30);
-		when(participante.getMuestrasEnviadas()).thenReturn(mockList);
-		when(participante.getMuestrasVerificadas()).thenReturn(mockList);
-		
-		rookie.cambiarEstado();
-		verify(participante).setEstado(isA(NivelConocimientoExperto.class));	
-		
-		
+		rookie = new NivelConocimientoBasico();
 	}
 	
-	@Test
-	public void testParticipanteNoCambiaEstado() {
-		when(mockList.size()).thenReturn(0);
-		when(participante.getMuestrasEnviadas()).thenReturn(mockList);
-		when(participante.getMuestrasVerificadas()).thenReturn(mockList);
-		
-		rookie.cambiarEstado();
-		verify(participante, times(0)).setEstado(isA(NivelConocimientoExperto.class));	
-	}
-	
-	@Test
-	public void testParticipanteNoCambiaEstadoPorUnaRazon() {
-		when(mockList.size()).thenReturn(15);
-		when(participante.getMuestrasEnviadas()).thenReturn(mockList);
-		when(participante.getMuestrasVerificadas()).thenReturn(mockList);
-		
-		rookie.cambiarEstado();
-		verify(participante, times(0)).setEstado(isA(NivelConocimientoExperto.class));	
-	}
-
 }	
