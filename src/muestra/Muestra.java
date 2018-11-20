@@ -2,6 +2,7 @@ package muestra;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,8 +21,11 @@ public class Muestra {
 	private String aliasRecolector;
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	//private Map<Participante, TipoVinchuca> verificaciones;  //map con veredictos de validacion
-	private List<Verificacion> verificaciones;
+	private List<VerificacionMuestra> verificaciones;
+	private Date fechaEnvio;
 	
+
+
 	public Muestra(TipoVinchuca tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
 		this.tipoVinchuca=tipoVinchuca;
 		this.fotoVinchuca= fotoVinchuca;
@@ -29,14 +33,15 @@ public class Muestra {
 		this.aliasRecolector=alias;
 		this.nivelVerificacion= new NivelVerificacionBajo(this); //ver esto con prof.
 		//this.verificaciones = new HashMap<Participante, TipoVinchuca>();
-		this.verificaciones= new ArrayList<Verificacion>();
+		this.verificaciones= new ArrayList<VerificacionMuestra>();
+		this.fechaEnvio= new Date();
 	}
 	
 	public Double distanciaAMuestra(Muestra muestraB){
 		return this.ubicacion.calcularDistancia(muestraB.getUbicacion());
 	}
 
-	public List<Verificacion> getVerificaciones() {
+	public List<VerificacionMuestra> getVerificaciones() {
 		return verificaciones;
 	}
 	
@@ -56,6 +61,9 @@ public class Muestra {
 		return this.aliasRecolector;
 	}
 
+	public Date getFechaEnvio() {
+		return fechaEnvio;
+	}
 	
 	/**
 	 * Retorna lista de muestras cercanas a menos de {distancia} km de esta ubicacion
@@ -98,8 +106,8 @@ public class Muestra {
 	}
 
 	
-	public void verificar(Participante participante, TipoVinchuca validacion) {
-		this.verificaciones.add(new Verificacion(participante,validacion));
+	public void verificar(VerificacionMuestra verificacion) {
+		this.verificaciones.add(verificacion);
 	}	
 	
 }

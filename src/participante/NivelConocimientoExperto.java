@@ -11,9 +11,9 @@ public class NivelConocimientoExperto extends INivelConocimiento {
 	}
 
 	
-	public void cambiarEstado() {
+	/*public void cambiarEstado() {
 		//por ahora no hace nada...
-	}
+	}*/
 
 
 	@Override
@@ -22,11 +22,12 @@ public class NivelConocimientoExperto extends INivelConocimiento {
 	}
 
 
+	/*
 	@Override
 	public void enviarMuestra(Muestra muestra) {
 		this.verificarMuestra(muestra);
 	}
-	
+	*/
 	
 
 }

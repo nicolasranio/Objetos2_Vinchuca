@@ -10,9 +10,9 @@ public abstract class INivelConocimiento {
 		this.participante = participante;	
 	}
 	
-	public abstract void cambiarEstado();
+	//public abstract void cambiarEstado();
 	
 	public abstract void verificarMuestra(Muestra muestra);
 	
-	public abstract void enviarMuestra(Muestra muestra);
+	//public abstract void enviarMuestra(Muestra muestra);
 }

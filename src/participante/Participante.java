@@ -8,13 +8,14 @@ import exceptions.MuestraYaEnviadaException;
 import exceptions.MuestraYaVerificadaException;
 import muestra.Muestra;
 import muestra.TipoVinchuca;
+import muestra.VerificacionMuestra;
 
 public class Participante {
 
 	private String alias;
 	private INivelConocimiento nivelConocimiento; //patron state
-	private List <Muestra> muestrasEnviadas;
-	private List <Muestra> muestrasVerificadas;
+	private List <Muestra> muestrasEnviadas;  //muestra tiene fecha de envio
+	private List <VerificacionMuestra> muestrasVerificadas;  //verificacion y fecha de verificacion
 	
 	/**
 	 * Constructor por default
@@ -24,7 +25,7 @@ public class Participante {
 		this.alias = alias;
 		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
-		this.muestrasVerificadas = new ArrayList <Muestra> ();
+		this.muestrasVerificadas = new ArrayList <VerificacionMuestra> ();
 	} 
 	 
 	/**
@@ -36,15 +37,19 @@ public class Participante {
 		this.alias = alias;
 		this.nivelConocimiento=nivelConocimiento;
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
-		this.muestrasVerificadas = new ArrayList <Muestra> ();
+		this.muestrasVerificadas = new ArrayList <VerificacionMuestra> ();
 	}
 	
-	public List<Muestra> getMuestrasEnviadas(){
-		return muestrasEnviadas;
+	
+	//usar JODA lib
+	public List<Muestra> getMuestrasEnviadasUltimoMes(){
+		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
+		//to do
 	}
 	
-	public List<Muestra> getMuestrasVerificadas(){
-		return muestrasVerificadas;
+	public List<VerificacionMuestra> getMuestrasVerificadasUltimoMes(){
+		//return muestrasVerificadas;
+		//to do
 	}
 
 	public void setEstado(INivelConocimiento nivelConocimiento) {
@@ -69,11 +74,14 @@ public class Participante {
 	 * @param validacion
 	 * @throws Exception
 	 */
-	public void verificarMuestra(Muestra muestra, TipoVinchuca validacion) throws Exception{
+	public void verificarMuestra(Muestra muestra, TipoVinchuca tipoVinchuca) throws Exception{
+		//validaciones
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
-		this.muestrasVerificadas.add(muestra);
-		muestra.verificar(this,validacion);
+		
+		VerificacionMuestra verificacion = new VerificacionMuestra(this,tipoVinchuca);
+		muestra.verificar(verificacion);
+		this.muestrasVerificadas.add(verificacion);
 		this.nivelConocimiento.verificarMuestra(muestra);	
 	}
 	
