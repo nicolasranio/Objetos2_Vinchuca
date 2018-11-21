@@ -56,7 +56,7 @@ public class Participante {
 		return muestrasVerificadas;
 	}
 	
-	public void agregarMuestraVerificada(VerificacionMuestra muestra) {
+	public void agregarVerificacionMuestra(VerificacionMuestra muestra) {
 		this.muestrasVerificadas.add(muestra);
 	}
 
@@ -92,8 +92,8 @@ public class Participante {
 		//validaciones
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
-		this.agregarMuestraVerificada(muestra);
-		muestra.verificar(this,validacion);
+		this.agregarVerificacionMuestra(new VerificacionMuestra(this,validacion));
+		muestra.verificar(new VerificacionMuestra(this,validacion));
 		this.nivelConocimiento.verificarMuestra(muestra);
 		this.verificarEstado();
 	}

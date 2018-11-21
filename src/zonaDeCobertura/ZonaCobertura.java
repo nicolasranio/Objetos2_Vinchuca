@@ -39,7 +39,8 @@ public class ZonaCobertura {
 	}
 	
 	public List<Muestra> muestrasReportadas(){
-		return this.app.getMuestras().stream().filter(muestra -> this.distanciaDeMuestra(muestra) < this.radio)
+		return this.app.getMuestras().stream().
+				filter(muestra -> this.distanciaDeMuestra(muestra) < this.radio)
 				.collect(Collectors.toList());
 	}
 	

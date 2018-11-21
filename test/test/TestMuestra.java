@@ -3,16 +3,15 @@ package test;
 
 import static org.junit.Assert.*;
 
+import static org.mockito.Mockito.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import muestra.Muestra;
-import muestra.TipoVinchuca;
-import muestra.Ubicacion;
+import muestra.*;
 import participante.Participante;
 
 
@@ -24,18 +23,27 @@ public class TestMuestra {
 	private Muestra muestraC;
 	private Ubicacion ubicacion;
 	private Ubicacion ubicacionB;
-	private Participante participante;
-	private TipoVinchuca tipoVinchuca;
+	private VerificacionMuestra verificacion;
 	
 	@Before
 	public void setUp() {
 		
-		ubicacion = Mockito.mock(Ubicacion.class);
-		ubicacionB = Mockito.mock(Ubicacion.class);
+		ubicacion = mock(Ubicacion.class);
+		ubicacionB = mock(Ubicacion.class);
 		muestra = new Muestra(TipoVinchuca.Chinche_Foliada,"foto",ubicacion,"Rogelio");
-		muestraB = new Muestra(TipoVinchuca.Imagen_poco_clara,"foto",ubicacionB,"Fort");
-		muestraC = new Muestra(TipoVinchuca.Ninguna,"foto",ubicacion,"Comandante");
-		participante = Mockito.mock(Participante.class);
+		muestraB = new Muestra(TipoVinchuca.Imagen_poco_clara,"foto2",ubicacionB,"Fort");
+		muestraC = new Muestra(TipoVinchuca.Ninguna,"foto3",ubicacion,"Comandante");
+		verificacion = mock(VerificacionMuestra.class);
+		
+	}
+	
+	@Test
+	public void testConstructorDeMuestra() {
+		
+		assertTrue(muestra.getTipoVinchuca().equals(TipoVinchuca.Chinche_Foliada));
+		assertTrue(muestra.getFotoVinchuca().equals("foto"));
+		assertTrue(muestra.getUbicacion().equals(ubicacion));
+		assertTrue(muestra.getAliasRecolector().equals("Rogelio"));
 		
 	}
 	
@@ -44,7 +52,7 @@ public class TestMuestra {
 		
 		muestra.distanciaAMuestra(muestraB);
 		
-		Mockito.verify(ubicacion).calcularDistancia(muestraB.getUbicacion());
+		verify(ubicacion).calcularDistancia(muestraB.getUbicacion());
 		
 	}
 	
@@ -55,8 +63,8 @@ public class TestMuestra {
 		listaMuestras.add(muestraB);
 		listaMuestras.add(muestraC);
 		
-		Mockito.when(ubicacion.calcularDistancia(muestraB.getUbicacion())).thenReturn(900.00);
-		Mockito.when(ubicacion.calcularDistancia(muestraC.getUbicacion())).thenReturn(1900.00);
+		when(ubicacion.calcularDistancia(muestraB.getUbicacion())).thenReturn(900.00);
+		when(ubicacion.calcularDistancia(muestraC.getUbicacion())).thenReturn(1900.00);
 		
 		List<Muestra> muestras = muestra.muestrasCercanas(listaMuestras, new Double(1800.00));
 		
@@ -64,22 +72,19 @@ public class TestMuestra {
 	}
 	
 	@Test
-	public void testMuestraEsVerificadaYAgregaAParicipanteComoVerificador() {
-		muestra.verificar(participante,tipoVinchuca);
-		
-		assertTrue(muestra.getVerificadores().contains(participante));
-	}
-	
-	@Test
-	public void testMuestraASidoVerificadoPorUnParticipante() {
+	public void testMuestraASidoVerificadoPorUnParticipanteYAgregaPaticipanteAVerificadores() {
 		
 		int cantVerificaciones = muestra.getVerificaciones().size();
+		Participante participante2 = mock(Participante.class);
 		
-		muestra.verificar(participante,tipoVinchuca);
+		when(verificacion.getParticipante()).thenReturn(participante2);
+		
+		muestra.verificar(verificacion);
 		
 		assertEquals(cantVerificaciones+1,muestra.getVerificaciones().size());
-		
+		assertTrue(muestra.getVerificadores().contains(participante2));
 	}
+	
 
 	
 	

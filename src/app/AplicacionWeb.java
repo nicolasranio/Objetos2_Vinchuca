@@ -11,7 +11,6 @@ import zonaDeCobertura.ZonaCobertura;
 public class AplicacionWeb {
 	
 	private List <Muestra> muestras;
-
 	private List <ZonaCobertura> zonasCobertura;
 	
 	public AplicacionWeb(){

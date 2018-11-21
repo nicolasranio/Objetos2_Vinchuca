@@ -42,13 +42,13 @@ public class TestParticipante {
 	public void testParticipanteEnviaMuestraAAplicacionYSumaUnaMuestraEnviada() {
 		participante.enviarMuestra(muestra, aplicacion);
 		verify(aplicacion).agregarMuestra(muestra);
-		assertEquals(1,participante.getMuestrasEnviadas().size());
-	}
+		assertEquals(1,participante.getMuestrasEnviadasUltimoMes().size());
+	} 
 	
 	@Test(expected = MuestraYaEnviadaException.class)
 	public void testParticipanteVerificaMuestraPeroYaLaHabiaEnviado() throws Exception {
 		participante.enviarMuestra(muestra, aplicacion);
-		System.out.println(participante.getMuestrasEnviadas().size());
+		System.out.println(participante.getMuestrasEnviadasUltimoMes().size());
 		participante.verificarMuestra(muestra, validacion);
 	}
 	
