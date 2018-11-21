@@ -45,6 +45,9 @@ public class ZonaCobertura {
 	
 	
 	public List<ZonaCobertura> zonasSolapadas() {
-		return this.app.getZonasCobertura();//Preguntar
+		return this.app.getZonasCobertura().stream()
+				.filter(zona -> zona.getEpicentro().calcularDistancia(this.epicentro)<(this.radio + zona.getRadio()))
+				.collect(Collectors.toList());
 	}
+	
 }
