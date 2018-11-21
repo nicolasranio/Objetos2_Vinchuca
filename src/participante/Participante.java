@@ -23,7 +23,7 @@ public class Participante {
 	 */
 	public Participante(String alias){
 		this.alias = alias;
-		this.nivelConocimiento = new NivelConocimientoBasico(this); //siempre inicia con nivel básico
+		this.nivelConocimiento = new NivelConocimientoBasico(); //siempre inicia con nivel básico
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
 		this.muestrasVerificadas = new ArrayList <VerificacionMuestra> ();
 	} 
@@ -45,15 +45,28 @@ public class Participante {
 	public List<Muestra> getMuestrasEnviadasUltimoMes(){
 		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
 		//to do
+		return null;
 	}
 	
-	public List<VerificacionMuestra> getMuestrasVerificadasUltimoMes(){
-		//return muestrasVerificadas;
-		//to do
+	public void agregarMuestraEnviada(Muestra muestra) {
+		this.muestrasEnviadas.add(muestra);
+	}
+	
+	public List<VerificacionMuestra> getMuestrasVerificadas(){
+		return muestrasVerificadas;
+	}
+	
+	public void agregarMuestraVerificada(VerificacionMuestra muestra) {
+		this.muestrasVerificadas.add(muestra);
 	}
 
-	public void setEstado(INivelConocimiento nivelConocimiento) {
-		this.nivelConocimiento = nivelConocimiento;
+	public void verificarEstado() {
+		if ((this.getMuestrasEnviadasUltimoMes().size()>10) && (this.getMuestrasVerificadas().size()>20)){
+			this.nivelConocimiento = new NivelConocimientoExperto();
+		}
+		else {
+			this.nivelConocimiento = new NivelConocimientoBasico();
+		}
 	}
 	
 	
@@ -65,7 +78,8 @@ public class Participante {
 	public void enviarMuestra(Muestra muestra, AplicacionWeb aplicacion){
 		this.nivelConocimiento.verificarMuestra(muestra);
 		aplicacion.agregarMuestra(muestra);
-		this.muestrasEnviadas.add(muestra);
+		this.agregarMuestraEnviada(muestra);
+		this.verificarEstado();
 	}
 	
 	/**
@@ -78,11 +92,10 @@ public class Participante {
 		//validaciones
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
-		
-		VerificacionMuestra verificacion = new VerificacionMuestra(this,tipoVinchuca);
-		muestra.verificar(verificacion);
-		this.muestrasVerificadas.add(verificacion);
-		this.nivelConocimiento.verificarMuestra(muestra);	
+		this.agregarMuestraVerificada(muestra);
+		muestra.verificar(this,validacion);
+		this.nivelConocimiento.verificarMuestra(muestra);
+		this.verificarEstado();
 	}
 	
 	public void validarQueNoHayaSidoEnviada(Muestra muestra) throws Exception{
@@ -95,5 +108,9 @@ public class Participante {
 		if  (muestrasVerificadas.contains(muestra)){
 			throw new MuestraYaVerificadaException();
 		}
+	}
+
+	public INivelConocimiento getNivel() {
+		return this.nivelConocimiento;
 	}
 }
