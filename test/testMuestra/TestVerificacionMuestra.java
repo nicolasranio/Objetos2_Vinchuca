@@ -26,8 +26,8 @@ public class TestVerificacionMuestra {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testConstructor() {
+				
 	}
 
 }

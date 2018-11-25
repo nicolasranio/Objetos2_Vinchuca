@@ -45,22 +45,36 @@ public class Participante {
 	public List<Muestra> getMuestrasEnviadasUltimoMes(){
 		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
 		//to do
-		return null;
+		return this.muestrasEnviadas;
 	}
 	
-	public void agregarMuestraEnviada(Muestra muestra) {
-		this.muestrasEnviadas.add(muestra);
+	public List<Muestra> getMuestrasEnviadas(){
+		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
+		//to do
+		return this.muestrasEnviadas;
 	}
 	
 	public List<VerificacionMuestra> getMuestrasVerificadas(){
 		return muestrasVerificadas;
 	}
 	
+	public INivelConocimiento getNivel() {
+		return this.nivelConocimiento;
+	}
+	
+	public String getAlias() {
+		return this.alias;
+	}
+	
+	public void agregarMuestraEnviada(Muestra muestra) {
+		this.muestrasEnviadas.add(muestra);
+	}
+	
 	public void agregarVerificacionMuestra(VerificacionMuestra muestra) {
 		this.muestrasVerificadas.add(muestra);
 	}
 
-	public void verificarEstado() {
+	public void verificarConocimiento() {
 		if ((this.getMuestrasEnviadasUltimoMes().size()>10) && (this.getMuestrasVerificadas().size()>20)){
 			this.nivelConocimiento = new NivelConocimientoExperto();
 		}
@@ -79,7 +93,7 @@ public class Participante {
 		this.nivelConocimiento.verificarMuestra(muestra);
 		aplicacion.agregarMuestra(muestra);
 		this.agregarMuestraEnviada(muestra);
-		this.verificarEstado();
+		this.verificarConocimiento();
 	}
 	
 	/**
@@ -92,25 +106,23 @@ public class Participante {
 		//validaciones
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
-		this.agregarVerificacionMuestra(new VerificacionMuestra(this,validacion));
-		muestra.verificar(new VerificacionMuestra(this,validacion));
+		this.agregarVerificacionMuestra(new VerificacionMuestra(this,tipoVinchuca));
+		muestra.verificar(new VerificacionMuestra(this,tipoVinchuca));
 		this.nivelConocimiento.verificarMuestra(muestra);
-		this.verificarEstado();
+		this.verificarConocimiento();
 	}
 	
 	public void validarQueNoHayaSidoEnviada(Muestra muestra) throws Exception{
-		if (muestrasEnviadas.contains(muestra)){
+		if (muestra.getAliasRecolector() == this.getAlias()){
 			throw new MuestraYaEnviadaException();
 		}
 	}
 	
 	public void validarQueNoHayaSidoVerificada(Muestra muestra) throws Exception{
-		if  (muestrasVerificadas.contains(muestra)){
+		if  (this.getMuestrasEnviadas().contains(muestra)){
 			throw new MuestraYaVerificadaException();
 		}
 	}
 
-	public INivelConocimiento getNivel() {
-		return this.nivelConocimiento;
-	}
+	
 }

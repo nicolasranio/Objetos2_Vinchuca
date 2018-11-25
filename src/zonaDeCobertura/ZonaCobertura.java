@@ -21,10 +21,6 @@ public class ZonaCobertura {
 		this.app.agregarZonaCobertura(this);
 	}
 	
-	public String getNombre() {
-		return this.nombre;
-	}
-	
 	public Ubicacion getEpicentro() {
 		return this.epicentro;
 	}

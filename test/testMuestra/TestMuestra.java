@@ -1,4 +1,4 @@
-package test;
+package testMuestra;
 
 
 import static org.junit.Assert.*;
@@ -47,6 +47,8 @@ public class TestMuestra {
 		
 	}
 	
+	
+	
 	@Test
 	public void testMuestraCalculaLaDistanciaConMuestaBEntreSusUbicaciones() {
 		
@@ -84,6 +86,7 @@ public class TestMuestra {
 		assertEquals(cantVerificaciones+1,muestra.getVerificaciones().size());
 		assertTrue(muestra.getVerificadores().contains(participante2));
 	}
+	
 	
 
 	
