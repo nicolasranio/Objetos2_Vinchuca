@@ -30,9 +30,15 @@ public class ZonaCobertura {
 	}
 	
 	
+	/**
+	 *  Retorna la distancia de la muestra al epicentro de la zona de cobertura
+	 * @param muestra
+	 * @return distancia 
+	 */
 	public Double distanciaDeMuestra(Muestra muestra){
 		return this.epicentro.calcularDistancia(muestra.getUbicacion());
 	}
+	
 	
 	public List<Muestra> muestrasReportadas(){
 		return this.app.getMuestras().stream().
