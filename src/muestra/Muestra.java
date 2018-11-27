@@ -1,5 +1,6 @@
 package muestra;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -22,7 +23,7 @@ public class Muestra {
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	//private Map<Participante, TipoVinchuca> verificaciones;  //map con veredictos de validacion
 	private List<VerificacionMuestra> verificaciones;
-	private Date fechaEnvio;
+	private LocalDate fechaEnvio;
 	
 
 
@@ -34,7 +35,7 @@ public class Muestra {
 		this.nivelVerificacion= new NivelVerificacionBajo(this); //ver esto con prof.
 		//this.verificaciones = new HashMap<Participante, TipoVinchuca>();
 		this.verificaciones= new ArrayList<VerificacionMuestra>();
-		this.fechaEnvio= new Date();
+		this.fechaEnvio=LocalDate.now(); //fecha actual
 	}
 	
 	public Double distanciaAMuestra(Muestra muestraB){
@@ -61,7 +62,7 @@ public class Muestra {
 		return this.aliasRecolector;
 	}
 
-	public Date getFechaEnvio() {
+	public LocalDate getFechaEnvio() {
 		return fechaEnvio;
 	}
 	

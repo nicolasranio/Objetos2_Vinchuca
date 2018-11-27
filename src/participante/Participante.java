@@ -1,7 +1,11 @@
 package participante;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.time.temporal.ChronoUnit;
 
 import app.AplicacionWeb;
 import exceptions.MuestraYaEnviadaException;
@@ -41,11 +45,10 @@ public class Participante {
 	}
 	
 	
-	//usar JODA lib
 	public List<Muestra> getMuestrasEnviadasUltimoMes(){
-		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
-		//to do
-		return this.muestrasEnviadas;
+		return muestrasEnviadas.stream().filter(muestra -> Duration.between(muestra.getFechaEnvio().atStartOfDay(), LocalDate.now().atStartOfDay())
+				.toDays() < 31)
+				.collect(Collectors.toList());
 	}
 	
 	public List<Muestra> getMuestrasEnviadas(){
@@ -85,7 +88,7 @@ public class Participante {
 	
 	
 	/**
-	 * Agrega la muestra a la coleccion del participante 
+	 * Agrega la muestra a la coleccion del participante y verifico si hubo cambios en el conocimiento
 	 * @param muestra
 	 * @param aplicacion
 	 */
@@ -97,9 +100,9 @@ public class Participante {
 	}
 	
 	/**
-	 * Valida la muestra
+	 * Valida la muestra y verifica cambios en el conocimiento
 	 * @param muestra
-	 * @param validacion
+	 * @param tipoVinchuca
 	 * @throws Exception
 	 */
 	public void verificarMuestra(Muestra muestra, TipoVinchuca tipoVinchuca) throws Exception{

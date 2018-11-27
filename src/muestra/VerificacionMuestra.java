@@ -1,5 +1,6 @@
 package muestra;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import participante.Participante;
@@ -8,12 +9,12 @@ public class VerificacionMuestra {
 
 	private Participante participante;
 	private TipoVinchuca tipoVinchuca;
-	private Date fechaVerificacion;
+	private LocalDate fechaVerificacion;
 	
 	public VerificacionMuestra(Participante participante, TipoVinchuca validacion) {
 		this.participante = participante;
 		this.tipoVinchuca = validacion;
-		this.fechaVerificacion=new Date();
+		this.fechaVerificacion= LocalDate.now();
 	}
 	
 	public Participante getParticipante() {
@@ -23,7 +24,7 @@ public class VerificacionMuestra {
 		return tipoVinchuca;
 	}
 	
-	public Date fechaVerificacion(){
+	public LocalDate fechaVerificacion(){
 		return fechaVerificacion;
 	}
 	
