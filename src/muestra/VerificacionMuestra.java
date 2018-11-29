@@ -6,12 +6,14 @@ import java.util.Date;
 import participante.Participante;
 
 public class VerificacionMuestra {
-
+	
+	private Muestra muestra;
 	private Participante participante;
 	private TipoVinchuca tipoVinchuca;
 	private LocalDate fechaVerificacion;
 	
-	public VerificacionMuestra(Participante participante, TipoVinchuca validacion) {
+	public VerificacionMuestra(Muestra muestra, Participante participante, TipoVinchuca validacion) {
+		this.muestra=muestra;
 		this.participante = participante;
 		this.tipoVinchuca = validacion;
 		this.fechaVerificacion= LocalDate.now();
@@ -24,9 +26,12 @@ public class VerificacionMuestra {
 		return tipoVinchuca;
 	}
 	
-	public LocalDate fechaVerificacion(){
+	public LocalDate getFechaVerificacion(){
 		return fechaVerificacion;
 	}
 	
+	public Muestra getMuestra(){
+		return muestra;
+	}
 	
 }

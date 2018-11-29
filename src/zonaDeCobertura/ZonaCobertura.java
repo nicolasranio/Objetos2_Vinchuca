@@ -1,19 +1,24 @@
 package zonaDeCobertura;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.stream.Collectors;
 
 import app.AplicacionWeb;
 import muestra.*;
 
-public class ZonaCobertura {
+public class ZonaCobertura extends Observable implements Observer{
 
+	//observable por las organizaciones y observador de los cambios en las muestras
+	
 	private String nombre;
 	private Ubicacion epicentro;
 	private Double radio;
 	private AplicacionWeb app;
 	
 	public ZonaCobertura(String nombre,Ubicacion epicentro,Double radio,AplicacionWeb app) {
+		super();
 		this.nombre = nombre;
 		this.epicentro = epicentro;
 		this.radio = radio;
@@ -30,6 +35,8 @@ public class ZonaCobertura {
 	}
 	
 	
+	
+	
 	/**
 	 *  Retorna la distancia de la muestra al epicentro de la zona de cobertura
 	 * @param muestra
@@ -42,9 +49,10 @@ public class ZonaCobertura {
 	
 	public List<Muestra> muestrasReportadas(){
 		return this.app.getMuestras().stream().
-				filter(muestra -> this.distanciaDeMuestra(muestra) < this.radio)
+				filter(muestra -> this.incluyeMuestra(muestra))
 				.collect(Collectors.toList());
 	}
+	
 	
 	
 	public List<ZonaCobertura> zonasSolapadas() {
@@ -52,5 +60,24 @@ public class ZonaCobertura {
 				.filter(zona -> zona.getEpicentro().calcularDistancia(this.epicentro)<(this.radio + zona.getRadio()))
 				.collect(Collectors.toList());
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Boolean incluyeMuestra(Muestra muestra) {
+		return this.distanciaDeMuestra(muestra) < radio;
+	}
 	
+	public void suscribe (Muestra muestra){
+		muestra.addObserver(this);
+		this.notificarCarga();
+		
+	}
+	
+	public void desuscribe(Muestra muestra){
+		muestra.deleteObserver(this);
+	}
 }

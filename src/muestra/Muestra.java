@@ -8,32 +8,33 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import participante.Participante;
+import zonaDeCobertura.ZonaCobertura;
 
-public class Muestra {
+public class Muestra extends Observable{
 
 	private TipoVinchuca tipoVinchuca;
 	private String fotoVinchuca;  //url de la imagen
 	private Ubicacion ubicacion;
 	private String aliasRecolector;
 	private INivelVerificacion nivelVerificacion;  //Patron state
-	//private Map<Participante, TipoVinchuca> verificaciones;  //map con veredictos de validacion
 	private List<VerificacionMuestra> verificaciones;
 	private LocalDate fechaEnvio;
 	
 
 
 	public Muestra(TipoVinchuca tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
+		super();
 		this.tipoVinchuca=tipoVinchuca;
 		this.fotoVinchuca= fotoVinchuca;
 		this.ubicacion= ubicacion;
 		this.aliasRecolector=alias;
-		this.nivelVerificacion= new NivelVerificacionBajo(this); //ver esto con prof.
-		//this.verificaciones = new HashMap<Participante, TipoVinchuca>();
+		this.nivelVerificacion= new NivelVerificacionBajo(this); 
 		this.verificaciones= new ArrayList<VerificacionMuestra>();
 		this.fechaEnvio=LocalDate.now(); //fecha actual
 	}
@@ -109,6 +110,8 @@ public class Muestra {
 	
 	public void verificar(VerificacionMuestra verificacion) {
 		this.verificaciones.add(verificacion);
+		//notify de verificacion
+		
 	}	
 	
 }

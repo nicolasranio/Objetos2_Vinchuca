@@ -83,6 +83,8 @@ public class TestParticipante {
 		participante.verificarMuestra(muestra, validacion);
 	}
 	
+	
+	
 	@Test(expected = MuestraYaVerificadaException.class)
 	public void testParticipanteVerificaUnaMuestraPeroYaLaHabiaVerificado() throws Exception {
 		
@@ -95,15 +97,22 @@ public class TestParticipante {
 	@Test
 	public void testParticipanteVerificaUnaMuestra() throws Exception {
 		
-		int cantidadMuestrasVerificadas = participante.getMuestrasVerificadas().size();
+		int cantidadMuestrasVerificadas = participante.getMuestrasVerificadasUltimoMes().size();
 		
 		participante.verificarMuestra(muestra, validacion);
 		
-		assertEquals(cantidadMuestrasVerificadas+1,participante.getMuestrasVerificadas().size());
+		assertEquals(cantidadMuestrasVerificadas+1,participante.getMuestrasVerificadasUltimoMes().size());
 		
 	}
 	
-	
+	@Test
+	public void testParticipanteMuestrasEnviadasUltimoMes(){
+		
+		participante.enviarMuestra(muestra, aplicacion);
+		
+		
+		
+	}
 	
 
 }
