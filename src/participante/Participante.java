@@ -3,7 +3,6 @@ package participante;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.time.temporal.ChronoUnit;
@@ -20,7 +19,7 @@ public class Participante {
 	private String alias;
 	private INivelConocimiento nivelConocimiento; //patron state
 	private List <Muestra> muestrasEnviadas;  //muestra tiene fecha de envio
-	private List <VerificacionMuestra> muestrasVerificadas;  //muestra, verificacion y fecha de verificacion
+	private List <VerificacionMuestra> verificacionesDeMuestras;  //verificacion y fecha de verificacion
 	
 	/**
 	 * Constructor por default
@@ -30,7 +29,7 @@ public class Participante {
 		this.alias = alias;
 		this.nivelConocimiento = new NivelConocimientoBasico(); //siempre inicia con nivel básico
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
-		this.muestrasVerificadas = new ArrayList <VerificacionMuestra> ();
+		this.verificacionesDeMuestras = new ArrayList <VerificacionMuestra> ();
 	} 
 	 
 	/**
@@ -42,49 +41,45 @@ public class Participante {
 		this.alias = alias;
 		this.nivelConocimiento=nivelConocimiento;
 		this.muestrasEnviadas = new ArrayList <Muestra> ();
-		this.muestrasVerificadas = new ArrayList <VerificacionMuestra> ();
+		this.verificacionesDeMuestras = new ArrayList <VerificacionMuestra> ();
 	}
 	
-
-	//reivsar, tira null pointer
+	
 	public List<Muestra> getMuestrasEnviadasUltimoMes(){
-		/*return muestrasEnviadas.stream().filter(muestra -> Duration.between(muestra.getFechaEnvio().atStartOfDay(), LocalDate.now().atStartOfDay())
+		return muestrasEnviadas.stream().filter(muestra -> Duration.between(muestra.getFechaEnvio().atStartOfDay(), LocalDate.now().atStartOfDay())
 				.toDays() < 31)
 				.collect(Collectors.toList());
-	*/
-		return muestrasEnviadas;
 	}
 	
 	public List<Muestra> getMuestrasEnviadas(){
+		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
+		//to do
 		return this.muestrasEnviadas;
 	}
 	
-	public List<VerificacionMuestra> getMuestrasVerificadasUltimoMes(){
-		/*return muestrasVerificadas.stream().filter(verificacion -> Duration.between(verificacion.getFechaVerificacion().atStartOfDay(), LocalDate.now().atStartOfDay())
-				.toDays() < 31)
+	public List<VerificacionMuestra> getVerificacioneDeMuestras(){
+		return verificacionesDeMuestras;
+	}
+	
+	public List<Muestra> getMuestrasVerificadas(){
+		return this.verificacionesDeMuestras.stream().map(verificacion -> verificacion.getMuestra())
 				.collect(Collectors.toList());
-		*/
-		return muestrasVerificadas;
 	}
 	
 	public INivelConocimiento getNivel() {
 		return this.nivelConocimiento;
 	}
 	
-	public String getAlias() {
-		return this.alias;
-	}
-	
 	public void agregarMuestraEnviada(Muestra muestra) {
 		this.muestrasEnviadas.add(muestra);
 	}
 	
-	public void agregarVerificacionMuestra(VerificacionMuestra muestra) {
-		this.muestrasVerificadas.add(muestra);
+	public void agregarVerificacionMuestra(VerificacionMuestra verificacionMuestra) {
+		this.verificacionesDeMuestras.add(verificacionMuestra);
 	}
 
 	public void verificarConocimiento() {
-		if ((this.getMuestrasEnviadasUltimoMes().size()>10) && (this.getMuestrasVerificadasUltimoMes().size()>20)){
+		if (this.condicionAVerificar()){
 			this.nivelConocimiento = new NivelConocimientoExperto();
 		}
 		else {
@@ -92,7 +87,10 @@ public class Participante {
 		}
 	}
 	
-	
+	public boolean condicionAVerificar() {
+		return (this.getMuestrasEnviadasUltimoMes().size()>10) && (this.getMuestrasVerificadas().size()>20);
+	}
+
 	/**
 	 * Agrega la muestra a la coleccion del participante y verifico si hubo cambios en el conocimiento
 	 * @param muestra
@@ -113,33 +111,26 @@ public class Participante {
 	 */
 	public void verificarMuestra(Muestra muestra, TipoVinchuca tipoVinchuca) throws Exception{
 		//validaciones
+		VerificacionMuestra verificacion = new VerificacionMuestra(muestra, this,tipoVinchuca);
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
-		VerificacionMuestra verificacion = new VerificacionMuestra(muestra,this,tipoVinchuca);
-		this.agregarVerificacionMuestra(verificacion); 
+		this.agregarVerificacionMuestra(verificacion);
 		muestra.verificar(verificacion);
 		this.nivelConocimiento.verificarMuestra(muestra);
 		this.verificarConocimiento();
 	}
 	
 	public void validarQueNoHayaSidoEnviada(Muestra muestra) throws Exception{
-		if (this.getMuestrasEnviadas().contains(muestra)){
+		if (this.muestrasEnviadas.contains(muestra)) {
 			throw new MuestraYaEnviadaException();
 		}
 	}
 	
-	
-	public List<Muestra> muestrasVerificadas(){
-		return this.getMuestrasVerificadas().stream().map(verif -> verif.getMuestra())
-				.collect(Collectors.toList());
-	}
-	
-	private List<VerificacionMuestra> getMuestrasVerificadas() {
-		return muestrasVerificadas;
+	public void validarQueNoHayaSidoVerificada(Muestra muestra) throws Exception{
+		if  (this.getMuestrasVerificadas().contains(muestra)){
+			throw new MuestraYaVerificadaException();
+		}
 	}
 
-	public void validarQueNoHayaSidoVerificada(Muestra muestra) throws Exception{
-		if (this.muestrasVerificadas.contains(muestra)) throw new MuestraYaVerificadaException();
-	}
 	
 }

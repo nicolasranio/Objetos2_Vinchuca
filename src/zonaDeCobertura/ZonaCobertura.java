@@ -73,10 +73,15 @@ public class ZonaCobertura extends Observable implements Observer{
 	
 	public void suscribe (Muestra muestra){
 		muestra.addObserver(this);
-		this.notificarCarga();
+		this.notificarCarga(muestra);
 		
 	}
 	
+	private void notificarCarga(Muestra muestra) {
+		this.setChanged();
+		this.notifyObservers(muestra);		
+	}
+
 	public void desuscribe(Muestra muestra){
 		muestra.deleteObserver(this);
 	}
