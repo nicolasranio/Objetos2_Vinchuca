@@ -70,7 +70,11 @@ public class Muestra extends Observable{
 	}
 
 	public LocalDate getFechaEnvio() {
-		return fechaEnvio;
+		return this.fechaEnvio;
+	}
+	
+	public INivelVerificacion getNivelVerificacion() {
+		return this.nivelVerificacion;
 	}
 	
 	/**

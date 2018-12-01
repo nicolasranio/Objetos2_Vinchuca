@@ -1,9 +1,10 @@
+/app/
+/exceptions/
+/muestra/
 /organizacion/
+/participante/
 /testApplicacionWeb/
-/test/
 /testMuestra/
 /testParticipante/
-/app/
+/testZonaDeCobertura/
 /zonaDeCobertura/
-/participante/
-/muestra/
