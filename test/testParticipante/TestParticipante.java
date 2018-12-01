@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import org.mockito.internal.matchers.InstanceOf;
 import app.AplicacionWeb;
 import exceptions.MuestraYaEnviadaException;
 import exceptions.MuestraYaVerificadaException;
+import junit.framework.Assert;
 import muestra.Muestra;
 import muestra.NivelVerificacionBajo;
 import muestra.TipoVinchuca;
@@ -111,10 +113,13 @@ public class TestParticipante {
 	@Test
 	public void testParticipanteMuestrasEnviadasUltimoMes(){
 		
+		when(muestra.esMenorAXDias(31)).thenReturn(false);
 		participante.enviarMuestra(muestra, aplicacion);
-		
-		
-		
+		Muestra muestra2 = mock(Muestra.class);
+		when(muestra2.esMenorAXDias(31)).thenReturn(true);
+		participante.enviarMuestra(muestra2, aplicacion);
+		assertEquals(1, participante.getMuestrasEnviadasUltimoMes().size());
+		assertEquals(muestra2,participante.getMuestrasEnviadasUltimoMes().get(0));
 	}
 	
 

@@ -1,6 +1,8 @@
 package muestra;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -59,6 +61,10 @@ public class Muestra extends Observable{
 		return this.fotoVinchuca;
 	}
 	
+	public void setFechaEnvio(LocalDate fecha){
+		this.fechaEnvio=fecha;
+	}
+	
 	public String getAliasRecolector() {
 		return this.aliasRecolector;
 	}
@@ -108,11 +114,22 @@ public class Muestra extends Observable{
 	}
 
 	
+	public boolean esMenorAXDias(Integer dias){
+		
+		Period period =Period.between(this.getFechaEnvio(), LocalDate.now());
+		return period.getDays()<dias;
+	}
+	
+	
+	
+	
+	
 	public void verificar(VerificacionMuestra verificacion) {
 		this.verificaciones.add(verificacion);
 		//notify de verificacion
 		
 	}	
+	
 	
 }
 

@@ -46,14 +46,12 @@ public class Participante {
 	
 	
 	public List<Muestra> getMuestrasEnviadasUltimoMes(){
-		return muestrasEnviadas.stream().filter(muestra -> Duration.between(muestra.getFechaEnvio().atStartOfDay(), LocalDate.now().atStartOfDay())
-				.toDays() < 31)
+		return muestrasEnviadas.stream()
+				.filter(muestra -> muestra.esMenorAXDias(31))
 				.collect(Collectors.toList());
 	}
 	
 	public List<Muestra> getMuestrasEnviadas(){
-		//return muestrasEnviadas.stream().filter(muestras -> muestra.getFechaEnvio() < )
-		//to do
 		return this.muestrasEnviadas;
 	}
 	

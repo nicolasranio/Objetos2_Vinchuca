@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,6 +86,14 @@ public class TestMuestra {
 		
 		assertEquals(cantVerificaciones+1,muestra.getVerificaciones().size());
 		assertTrue(muestra.getVerificadores().contains(participante2));
+	}
+	
+	@Test
+	public void testFechaDeEnvioDeMuestraEsMenorA31Dias(){
+
+		muestra.setFechaEnvio(LocalDate.parse("2018-11-28"));
+		assertTrue(muestra.esMenorAXDias(31));
+		assertFalse(muestra.esMenorAXDias(3));
 	}
 	
 	
