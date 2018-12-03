@@ -14,12 +14,10 @@ public class AplicacionWeb {
 	
 	private List <Muestra> muestras;
 	private List <ZonaCobertura> zonasCobertura;
-	private BusquedaDeMuestras buscadorDeMuestras;
 	
 	public AplicacionWeb(){
 		this.muestras = new ArrayList<Muestra>();
 		this.zonasCobertura = new ArrayList<ZonaCobertura>();
-		this.buscadorDeMuestras = new BusquedaDeMuestras();
 	}
 
 	public void agregarMuestra(Muestra muestra) {
@@ -48,7 +46,7 @@ public class AplicacionWeb {
 	}
 	
 	public List<Muestra> filtrarMuestras(Filtro filtro){
-		return buscadorDeMuestras.buscarMuestras(filtro, this.muestras);
+		return this.muestras.stream().filter(muestra -> filtro.aplicar(muestra)).collect(Collectors.toList());
 	}
 	
 	

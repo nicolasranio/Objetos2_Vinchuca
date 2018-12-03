@@ -72,6 +72,8 @@ public class TestParticipante {
 	@Test
 	public void testParticipanteEnviaMuestraAAplicacionYSumaUnaMuestraEnviada() {
 		
+		when(muestra.esMenorAXDias(31)).thenReturn(true);
+		
 		participante.enviarMuestra(muestra, aplicacion);
 		
 		verify(aplicacion).agregarMuestra(muestra);

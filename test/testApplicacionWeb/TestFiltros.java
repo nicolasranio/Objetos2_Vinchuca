@@ -27,22 +27,22 @@ public class TestFiltros {
 	private FiltroAnd filtroAnd;
 	
 	private Muestra muestra;
-	private INivelVerificacion nivelVerificacion;
-	//private TipoVinchuca tipoVinchuca;
+	private NivelVerificacionAlto nivelVerificacion;
+	private TipoVinchuca tipoVinchuca;
 	
 	@Before
 	public void setUp() throws Exception {
 		
 		muestra = mock(Muestra.class);
-		nivelVerificacion = mock(INivelVerificacion.class);
-		//tipoVinchuca = mock(TipoVinchuca.class);
+		nivelVerificacion = mock(NivelVerificacionAlto.class);
+		tipoVinchuca = TipoVinchuca.Phtia_Chinche;
 		
 		filtroPorFechaCreacionAnterior = new FiltroPorFechaDeCreacionAnterior(LocalDate.of(2018, 11, 25));
 		filtroPorFechaCreacionPosterior = new FiltroPorFechaDeCreacionPosterior(LocalDate.of(2018, 1, 26));
 		filtroPorFechaUltimaVerificacionAnterior = new FiltroPorFechaDeUltimaVerificacionAnterior(LocalDate.of(2018, 11, 29));
 		filtroPorFechaUltimaVerificacionPosterior = new FiltroPorFechaDeUltimaVerificacionPosterior(LocalDate.of(2018, 6, 5));
-		filtroPorNivelVerificacion = new FiltroPorNivelDeVerificacion(nivelVerificacion);
-		//filtroPorTipoVinchuca = new FiltroPorTipoDeVinchucaDetectado(tipoVinchuca);
+		filtroPorNivelVerificacion = new FiltroPorNivelDeVerificacion(new NivelVerificacionAlto(muestra));
+		filtroPorTipoVinchuca = new FiltroPorTipoDeVinchucaDetectado(tipoVinchuca);
 		
 		filtroOr = new FiltroOr(filtroPorFechaCreacionPosterior,filtroPorNivelVerificacion);
 		filtroAnd = new FiltroAnd(filtroPorFechaUltimaVerificacionPosterior,filtroPorTipoVinchuca);
@@ -133,6 +133,38 @@ public class TestFiltros {
 		
 		
 		assertFalse(filtroPorFechaUltimaVerificacionPosterior.aplicar(muestra));
+	}
+	
+	@Test
+	public void testMuestraEsFiltradaPorNivelVerificacionYAplica() {
+		
+		when(muestra.getNivelVerificacion()).thenReturn(mock(NivelVerificacionAlto.class));
+		
+		assertTrue(filtroPorNivelVerificacion.aplicar(muestra));
+	}
+	
+	@Test
+	public void testMuestraEsFiltradaPorNivelVerificacionYNoAplica() {
+	
+		when(muestra.getNivelVerificacion()).thenReturn(mock(NivelVerificacionMedio.class));
+		
+		assertFalse(filtroPorNivelVerificacion.aplicar(muestra));
+	}
+	
+	@Test
+	public void testMuestraEsFiltradaPorTipoDeVinchucaDetectadoYAplica() {
+		
+		when(muestra.getTipoVinchuca()).thenReturn(tipoVinchuca);
+		
+		assertTrue(filtroPorTipoVinchuca.aplicar(muestra));
+	}
+	
+	@Test
+	public void testMuestraEsFiltradaPorTipoDeVinchucaDetectadoYNoAplica() {
+		
+		when(muestra.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		
+		assertFalse(filtroPorTipoVinchuca.aplicar(muestra));
 	}
 	
 	

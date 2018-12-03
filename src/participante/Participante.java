@@ -51,10 +51,6 @@ public class Participante {
 				.collect(Collectors.toList());
 	}
 	
-	public List<Muestra> getMuestrasEnviadas(){
-		return this.muestrasEnviadas;
-	}
-	
 	public List<VerificacionMuestra> getVerificacioneDeMuestras(){
 		return verificacionesDeMuestras;
 	}
