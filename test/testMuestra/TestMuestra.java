@@ -39,13 +39,14 @@ public class TestMuestra {
 	}
 	
 	@Test
-	public void testConstructorDeMuestra() {
+	public void testConstructorDeMuestraYGetters() {
+		
 		
 		assertTrue(muestra.getTipoVinchuca().equals(TipoVinchuca.Chinche_Foliada));
 		assertTrue(muestra.getFotoVinchuca().equals("foto"));
 		assertTrue(muestra.getUbicacion().equals(ubicacion));
 		assertTrue(muestra.getAliasRecolector().equals("Rogelio"));
-		
+		assertTrue(muestra.getNivelVerificacion() instanceof NivelVerificacionBajo);
 	}
 	
 	
@@ -58,6 +59,7 @@ public class TestMuestra {
 		verify(ubicacion).calcularDistancia(muestraB.getUbicacion());
 		
 	}
+	
 	
 	@Test 
 	public void testMuestraFiltraMuestrasCercanasA1800km() {
@@ -87,16 +89,39 @@ public class TestMuestra {
 		assertEquals(cantVerificaciones+1,muestra.getVerificaciones().size());
 		assertTrue(muestra.getVerificadores().contains(participante2));
 	}
+
+	@Test
+	public void testMuestraCambiaSuNivelDeVerificacion() {
+		
+		muestra.setNivelVerificacion(mock(NivelVerificacionAlto.class));
+		
+		assertTrue(muestra.getNivelVerificacion() instanceof NivelVerificacionAlto);
+	}
 	
 	@Test
 	public void testFechaDeEnvioDeMuestraEsMenorA31Dias(){
 
-		muestra.setFechaEnvio(LocalDate.parse("2018-11-28"));
+		muestra.setFechaEnvio(LocalDate.of(2018, 11, 28));
 		assertTrue(muestra.esMenorAXDias(31));
 		assertFalse(muestra.esMenorAXDias(3));
 	}
 	
-	
+	@Test
+	public void testMaximaCantidadDeValidacionesCoincidentesDeUnaMuestra() {
+		
+		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
+		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
+		
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		
+		muestra.verificar(verificacion);
+		muestra.verificar(verificacionB);
+		muestra.verificar(verificacionC);
+		
+		assertEquals(2,muestra.verificacionesValidas());
+	}
 
 	
 	
