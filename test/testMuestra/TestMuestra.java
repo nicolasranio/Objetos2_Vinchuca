@@ -113,8 +113,8 @@ public class TestMuestra {
 		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
 		
 		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
 		
 		muestra.verificar(verificacion);
 		muestra.verificar(verificacionB);
