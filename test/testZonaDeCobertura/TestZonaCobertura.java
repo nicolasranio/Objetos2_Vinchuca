@@ -86,6 +86,7 @@ public class TestZonaCobertura {
 		assertEquals(1,zonaCobertura.zonasSolapadas().size());
 		
 	}
+
 	
 	@Test
 	public void testUpdateNotificacionDisparaEventoEnObserverCuandoLaMuestraEstaDentroDeLaZona(){
@@ -112,6 +113,7 @@ public class TestZonaCobertura {
 		verify(obs).update(zonaCobertura, msj);
 		
 	}
+	
 	
 	
 	
