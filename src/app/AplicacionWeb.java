@@ -35,15 +35,6 @@ public class AplicacionWeb  {
 		muestra.addObserver(this.gestorNotificaciones);
 	}
 	
-	
-	/**
-	 * Suscribe una muestra a las zonas donde esta incluida
-	 * @param muestra
-	 */
-//	private void suscribirMuestra(Muestra muestra){
-//		this.buscarZonasQueAplican(muestra).stream() 
-//		.forEach(zona -> zona.suscribe(muestra));
-//	}
 
 	public List<Muestra> getMuestras() {
 		return this.muestras;
@@ -67,18 +58,16 @@ public class AplicacionWeb  {
 	 * @param muestra
 	 * @return
 	 */
-	public List<ZonaCobertura> buscarZonasQueAplican(Muestra muestra){
-		return this.zonasCobertura.stream()
-		.filter(zona -> zona.incluyeMuestra(muestra))
-		.collect(Collectors.toList());		
-	}
-	
+//	public List<ZonaCobertura> buscarZonasQueAplican(Muestra muestra){
+//		return this.zonasCobertura.stream()
+//		.filter(zona -> zona.incluyeMuestra(muestra))
+//		.collect(Collectors.toList());		
+//	}
+//	
 	
 	public List<Muestra> filtrarMuestras(Filtro filtro){
 		return this.muestras.stream().filter(muestra -> filtro.aplicar(muestra)).collect(Collectors.toList());
 	}
-
-	//Todo se notifica desde la muestra!!!
 	
 	
 }
