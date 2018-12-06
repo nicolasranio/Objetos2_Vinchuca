@@ -8,10 +8,13 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import Observer.GestorNotificaciones;
+import Observer.MensajeObserver;
 import muestra.*;
 import participante.Participante;
 
@@ -123,6 +126,14 @@ public class TestMuestra {
 		assertEquals(2,muestra.verificacionesValidas());
 	}
 
-	
+	@Test 
+	public void testUnaMuestraNotificaCargaASusObservadores() {
+		GestorNotificaciones gestor = mock(GestorNotificaciones.class);
+		
+		muestra.addObserver(gestor);
+		muestra.informarCarga();
+		
+		verify(gestor).update(muestra, MensajeObserver.class);
+	}
 	
 }
