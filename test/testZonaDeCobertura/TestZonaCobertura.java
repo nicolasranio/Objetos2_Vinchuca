@@ -5,15 +5,17 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.Observer;
 import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
 
-
+import Observer.MensajeObserver;
 import app.AplicacionWeb;
 import muestra.Muestra;
 import muestra.Ubicacion;
+import organizacion.Organizacion;
 import zonaDeCobertura.ZonaCobertura;
 
 public class TestZonaCobertura {
@@ -83,7 +85,36 @@ public class TestZonaCobertura {
 		
 		assertEquals(1,zonaCobertura.zonasSolapadas().size());
 		
+	}
+	
+	@Test
+	public void testUpdateNotificacionDisparaEventoEnObserverCuandoLaMuestraEstaDentroDeLaZona(){
+		
+		Organizacion obs = mock(Organizacion.class);
+		zonaCobertura.addObserver(obs);
+		
+		MensajeObserver msj = mock(MensajeObserver.class);
+		when(msj.getMuestra()).thenReturn(muestra);
+		when(epicentro.calcularDistancia(muestra.getUbicacion())).thenReturn(50.00);
+		zonaCobertura.updateNotificacion(msj);
+		verify(obs, never()).update(zonaCobertura, msj);
+	}
+	
+	@Test
+	public void testUpdateNotificacionNoDisparaEventoObserverCuandoLaMuestraNoEstaEnAreaDeCobertura(){
+		Organizacion obs = mock(Organizacion.class);
+		zonaCobertura.addObserver(obs);
+		
+		MensajeObserver msj = mock(MensajeObserver.class);
+		when(msj.getMuestra()).thenReturn(muestra);
+		when(epicentro.calcularDistancia(muestra.getUbicacion())).thenReturn(6.00);
+		zonaCobertura.updateNotificacion(msj);
+		verify(obs).update(zonaCobertura, msj);
 		
 	}
+	
+	
+	
+	
 
 }
