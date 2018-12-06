@@ -15,8 +15,7 @@ public class FiltroPorFechaDeCreacionPosterior implements Filtro{
 
 	@Override
 	public Boolean aplicar(Muestra muestra) {
-		return muestra.getFechaEnvio().isEqual(this.fecha)
-				|| muestra.getFechaEnvio().isAfter(this.fecha);
+		return muestra.getFechaEnvio().compareTo(this.fecha) >= 0;
 	}
 
 }

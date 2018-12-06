@@ -15,8 +15,7 @@ public class FiltroPorFechaDeUltimaVerificacionPosterior implements Filtro {
 	
 	@Override
 	public Boolean aplicar(Muestra muestra) {
-		return muestra.getVerificaciones().get(muestra.getVerificaciones().size()-1).getFechaVerificacion().isEqual(this.fecha)
-				|| muestra.getVerificaciones().get(muestra.getVerificaciones().size()-1).getFechaVerificacion().isAfter(this.fecha);
+		return muestra.getVerificaciones().get(muestra.getVerificaciones().size()-1).getFechaVerificacion().compareTo(this.fecha) >= 0;
 	}
 
 }

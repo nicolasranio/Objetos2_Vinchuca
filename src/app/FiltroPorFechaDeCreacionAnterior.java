@@ -15,8 +15,7 @@ private LocalDate fecha;
 
 	@Override
 	public Boolean aplicar(Muestra muestra) {
-		return muestra.getFechaEnvio().isEqual(this.fecha)
-				|| muestra.getFechaEnvio().isBefore(this.fecha);
+		return muestra.getFechaEnvio().compareTo(this.fecha) <= 0;
 	}
 
 }
