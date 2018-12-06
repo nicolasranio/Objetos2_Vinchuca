@@ -1,3 +1,4 @@
+/Observer/
 /app/
 /exceptions/
 /muestra/
@@ -5,7 +6,7 @@
 /participante/
 /testApplicacionWeb/
 /testMuestra/
+/testObserver/
 /testParticipante/
 /testZonaDeCobertura/
 /zonaDeCobertura/
-/Observer/
