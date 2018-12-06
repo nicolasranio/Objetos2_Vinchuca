@@ -133,7 +133,7 @@ public class TestMuestra {
 		muestra.addObserver(gestor);
 		muestra.informarCarga();
 		
-		verify(gestor).update(muestra, MensajeObserver.class);
+		verify(gestor).update(isA(Muestra.class),isA(MensajeObserver.class));
 	}
 	
 }

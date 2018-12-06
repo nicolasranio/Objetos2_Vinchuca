@@ -34,6 +34,7 @@ public class TestOrganizacion {
 		trabajadores = 200;
 		funcionalidadCarga = mock(FuncionalidadExterna.class);
 		funcionalidadVerificacion = mock(FuncionalidadExterna.class);
+		tipoOrganizacion = tipoOrganizacion.salud;
 		
 		organizacion = new Organizacion(ubicacion,tipoOrganizacion,trabajadores,funcionalidadCarga,funcionalidadVerificacion);
 		
