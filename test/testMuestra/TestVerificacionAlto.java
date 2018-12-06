@@ -8,6 +8,7 @@ import org.junit.*;
 import org.junit.Test;
 
 import exceptions.EstadoInvalidoException;
+import exceptions.MuestraYaEnviadaException;
 
 
 
@@ -21,8 +22,8 @@ public class TestVerificacionAlto {
 		nivelAlto = new NivelVerificacionAlto(muestra);
 			}
 	
-	@Test
-	public void testVerificacionAltoNoHaceNadaAlCambiarEstado() throws EstadoInvalidoException {
+	@Test(expected = EstadoInvalidoException.class)
+	public void testVerificacionAltoLanzaExcepcionAlCambiarEstado() throws Exception{
 		nivelAlto.cambiarEstado();
 		verify(muestra, never()).setNivelVerificacion(isA(INivelVerificacion.class));
 	}

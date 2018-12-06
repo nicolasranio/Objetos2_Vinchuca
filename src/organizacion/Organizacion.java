@@ -4,6 +4,8 @@ import muestra.*;
 import java.util.Observable;
 import java.util.Observer;
 
+import Observer.EMensajesObservables;
+import Observer.MensajeObserver;
 import muestra.Ubicacion;
 import zonaDeCobertura.ZonaCobertura;
 
@@ -15,12 +17,12 @@ public class Organizacion implements Observer{
 	private FuncionalidadExterna funcionalidadConfigurableCarga;
 	private FuncionalidadExterna funcionalidadConfigurableValidacion;
 	
-	public Organizacion(Ubicacion ubicacion, TipoOrganizacion tipo, Integer trabajadores, FuncionalidadExterna f, FuncionalidadExterna f2) {
+	public Organizacion(Ubicacion ubicacion, TipoOrganizacion tipo, Integer trabajadores, FuncionalidadExterna fc, FuncionalidadExterna fv) {
 		this.ubicacion = ubicacion;
 		this.tipo = tipo;
 		this.trabajadores = trabajadores;
-		this.funcionalidadConfigurableCarga = f;
-		this.funcionalidadConfigurableCarga = f2;
+		this.funcionalidadConfigurableCarga = fc;
+		this.funcionalidadConfigurableValidacion = fv;
 	}
 
 	
@@ -28,19 +30,23 @@ public class Organizacion implements Observer{
 	 * arg0 es la zona de cobertura
 	 */
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(Observable zona, Object msj) {
 		// TODO Auto-generated method stub
-		//llamar a strategy de funcionalidad externa
-		this.ejecutarFuncionalidadExt(this,(ZonaCobertura) arg0, (Muestra) arg1)
-		
+		MensajeObserver mensaje = (MensajeObserver) msj;
+		if (mensaje.getMensaje().equals(EMensajesObservables.Alta)){
+			this.ejecucionFuncionalidadTrasCarga((ZonaCobertura) zona, mensaje.getMuestra());
+		}
+		else if(mensaje.getMensaje().equals(EMensajesObservables.Modificacion)){
+			this.ejecucionFuncionalidadTrasValidacion((ZonaCobertura) zona, mensaje.getMuestra());
+		}
 	}
 	
-	public void suscribe(ZonaCobertura zona){
+	public void suscribirAZona(Observable zona){
 		zona.addObserver(this);
 	}
 	
 
-	public void desuscribe(ZonaCobertura zona){
+	public void desuscribirDeZona(Observable zona){
 		zona.deleteObserver(this);
 	}
 	
@@ -57,16 +63,17 @@ public class Organizacion implements Observer{
 		this.funcionalidadConfigurableValidacion = funcionalidad;
 	}
 	
-	public void EjecucionFunciolidadTrasCarga(ZonaCobertura z, Muestra m) {
-		this.ejecucionFuncionalidadCargaOValidacion(this.funcionalidadConfigurableCarga, this, z, m);
+	
+	public void ejecucionFuncionalidadTrasCarga(ZonaCobertura zona, Muestra muestra) {
+		this.ejecucionFuncionalidad(this.funcionalidadConfigurableCarga, this, zona, muestra);
 	}
 	
-	public void EjecucionFuncionalidadTrasValidacion(ZonaCobertura z, Muestra m) {
-		this.ejecucionFuncionalidadCargaOValidacion(this.funcionalidadConfigurableValidacion, this, z, m);
+	public void ejecucionFuncionalidadTrasValidacion(ZonaCobertura zona, Muestra muestra) {
+		this.ejecucionFuncionalidad(this.funcionalidadConfigurableValidacion, this, zona, muestra);
 	}
 	
-	private void ejecucionFuncionalidadCargaOValidacion(FuncionalidadExterna f, Organizacion org, ZonaCobertura zona, Muestra muestra) {
-		f.nuevoEvento(this, zona, muestra);
+	private void ejecucionFuncionalidad(FuncionalidadExterna func, Organizacion org, ZonaCobertura zona, Muestra muestra) {
+		func.nuevoEvento(this, zona, muestra);
 	}
 		
 }

@@ -9,8 +9,8 @@ import com.sun.corba.se.impl.ior.GenericTaggedComponent;
 
 public class GestorNotificaciones implements Observer {
 
-	public List<GestorObserver> notificacionAlta;
-	public List<GestorObserver> notificacionValidacion;
+	public List<IGestorObserver> notificacionAlta;
+	public List<IGestorObserver> notificacionValidacion;
 	private static GestorNotificaciones gestorNotificacion;
 	
 	public  static GestorNotificaciones getGestorNotificaciones() {
@@ -21,12 +21,12 @@ public class GestorNotificaciones implements Observer {
 	}
 		 
 	private GestorNotificaciones(){
-		this.notificacionAlta=new ArrayList<GestorObserver>();
-		this.notificacionValidacion=new ArrayList<GestorObserver>();
+		this.notificacionAlta=new ArrayList<IGestorObserver>();
+		this.notificacionValidacion=new ArrayList<IGestorObserver>();
 	}
 	
 	
-	public void agregarObserver(GestorObserver obs){
+	public void agregarObserver(IGestorObserver obs){
 		this.notificacionAlta.add(obs);
 		this.notificacionValidacion.add(obs);
 	}
@@ -46,7 +46,7 @@ public class GestorNotificaciones implements Observer {
 		
 	}
 
-	private void enviarNotificacionMasiva(MensajeObserver mensaje, List<GestorObserver> listaNotificacion) {
+	private void enviarNotificacionMasiva(MensajeObserver mensaje, List<IGestorObserver> listaNotificacion) {
 		listaNotificacion.stream().forEach(obs -> obs.updateNotificacion((Object) mensaje));
 	}
 	

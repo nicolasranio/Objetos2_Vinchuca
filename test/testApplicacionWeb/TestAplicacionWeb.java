@@ -1,25 +1,15 @@
 package testApplicacionWeb;
 
-import static org.junit.Assert.*;
-
-import static org.mockito.Mockito.*;
-
-import java.time.LocalDate;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import app.AplicacionWeb;
-<<<<<<< HEAD
-import muestra.INivelVerificacion;
-=======
 import app.Filtro;
->>>>>>> 3f96c8b8e7f4ca40a4973a52ca83231d90eddf7c
 import muestra.Muestra;
-import muestra.NivelVerificacionAlto;
-import muestra.TipoVinchuca;
-import muestra.Ubicacion;
 import zonaDeCobertura.ZonaCobertura;
 
 public class TestAplicacionWeb {

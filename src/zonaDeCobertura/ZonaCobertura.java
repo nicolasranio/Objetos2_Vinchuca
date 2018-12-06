@@ -5,12 +5,12 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
-import Observer.GestorObserver;
+import Observer.IGestorObserver;
 import Observer.MensajeObserver;
 import app.AplicacionWeb;
 import muestra.*;
 
-public class ZonaCobertura extends Observable implements GestorObserver{
+public class ZonaCobertura extends Observable implements IGestorObserver{
 
 	//observable por las organizaciones
 	//observador del gestor
