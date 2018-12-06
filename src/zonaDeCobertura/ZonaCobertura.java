@@ -5,12 +5,15 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
+import Observer.GestorObserver;
+import Observer.MensajeObserver;
 import app.AplicacionWeb;
 import muestra.*;
 
-public class ZonaCobertura extends Observable implements Observer{
+public class ZonaCobertura extends Observable implements GestorObserver{
 
-	//observable por las organizaciones y observador de los cambios en las muestras
+	//observable por las organizaciones
+	//observador del gestor
 	
 	private String nombre;
 	private Ubicacion epicentro;
@@ -35,8 +38,6 @@ public class ZonaCobertura extends Observable implements Observer{
 	}
 	
 	
-	
-	
 	/**
 	 *  Retorna la distancia de la muestra al epicentro de la zona de cobertura
 	 * @param muestra
@@ -54,35 +55,52 @@ public class ZonaCobertura extends Observable implements Observer{
 	}
 	
 	
-	
+	/**
+	 * Devuelve lista de zonas que se solapan con esta
+	 * @return
+	 */
 	public List<ZonaCobertura> zonasSolapadas() {
 		return this.app.getZonasCobertura().stream()
 				.filter(zona -> zona.getEpicentro().calcularDistancia(this.epicentro)<(this.radio + zona.getRadio()))
 				.collect(Collectors.toList());
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
+	/**
+	 * Retorna true si la muestra esta incluida en esta zona de cobertura
+	 * @param muestra
+	 * @return
+	 */
 	public Boolean incluyeMuestra(Muestra muestra) {
 		return this.distanciaDeMuestra(muestra) < radio;
 	}
 	
-	public void suscribe (Muestra muestra){
-		muestra.addObserver(this);
-		this.notificarCarga(muestra);
-		
-	}
-	
-	private void notificarCarga(Muestra muestra) {
-		this.setChanged();
-		this.notifyObservers(muestra);		
+
+	@Override
+	public void updateNotificacion(Object object) {
+		MensajeObserver mensaje = (MensajeObserver) object;
+		if (this.incluyeMuestra(mensaje.getMuestra())){
+			enviarNotificacion(mensaje);
+		}
 	}
 
-	public void desuscribe(Muestra muestra){
-		muestra.deleteObserver(this);
+	
+	private void enviarNotificacion(MensajeObserver mensaje) {
+		this.setChanged();
+		this.notifyObservers(mensaje);
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		//no se usa, es un metodo de Observer no de GestorObserver
+	}
+	
+	
+	
+	
+	
+
+
 }

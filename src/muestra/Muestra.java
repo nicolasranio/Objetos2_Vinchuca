@@ -1,25 +1,23 @@
 package muestra;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import Observer.MensajeObserver;
+import Observer.EMensajesObservables;
 import participante.Participante;
-import zonaDeCobertura.ZonaCobertura;
 
 public class Muestra extends Observable{
 
+	//observable por Gestor de notificaciones
+	
 	private TipoVinchuca tipoVinchuca;
 	private String fotoVinchuca;  //url de la imagen
 	private Ubicacion ubicacion;
@@ -91,9 +89,9 @@ public class Muestra extends Observable{
 
 	public void setNivelVerificacion(INivelVerificacion nivelVerificacion) {
 		this.nivelVerificacion=nivelVerificacion;
+		this.notificarCambio(EMensajesObservables.Modificacion);
 	}
-	
-	
+
 	public List<Participante> getVerificadores() {
 		return verificaciones.stream().map(val -> val.getParticipante()).collect(Collectors.toList());
 	}
@@ -125,16 +123,19 @@ public class Muestra extends Observable{
 	}
 	
 	
-	
-	
-	
 	public void verificar(VerificacionMuestra verificacion) {
 		this.verificaciones.add(verificacion);
-		//notify de verificacion
-		
+		this.notificarCambio(EMensajesObservables.Modificacion);
+	}
+
+	public void informarCarga() {
+		this.notificarCambio(EMensajesObservables.Alta);
 	}	
 	
-	
+	private void notificarCambio(EMensajesObservables mensaje) {
+		this.setChanged();
+		this.notifyObservers(new MensajeObserver(mensaje, this));
+	}
 }
 
 

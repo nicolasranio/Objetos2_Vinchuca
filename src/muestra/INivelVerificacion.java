@@ -1,5 +1,7 @@
 package muestra;
 
+import exceptions.EstadoInvalidoException;
+
 public abstract class INivelVerificacion {
 
 	protected Muestra muestra;
@@ -8,5 +10,5 @@ public abstract class INivelVerificacion {
 		this.muestra = muestra;
 	}
 
-	public abstract void cambiarEstado(); 
+	public abstract void cambiarEstado() throws EstadoInvalidoException; 
 }

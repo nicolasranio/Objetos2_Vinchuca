@@ -7,6 +7,8 @@ import static org.mockito.Mockito.*;
 import org.junit.*;
 import org.junit.Test;
 
+import exceptions.EstadoInvalidoException;
+
 
 
 public class TestVerificacionAlto {
@@ -20,7 +22,7 @@ public class TestVerificacionAlto {
 			}
 	
 	@Test
-	public void testVerificacionAltoNoHaceNadaAlCambiarEstado() {
+	public void testVerificacionAltoNoHaceNadaAlCambiarEstado() throws EstadoInvalidoException {
 		nivelAlto.cambiarEstado();
 		verify(muestra, never()).setNivelVerificacion(isA(INivelVerificacion.class));
 	}

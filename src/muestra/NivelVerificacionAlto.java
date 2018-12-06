@@ -1,5 +1,7 @@
 package muestra;
 
+import exceptions.EstadoInvalidoException;
+
 public class NivelVerificacionAlto extends INivelVerificacion {
 
 
@@ -8,9 +10,8 @@ public class NivelVerificacionAlto extends INivelVerificacion {
 	}
 
 	@Override
-	public void cambiarEstado() {
-		// TODO Auto-generated method stub
-		
+	public void cambiarEstado() throws EstadoInvalidoException {
+		throw new EstadoInvalidoException();
 	}
 
 }

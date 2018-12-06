@@ -18,10 +18,15 @@ public class Organizacion implements Observer{
 		this.trabajadores = trabajadores;
 	}
 
+	
+	/**
+	 * arg0 es la zona de cobertura
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		//llamar a strategy de funcionalidad externa
+		this.ejecutarFuncionalidadExt(this,(ZonaCobertura) arg0, (Muestra) arg1)
 		
 	}
 	
@@ -29,6 +34,7 @@ public class Organizacion implements Observer{
 		zona.addObserver(this);
 	}
 	
+
 	public void desuscribe(ZonaCobertura zona){
 		zona.deleteObserver(this);
 	}

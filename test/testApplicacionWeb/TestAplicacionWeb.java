@@ -4,11 +4,18 @@ import static org.junit.Assert.*;
 
 import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import app.AplicacionWeb;
+import muestra.INivelVerificacion;
 import muestra.Muestra;
+import muestra.NivelVerificacionAlto;
+import muestra.TipoVinchuca;
+import muestra.Ubicacion;
 import zonaDeCobertura.ZonaCobertura;
 
 public class TestAplicacionWeb {
@@ -39,6 +46,5 @@ public class TestAplicacionWeb {
 	
 		assertEquals(1,app.getZonasCobertura().size());
 	}
-
 
 }

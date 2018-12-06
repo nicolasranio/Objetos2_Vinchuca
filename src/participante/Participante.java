@@ -93,6 +93,7 @@ public class Participante {
 	public void enviarMuestra(Muestra muestra, AplicacionWeb aplicacion){
 		this.nivelConocimiento.verificarMuestra(muestra);
 		aplicacion.agregarMuestra(muestra);
+		muestra.informarCarga();
 		this.agregarMuestraEnviada(muestra);
 		this.verificarConocimiento();
 	}
