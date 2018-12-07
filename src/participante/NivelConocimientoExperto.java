@@ -5,6 +5,9 @@ import muestra.NivelVerificacionAlto;
 
 public class NivelConocimientoExperto extends INivelConocimiento {
 
+	/**
+	 * Al verificar una Muestra, un Nivel Experto, este cambia el nivelDeVerificacion de tal
+	 */
 	@Override
 	public void verificarMuestra(Muestra muestra) {
 		muestra.setNivelVerificacion(new NivelVerificacionAlto(muestra));

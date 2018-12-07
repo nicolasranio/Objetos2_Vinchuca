@@ -80,7 +80,10 @@ public class Participante {
 			this.nivelConocimiento = new NivelConocimientoBasico();
 		}
 	}
-	
+	/**
+	 * Condición por la que un participante cambiaría su nivelDeConociemiento
+	 * @return
+	 */
 	public boolean condicionAVerificar() {
 		return (this.getMuestrasEnviadasUltimoMes().size()>10) && (this.getMuestrasVerificadas().size()>20);
 	}
@@ -114,13 +117,19 @@ public class Participante {
 		this.nivelConocimiento.verificarMuestra(muestra);
 		this.verificarConocimiento();
 	}
-	
+	/**
+	 * Valida que la @param muestra no haya sido enviada anteriormente y en caso de haberlo hecho
+	 * @throws Exception
+	 */
 	public void validarQueNoHayaSidoEnviada(Muestra muestra) throws Exception{
 		if (this.muestrasEnviadas.contains(muestra)) {
 			throw new MuestraYaEnviadaException();
 		}
 	}
-	
+	/**
+	 * Valida que @param muestra no haya sido validada anteriormente y en caso de que lo haya sido
+	 * @throws Exception
+	 */
 	public void validarQueNoHayaSidoVerificada(Muestra muestra) throws Exception{
 		if  (this.getMuestrasVerificadas().contains(muestra)){
 			throw new MuestraYaVerificadaException();

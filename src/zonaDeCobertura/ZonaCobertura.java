@@ -47,7 +47,10 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 		return this.epicentro.calcularDistancia(muestra.getUbicacion());
 	}
 	
-	
+	/**
+	 * 
+	 * @return la lista de muestras que que reportan a la zona
+	 */
 	public List<Muestra> muestrasReportadas(){
 		return this.app.getMuestras().stream().
 				filter(muestra -> this.incluyeMuestra(muestra))
@@ -76,7 +79,6 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 		return this.distanciaDeMuestra(muestra) < radio;
 	}
 	
-
 	@Override
 	public void updateNotificacion(Object object) {
 		MensajeObserver mensaje = (MensajeObserver) object;
@@ -85,6 +87,10 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 		}
 	}
 
+	/**
+	 * Notifica a sus observadores del cambio
+	 * @param mensaje
+	 */
 	
 	private void enviarNotificacion(MensajeObserver mensaje) {
 		this.setChanged();
