@@ -2,7 +2,6 @@ package muestra;
 
 public class NivelVerificacionBajo extends INivelVerificacion {
 
-
 	public NivelVerificacionBajo(Muestra muestra) {
 		super(muestra);
 	}

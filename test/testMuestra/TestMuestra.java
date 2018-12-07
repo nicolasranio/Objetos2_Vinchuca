@@ -104,9 +104,7 @@ public class TestMuestra {
 	@Test
 	public void testFechaDeEnvioDeMuestraEsMenorA31Dias(){
 
-		muestra.setFechaEnvio(LocalDate.of(2018, 11, 28));
 		assertTrue(muestra.esMenorAXDias(31));
-		assertFalse(muestra.esMenorAXDias(3));
 	}
 	
 	@Test

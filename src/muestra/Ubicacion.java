@@ -8,30 +8,40 @@ public class Ubicacion {
 	private Double latitud;
 	private Double longitud;
 	
+	/**
+	 * Construye una ubicacion con sus elementos correspondientes.
+	 * 
+	 * @param latitud
+	 * Es la latitud de dicha ubicacion.
+	 *
+	 * @param longitud
+	 * Es la longitud de dicha ubicacion.
+	 * 
+	 */
 	public Ubicacion(Double latitud, Double longitud){
 		this.latitud=latitud;
 		this.longitud=longitud;
 	}
 	
-	
+	/**
+	 * Retorna la latitud de dicha ubicacion.
+	 * 
+	 * 
+	 * @return La latitud de dicha ubicacion.
+	 */
 	public Double getLatitud() {
 		return latitud;
 	}
 
-	/*
-	public void setLatitud(Double latitud) {
-		this.latitud = latitud;
-	}
-	*/
-
+	/**
+	 * Retorna la longitud de dicha ubicacion.
+	 * 
+	 * 
+	 * @return La longitud de dicha ubicacion.
+	 */
 	public Double getLongitud() {
 		return longitud;
 	}
-	/*
-	public void setLongitud(Double longitud) {
-		this.longitud = longitud;
-	}
-	*/
 	
 	/**
 	 * Calcula distancia entre este punto y un punto B

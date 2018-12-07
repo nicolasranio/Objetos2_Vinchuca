@@ -19,13 +19,20 @@ public class GestorNotificaciones implements Observer {
 		 }
 		 return gestorNotificacion;
 	}
-		 
+	
+	/**
+	 * Construye un gestor de notificaciones a partir de una lista de notificaciones de carga 
+	 * y una lista de notificaciones de verificacion.
+	 */
 	private GestorNotificaciones(){
 		this.notificacionAlta=new ArrayList<IGestorObserver>();
 		this.notificacionValidacion=new ArrayList<IGestorObserver>();
 	}
 	
-	
+	/**
+	 * Agrega un objeto a las listas de notificaciones de carga y de notificaciones de verificacion.
+	 * 
+	 */
 	public void agregarObserver(IGestorObserver obs){
 		this.notificacionAlta.add(obs);
 		this.notificacionValidacion.add(obs);
@@ -46,6 +53,9 @@ public class GestorNotificaciones implements Observer {
 		
 	}
 
+	/**
+	 * Envia un mensaje correspondiente a todos los elementos de la lista de notificacion.
+	 */
 	private void enviarNotificacionMasiva(MensajeObserver mensaje, List<IGestorObserver> listaNotificacion) {
 		listaNotificacion.stream().forEach(obs -> obs.updateNotificacion(mensaje));
 	}

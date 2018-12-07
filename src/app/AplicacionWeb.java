@@ -83,18 +83,7 @@ public class AplicacionWeb  {
 	public List<ZonaCobertura> getZonasCobertura() {
 		return this.zonasCobertura;
 	}
-	
-	/**
-	 * Devuelve una lista de zonas de cobertura a las cuales la muestra pertenece
-	 * @param muestra
-	 * @return
-	 */
-//	public List<ZonaCobertura> buscarZonasQueAplican(Muestra muestra){
-//		return this.zonasCobertura.stream()
-//		.filter(zona -> zona.incluyeMuestra(muestra))
-//		.collect(Collectors.toList());		
-//	}
-//	
+
 	/**
 	 * Filtra todas las muestras de la aplicacion web que apliquen al filtro, retornando una lista
 	 * que apliquen al filtro dado.

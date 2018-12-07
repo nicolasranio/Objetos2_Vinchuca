@@ -4,7 +4,6 @@ import exceptions.EstadoInvalidoException;
 
 public class NivelVerificacionAlto extends INivelVerificacion {
 
-
 	public NivelVerificacionAlto(Muestra muestra) {
 		super(muestra);
 	}
