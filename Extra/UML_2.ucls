@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
-  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.2.2" icons="false" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="false" realizations="false" associations="false" dependencies="false" nesting-relationships="false" 
+  router="FAN">  
   <class id="1" language="java" name="muestra.Muestra" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/Muestra.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="301" x="1260" y="121"/>    
+    <position height="459" width="301" x="2135" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="organizacion.Organizacion" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/organizacion/Organizacion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="988" y="307"/>    
+    <position height="243" width="479" x="855" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="muestra.NivelVerificacionBajo" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/NivelVerificacionBajo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="174" x="305" y="121"/>    
+    <position height="99" width="174" x="2697" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +31,7 @@
   </class>  
   <enumeration id="4" language="java" name="muestra.TipoVinchuca" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/TipoVinchuca.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="192" x="1322" y="494"/>    
+    <position height="171" width="192" x="2581" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +40,7 @@
   </enumeration>  
   <class id="5" language="java" name="participante.INivelConocimiento" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/participante/INivelConocimiento.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2197" y="139"/>    
+    <position height="99" width="177" x="3123" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +49,7 @@
   </class>  
   <enumeration id="6" language="java" name="organizacion.TipoOrganizacion" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/organizacion/TipoOrganizacion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="165" x="747" y="494"/>    
+    <position height="153" width="165" x="1135" y="1156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +58,7 @@
   </enumeration>  
   <class id="7" language="java" name="participante.NivelConocimientoBasico" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/participante/NivelConocimientoBasico.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2072" y="302"/>    
+    <position height="99" width="175" x="2910" y="1156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +67,7 @@
   </class>  
   <class id="8" language="java" name="muestra.INivelVerificacion" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/INivelVerificacion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="155" x="740" y="-126"/>    
+    <position height="99" width="155" x="2386" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +76,7 @@
   </class>  
   <class id="9" language="java" name="muestra.NivelVerificacionMedio" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/NivelVerificacionMedio.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="181" x="519" y="121"/>    
+    <position height="99" width="181" x="2476" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +85,7 @@
   </class>  
   <class id="10" language="java" name="participante.NivelConocimientoExperto" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/participante/NivelConocimientoExperto.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2294" y="302"/>    
+    <position height="99" width="175" x="3125" y="1156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +94,7 @@
   </class>  
   <class id="11" language="java" name="muestra.Ubicacion" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/Ubicacion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="330" x="952" y="494"/>    
+    <position height="189" width="330" x="1340" y="1156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +103,7 @@
   </class>  
   <class id="12" language="java" name="participante.Participante" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/participante/Participante.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1795" y="3"/>    
+    <position height="351" width="298" x="2813" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +112,7 @@
   </class>  
   <class id="13" language="java" name="app.AplicacionWeb" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/app/AplicacionWeb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="173" x="1260" y="-126"/>    
+    <position height="171" width="241" x="1710" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +121,7 @@
   </class>  
   <class id="14" language="java" name="muestra.NivelVerificacionAlto" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/NivelVerificacionAlto.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="172" x="740" y="121"/>    
+    <position height="99" width="172" x="2911" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +130,7 @@
   </class>  
   <class id="15" language="java" name="exceptions.MuestraYaEnviadaException" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/exceptions/MuestraYaEnviadaException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="193" y="-68"/>    
+    <position height="99" width="184" x="255" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +139,7 @@
   </class>  
   <class id="16" language="java" name="exceptions.MuestraYaVerificadaException" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/exceptions/MuestraYaVerificadaException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="403" y="-70"/>    
+    <position height="99" width="197" x="479" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,177 +148,485 @@
   </class>  
   <class id="17" language="java" name="muestra.VerificacionMuestra" project="Objetos2_Vinchuca" 
     file="/Objetos2_Vinchuca/src/muestra/VerificacionMuestra.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1801" y="448"/>    
+    <position height="189" width="297" x="2747" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="20">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="21" name="muestrasVerificadas"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+  <class id="18" language="java" name="app.FiltroPorFechaDeCreacionPosterior" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroPorFechaDeCreacionPosterior.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="250" x="716" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="app.FiltroPorFechaDeUltimaVerificacionAnterior" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroPorFechaDeUltimaVerificacionAnterior.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="288" x="1292" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="app.FiltroAnd" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroAnd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="147" x="1991" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="app.FiltroPorFechaDeCreacionAnterior" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroPorFechaDeCreacionAnterior.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="246" x="1006" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="app.FiltroPorNivelDeVerificacion" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroPorNivelDeVerificacion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="248" x="2152" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="23" language="java" name="app.Filtro" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/Filtro.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="147" x="1523" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="24" language="java" name="app.FiltroCompuesto" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroCompuesto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="160" x="1952" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="app.FiltroPorFechaDeUltimaVerificacionPosterior" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroPorFechaDeUltimaVerificacionPosterior.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="292" x="1620" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="app.FiltroOr" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroOr.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="147" x="2178" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="app.FiltroPorTipoDeVinchucaDetectado" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/app/FiltroPorTipoDeVinchucaDetectado.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="267" x="2440" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="exceptions.EstadoInvalidoException" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/exceptions/EstadoInvalidoException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="162" x="53" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="Observer.GestorNotificaciones" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/Observer/GestorNotificaciones.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="375" x="1710" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="Observer.MensajeObserver" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/Observer/MensajeObserver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="1207" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="31" language="java" name="Observer.EMensajesObservables" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/Observer/EMensajesObservables.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="206" x="609" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <interface id="32" language="java" name="Observer.IGestorObserver" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/Observer/IGestorObserver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="177" x="1710" y="1156"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="33" language="java" name="organizacion.FuncionalidadExterna" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/organizacion/FuncionalidadExterna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="302" x="793" y="1156"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="34" language="java" name="zonaDeCobertura.ZonaCobertura" project="Objetos2_Vinchuca" 
+    file="/Objetos2_Vinchuca/src/zonaDeCobertura/ZonaCobertura.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="296" x="1374" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="35">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="36" name="zonasCobertura"/>      
+      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="34" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="24" name="ubicacion">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="25" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <generalization id="38">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="39">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="40" name="epicentro"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="27" name="participante">        
-        <position height="0" width="0" x="200" y="26"/>      
-      </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
-        <position height="0" width="0" x="200" y="26"/>      
-      </multiplicity>    
+  <realization id="42">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="43">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="44" name="gestorNotificacion"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="30" name="participante"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
+  <association id="46">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="47" name="filtroA"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="33" name="muestrasEnviadas">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <realization id="49">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <association id="51">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="52" name="muestra">        
+        <position height="0" width="0" x="-397" y="10"/>      
       </attribute>      
-      <multiplicity id="34" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="53" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-397" y="10"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="36" name="tipo">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <generalization id="54">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="55">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="56" name="mensaje"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="59" name="muestras">        
+        <position height="0" width="0" x="-397" y="10"/>      
       </attribute>      
-      <multiplicity id="37" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-397" y="10"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="62" name="tipo">        
+        <position height="0" width="0" x="1512" y="-494"/>      
+      </attribute>      
+      <multiplicity id="63" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1512" y="-494"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="39" name="tipoVinchuca"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
+  <association id="64">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="65" name="funcionalidadConfigurableValidacion"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="33" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="41">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="42">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="43">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <association id="44">    
+  <realization id="67">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="68">    
+    <bendpoint x="2355" y="266"/>    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="45" name="nivelVerificacion">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="69" name="verificaciones">        
+        <position height="0" width="0" x="-356" y="166"/>      
       </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="70" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-356" y="166"/>      
       </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="48" name="muestra">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="49" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="51" name="ubicacion">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="52" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="54" name="muestras">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="55" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="57" name="verificaciones"/>      
-      <multiplicity id="58" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="59">    
+  <association id="71">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="60" name="nivelConocimiento">        
-        <position height="0" width="0" x="413" y="-150"/>      
+      <attribute id="72" name="nivelConocimiento">        
+        <position height="0" width="0" x="49" y="37"/>      
       </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="0" width="0" x="413" y="-150"/>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="49" y="37"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+  <generalization id="74">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="75">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="76">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="77" name="app"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="80" name="tipoVinchuca">        
+        <position height="0" width="0" x="-309" y="128"/>      
+      </attribute>      
+      <multiplicity id="81" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-309" y="128"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="83" name="participante">        
+        <position height="0" width="0" x="-343" y="333"/>      
+      </attribute>      
+      <multiplicity id="84" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-343" y="333"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="85">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="86">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="87" name="gestorNotificaciones"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="89">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="90" name="nivelVerificacion">        
+        <position height="0" width="0" x="-612" y="983"/>      
+      </attribute>      
+      <multiplicity id="91" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-612" y="983"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="93" name="notificacionValidacion"/>      
+      <multiplicity id="94" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="96" name="tipoVinchuca"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="99" name="funcionalidadConfigurableCarga"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="102" name="nivelVerificacion"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="104">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <realization id="105">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="106">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="107" name="muestra"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="109">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="110">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="111" name="muestrasEnviadas">        
+        <position height="0" width="0" x="-397" y="10"/>      
+      </attribute>      
+      <multiplicity id="112" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-397" y="10"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="113">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="114">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="115" name="notificacionAlta"/>      
+      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="118" name="ubicacion">        
+        <position height="0" width="0" x="865" y="-782"/>      
+      </attribute>      
+      <multiplicity id="119" minimum="0" maximum="1">        
+        <position height="0" width="0" x="865" y="-782"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="121" name="filtroB"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="123">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="124">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="125" name="ubicacion">        
+        <position height="0" width="0" x="865" y="-782"/>      
+      </attribute>      
+      <multiplicity id="126" minimum="0" maximum="1">        
+        <position height="0" width="0" x="865" y="-782"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="127">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
     <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  
-  <association-display labels="true" multiplicity="true"/>
+  <association-display labels="false" multiplicity="false"/>
 </class-diagram>

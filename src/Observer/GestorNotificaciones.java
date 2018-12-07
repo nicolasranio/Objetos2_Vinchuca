@@ -47,7 +47,7 @@ public class GestorNotificaciones implements Observer {
 	}
 
 	private void enviarNotificacionMasiva(MensajeObserver mensaje, List<IGestorObserver> listaNotificacion) {
-		listaNotificacion.stream().forEach(obs -> obs.updateNotificacion((Object) mensaje));
+		listaNotificacion.stream().forEach(obs -> obs.updateNotificacion(mensaje));
 	}
 	
 	

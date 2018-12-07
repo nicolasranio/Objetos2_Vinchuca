@@ -4,6 +4,6 @@ import java.util.Observer;
 
 public interface IGestorObserver extends Observer {
 
-	public void updateNotificacion(Object object);
+	public void updateNotificacion(MensajeObserver mensaje);
 	
 }

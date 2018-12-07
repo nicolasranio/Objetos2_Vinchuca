@@ -80,8 +80,7 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 	}
 	
 	@Override
-	public void updateNotificacion(Object object) {
-		MensajeObserver mensaje = (MensajeObserver) object;
+	public void updateNotificacion(MensajeObserver mensaje) {
 		if (this.incluyeMuestra(mensaje.getMuestra())){
 			enviarNotificacion(mensaje);
 		}
