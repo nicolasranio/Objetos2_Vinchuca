@@ -41,7 +41,7 @@ public class TestMuestra {
 		
 	}
 	
-	@Test
+	/*@Test
 	public void testConstructorDeMuestraYGetters() {
 		
 		
@@ -50,7 +50,7 @@ public class TestMuestra {
 		assertTrue(muestra.getUbicacion().equals(ubicacion));
 		assertTrue(muestra.getAliasRecolector().equals("Rogelio"));
 		assertTrue(muestra.getNivelVerificacion() instanceof NivelVerificacionBajo);
-	}
+	}*/
 	
 	
 	
@@ -124,6 +124,25 @@ public class TestMuestra {
 		assertEquals(2,muestra.verificacionesValidas());
 	}
 
+	@Test
+	public void testVeredictosDeUnaMuestra() {
+		
+		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
+		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
+		
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		
+		muestra.verificar(verificacion);
+		muestra.verificar(verificacionB);
+		muestra.verificar(verificacionC);
+		
+		assertEquals(TipoVinchuca.Vinchuca,muestra.veredictoVerificacion());
+	}
+	
+	
+	
 	@Test 
 	public void testUnaMuestraNotificaCargaASusObservadores() {
 		GestorNotificaciones gestor = mock(GestorNotificaciones.class);

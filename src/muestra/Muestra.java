@@ -87,27 +87,9 @@ public class Muestra extends Observable{
 	 * @return El tipo de vinchuca detectado en la muestra.
 	 */
 	public TipoVinchuca getTipoVinchuca() {
-		return this.tipoVinchuca;
+		return this.veredictoVerificacion();
 	}
 	
-	/**
-	 * Retorna la foto del tipo de vinchuca detectado en la muestra.
-	 * 
-	 * @return La foto del tipo de vinchuca detectado en la muestra.
-	 */
-	public String getFotoVinchuca() {
-		return this.fotoVinchuca;
-	}
-
-	
-	/**
-	 * Retorna el alias del que recolecto la muestra.
-	 * 
-	 * @return El alias del recolector de la muestra.
-	 */
-	public String getAliasRecolector() {
-		return this.aliasRecolector;
-	}
 
 	/**
 	 * Retorna la fecha de creacion de la muestra.
@@ -180,6 +162,27 @@ public class Muestra extends Observable{
 		return Integer.valueOf(frecuencias.values().stream().findFirst().get().intValue());
 	}
 
+	
+	/**
+	 * Devuelve la máxima cantidad de validaciones coincidentes de una muestra
+	 * @return numero de coincidencias en la validacion
+	 */
+	public TipoVinchuca veredictoVerificacion(){
+
+		Map<TipoVinchuca, Long> frecuencias = verificaciones.stream()
+															.map(val->val.getTipoVinchuca())
+															.collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+		
+		frecuencias = frecuencias.entrySet()
+	                			 .stream()
+	                			 .sorted((Map.Entry.<TipoVinchuca, Long>comparingByValue().reversed()))
+	                			 .limit(1)  //solo el primer resultado
+	                		     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+		
+		return frecuencias.keySet().stream().findFirst().get();
+	}
+
+	
 	
 	
 	/**

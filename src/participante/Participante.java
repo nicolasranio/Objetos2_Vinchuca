@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.time.temporal.ChronoUnit;
 
@@ -56,7 +57,12 @@ public class Participante {
 	}
 	
 	public List<Muestra> getMuestrasVerificadas(){
-		return this.verificacionesDeMuestras.stream().map(verificacion -> verificacion.getMuestra())
+		return this.verificacionesDeMuestras.stream()
+				.map(verificacion -> verificacion.getMuestra()).collect(Collectors.toList());
+	}
+	public List<VerificacionMuestra> getMuestrasVerificadasUltimoMes(){
+		return this.verificacionesDeMuestras.stream()
+				.filter(verificacion -> verificacion.esMenorAXDias(31))
 				.collect(Collectors.toList());
 	}
 	
@@ -85,7 +91,8 @@ public class Participante {
 	 * @return
 	 */
 	public boolean condicionAVerificar() {
-		return (this.getMuestrasEnviadasUltimoMes().size()>10) && (this.getMuestrasVerificadas().size()>20);
+		return (this.getMuestrasEnviadasUltimoMes().size()>10) 
+				&& (this.getMuestrasVerificadasUltimoMes().size()>20);
 	}
 
 	/**
@@ -109,7 +116,7 @@ public class Participante {
 	 */
 	public void verificarMuestra(Muestra muestra, TipoVinchuca tipoVinchuca) throws Exception{
 		//validaciones
-		VerificacionMuestra verificacion = new VerificacionMuestra(muestra, this,tipoVinchuca);
+		VerificacionMuestra verificacion = new VerificacionMuestra(muestra, this, tipoVinchuca);
 		this.validarQueNoHayaSidoEnviada(muestra);
 		this.validarQueNoHayaSidoVerificada(muestra);
 		this.agregarVerificacionMuestra(verificacion);
@@ -127,7 +134,7 @@ public class Participante {
 		}
 	}
 	/**
-	 * Valida que @param muestra no haya sido validada anteriormente y en caso de que lo haya sido
+	 * Valida que @param muestra NUNCA haya sido validada anteriormente y en caso de que lo haya sido
 	 * @throws Exception
 	 */
 	public void validarQueNoHayaSidoVerificada(Muestra muestra) throws Exception{

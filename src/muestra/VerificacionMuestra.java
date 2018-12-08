@@ -1,6 +1,7 @@
 package muestra;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 import participante.Participante;
@@ -70,6 +71,13 @@ public class VerificacionMuestra {
 	 */
 	public Muestra getMuestra(){
 		return muestra;
+	}
+
+	
+	public boolean esMenorAXDias(Integer dias){
+		
+		Period period =Period.between(this.getFechaVerificacion(), LocalDate.now());
+		return period.getDays()<dias;
 	}
 	
 }

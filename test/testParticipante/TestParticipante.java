@@ -1,26 +1,23 @@
 package testParticipante;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import static org.mockito.Mockito.*;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
-import org.mockito.internal.matchers.InstanceOf;
 
 import app.AplicacionWeb;
 import exceptions.MuestraYaEnviadaException;
 import exceptions.MuestraYaVerificadaException;
-import junit.framework.Assert;
 import muestra.Muestra;
-import muestra.NivelVerificacionBajo;
 import muestra.TipoVinchuca;
 import muestra.VerificacionMuestra;
 import participante.NivelConocimientoBasico;
@@ -36,6 +33,7 @@ public class TestParticipante {
 	private TipoVinchuca validacion;
 	private NivelConocimientoExperto pro;
 	private List<Muestra> mockList;
+	private List<VerificacionMuestra> mockList2;
 	private Participante participanteSpy;
 
 	@Before
@@ -48,7 +46,8 @@ public class TestParticipante {
 		aplicacion = mock(AplicacionWeb.class);
 		muestra = mock(Muestra.class);
 		validacion = TipoVinchuca.Chinche_Foliada;
-		mockList = mock(ArrayList.class);
+		mockList = mock(List.class);
+		mockList2 = mock(List.class);
 			
 	}
 	
@@ -62,8 +61,9 @@ public class TestParticipante {
 	@Test
 	public void testParticipanteBasicoVerificaConocimientoYLoSeteaAExperto() {
 		when(mockList.size()).thenReturn(30);
+		when(mockList2.size()).thenReturn(30);
 		when(participanteSpy.getMuestrasEnviadasUltimoMes()).thenReturn(mockList);
-		when(participanteSpy.getMuestrasVerificadas()).thenReturn(mockList);
+		when(participanteSpy.getMuestrasVerificadasUltimoMes()).thenReturn(mockList2);
 		participanteSpy.verificarConocimiento();
 		assertTrue(participanteSpy.getNivel() instanceof NivelConocimientoExperto);		
 	}
@@ -97,12 +97,11 @@ public class TestParticipante {
 	
 	@Test
 	public void testParticipanteVerificaUnaMuestraYSumaUnaverificacion() throws Exception {
-		int cantidadDeVerificaciones = participante.getMuestrasVerificadas().size();
+		int cantidadDeVerificaciones = participante.getMuestrasVerificadasUltimoMes().size();
 		
 		participante.verificarMuestra(muestra, validacion);
 		assertEquals(cantidadDeVerificaciones+1, participante.getVerificacioneDeMuestras().size());
-		assertTrue(participante.getMuestrasVerificadas().contains(muestra));
-		
+			
 	}
 	
 	@Test

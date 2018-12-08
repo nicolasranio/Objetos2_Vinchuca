@@ -96,11 +96,7 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 		this.notifyObservers(mensaje);
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		//no se usa, es un metodo de Observer no de GestorObserver
-	}
+
 	
 	
 	
