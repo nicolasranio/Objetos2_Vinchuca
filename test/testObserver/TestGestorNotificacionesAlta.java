@@ -30,12 +30,11 @@ public class TestGestorNotificacionesAlta {
 		gestorAlta = GestorNotificacionesAlta.getGestorNotificaciones();
 		zona = mock(ZonaCobertura.class);
 		mensajeAlta = mock(MensajeObserverAlta.class);
-		mensajeModificacion = mock(MensajeObserverModificacion.class);
 		muestra = mock(Muestra.class);
 	}
 	
 	@Test
-	public void testCreoDosVecesUnGestorDeNotificacionesYObtengoElMismo(){
+	public void testCreoDosVecesUnGestorDeAltaYObtengoElMismo(){
 		
 		GestorNotificacionesAlta gestorAdicional = GestorNotificacionesAlta.getGestorNotificaciones();
 		assertEquals(gestorAdicional,gestorAlta);
