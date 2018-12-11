@@ -1,11 +1,12 @@
-package Observer;
+package observer;
 
 import muestra.Muestra;
+import organizacion.Organizacion;
+import zonaDeCobertura.ZonaCobertura;
 
-public class MensajeObserver {
+public abstract class MensajeObserver {
 
 	Muestra muestra;
-	EMensajesObservables mensaje;
 	
 	/**
 	 * Construye una mensaje observer con sus elementos
@@ -17,19 +18,8 @@ public class MensajeObserver {
 	 * la misma puede dedicarse a distintas areas, como salud, educativa, entre otras.
 	 * 
 	 */
-	public MensajeObserver(EMensajesObservables mensaje, Muestra muestra) {
-		this.mensaje = mensaje;
+	public MensajeObserver(Muestra muestra) {
 		this.muestra = muestra;
-	}
-
-	/**
-	 * Retorna el tipo de mensaje de notificacion de muestra.
-	 * 
-	 * @return El tipo de mensaje de notificacion.
-	 * 
-	 */
-	public EMensajesObservables getMensaje() {
-		return mensaje;
 	}
 
 	/**
@@ -40,5 +30,8 @@ public class MensajeObserver {
 	public Muestra getMuestra() {
 		return muestra;
 	}
+	
+
+	public abstract void ejecutarFuncionalidad(ZonaCobertura zona, Organizacion organizacion);
 	
 }

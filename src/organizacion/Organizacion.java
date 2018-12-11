@@ -4,9 +4,9 @@ import muestra.*;
 import java.util.Observable;
 import java.util.Observer;
 
-import Observer.EMensajesObservables;
-import Observer.MensajeObserver;
 import muestra.Ubicacion;
+import observer.EMensajesObservables;
+import observer.MensajeObserver;
 import zonaDeCobertura.ZonaCobertura;
 
 public class Organizacion implements Observer{
@@ -43,12 +43,14 @@ public class Organizacion implements Observer{
 	public void update(Observable zona, Object msj) {
 		// TODO Auto-generated method stub
 		MensajeObserver mensaje = (MensajeObserver) msj;
-		if (mensaje.getMensaje().equals(EMensajesObservables.Alta)){
-			this.ejecucionFuncionalidadTrasCarga((ZonaCobertura) zona, mensaje.getMuestra());
-		}
-		else if(mensaje.getMensaje().equals(EMensajesObservables.Modificacion)){
-			this.ejecucionFuncionalidadTrasValidacion((ZonaCobertura) zona, mensaje.getMuestra());
-		}
+		mensaje.ejecutarFuncionalidad((ZonaCobertura)zona,this);
+		
+//		if (mensaje.getMensaje().equals(EMensajesObservables.Alta)){
+//			this.ejecucionFuncionalidadTrasCarga((ZonaCobertura) zona, mensaje.getMuestra());
+//		}
+//		else if(mensaje.getMensaje().equals(EMensajesObservables.Modificacion)){
+//			this.ejecucionFuncionalidadTrasValidacion((ZonaCobertura) zona, mensaje.getMuestra());
+//		}
 	}
 	/**
 	 * Metodo que permite la suscripción a una 
@@ -75,6 +77,7 @@ public class Organizacion implements Observer{
 		this.funcionalidadConfigurableCarga = funcionalidad;
 		
 	}
+	
 	/**
 	 * Permite la configuración de la funcionalidad Externa que la organización utilizara ante la modificación de 
 	 * una muestra en alguna de las zonas a las que esta suscripta

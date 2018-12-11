@@ -7,13 +7,13 @@ import java.util.Observer;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import Observer.GestorNotificaciones;
-import Observer.MensajeObserver;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import muestra.Muestra;
-
+import observer.GestorNotificacionesAlta;
+import observer.GestorNotificacionesModificacion;
+import observer.MensajeObserver;
 import zonaDeCobertura.ZonaCobertura;
 
 
@@ -21,7 +21,8 @@ public class AplicacionWeb  {
 	
 	private List <Muestra> muestras;
 	private List <ZonaCobertura> zonasCobertura;
-	private GestorNotificaciones gestorNotificaciones;
+	private GestorNotificacionesAlta gestorNotificacionesAlta;
+	private GestorNotificacionesModificacion gestorNotificacionesModificacion;
 	
 	/**
 	 * Construye una aplicacion web a partir por una lista de muestra, una lista de
@@ -33,7 +34,8 @@ public class AplicacionWeb  {
 	public AplicacionWeb(){
 		this.muestras =   new ArrayList<Muestra>();
 		this.zonasCobertura = new ArrayList<ZonaCobertura>();
-		this.gestorNotificaciones= GestorNotificaciones.getGestorNotificaciones();
+		this.gestorNotificacionesAlta= GestorNotificacionesAlta.getGestorNotificaciones();
+		this.gestorNotificacionesModificacion = GestorNotificacionesModificacion.getGestorNotificaciones();
 	}
 
 
@@ -48,7 +50,8 @@ public class AplicacionWeb  {
 	
 	public void agregarMuestra(Muestra muestra) {
 		this.muestras.add(muestra);
-		muestra.addObserver(this.gestorNotificaciones);
+		muestra.addObserver(this.gestorNotificacionesAlta);
+		muestra.addObserver(this.gestorNotificacionesModificacion);
 	}
 	
 	/**
@@ -70,7 +73,8 @@ public class AplicacionWeb  {
 	 */
 	public void agregarZonaCobertura(ZonaCobertura zona) {
 		this.zonasCobertura.add(zona);
-		this.gestorNotificaciones.agregarObserver(zona);
+		this.gestorNotificacionesAlta.agregarObserver(zona);
+		this.gestorNotificacionesModificacion.agregarObserver(zona);
 	}
 
 	

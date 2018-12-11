@@ -10,8 +10,13 @@ import java.util.Observable;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import Observer.MensajeObserver;
-import Observer.EMensajesObservables;
+import com.sun.prism.impl.BaseMesh.FaceMembers;
+
+import observer.EMensajesObservables;
+import observer.FactoryMensajes;
+import observer.MensajeObserver;
+import observer.MensajeObserverAlta;
+import observer.MensajeObserverModificacion;
 import participante.Participante;
 
 public class Muestra extends Observable{
@@ -130,7 +135,7 @@ public class Muestra extends Observable{
 	 */
 	public void setNivelVerificacion(INivelVerificacion nivelVerificacion) {
 		this.nivelVerificacion=nivelVerificacion;
-		this.notificarCambio(EMensajesObservables.Modificacion);
+		this.notificarCambio(FactoryMensajes.crearMensaje(EMensajesObservables.Modificacion, this));
 	}
 
 	/**
@@ -212,26 +217,27 @@ public class Muestra extends Observable{
 	 */
 	public void verificar(VerificacionMuestra verificacion) {
 		this.verificaciones.add(verificacion);
-		this.notificarCambio(EMensajesObservables.Modificacion);
+		this.notificarCambio(FactoryMensajes.crearMensaje(EMensajesObservables.Modificacion, this));
+		
 	}
 
 	/**
 	 * Informa a sus observadores notificando que dicha muestra se cargo al sistema.
 	 */
 	public void informarCarga() {
-		this.notificarCambio(EMensajesObservables.Alta);
+		this.notificarCambio(FactoryMensajes.crearMensaje(EMensajesObservables.Alta, this));
 	}	
 	
 	/**
 	 * En caso de que existiesen interesados en el cambio de muestra, se les notifica
 	 * a los mismos sobre el cambio. 
 	 * 
-	 * @param mensaje
+	 * @param mensajeObserver
 	 * El mensaje a enviar a sus interesados.
 	 */
-	private void notificarCambio(EMensajesObservables mensaje) {
+	private void notificarCambio(MensajeObserver mensajeObserver) {
 		this.setChanged();
-		this.notifyObservers(new MensajeObserver(mensaje, this));
+		this.notifyObservers(mensajeObserver);
 	}
 }
 

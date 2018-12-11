@@ -7,10 +7,10 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import Observer.EMensajesObservables;
-import Observer.MensajeObserver;
 import muestra.Muestra;
 import muestra.Ubicacion;
+import observer.EMensajesObservables;
+import observer.MensajeObserver;
 import organizacion.*;
 import zonaDeCobertura.ZonaCobertura;
 

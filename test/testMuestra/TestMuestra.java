@@ -13,9 +13,9 @@ import java.util.Observer;
 import org.junit.Before;
 import org.junit.Test;
 
-import Observer.GestorNotificaciones;
-import Observer.MensajeObserver;
 import muestra.*;
+import observer.GestorNotificacionesAlta;
+import observer.MensajeObserver;
 import participante.Participante;
 
 
@@ -145,7 +145,7 @@ public class TestMuestra {
 	
 	@Test 
 	public void testUnaMuestraNotificaCargaASusObservadores() {
-		GestorNotificaciones gestor = mock(GestorNotificaciones.class);
+		GestorNotificacionesAlta gestor = mock(GestorNotificacionesAlta.class);
 		
 		muestra.addObserver(gestor);
 		muestra.informarCarga();

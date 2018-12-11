@@ -11,10 +11,12 @@ import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 
-import Observer.MensajeObserver;
 import app.AplicacionWeb;
 import muestra.Muestra;
 import muestra.Ubicacion;
+import observer.GestorNotificacionesAlta;
+import observer.MensajeObserver;
+import observer.MensajeObserverAlta;
 import organizacion.Organizacion;
 import zonaDeCobertura.ZonaCobertura;
 
@@ -89,27 +91,27 @@ public class TestZonaCobertura {
 
 	
 	@Test
-	public void testUpdateNotificacionDisparaEventoEnObserverCuandoLaMuestraEstaDentroDeLaZona(){
+	public void testUpdateNotificacionAltaDisparaEventoEnObserverCuandoLaMuestraNoEstaDentroDeLaZona(){
 		
 		Organizacion obs = mock(Organizacion.class);
 		zonaCobertura.addObserver(obs);
 		
-		MensajeObserver msj = mock(MensajeObserver.class);
+		MensajeObserverAlta msj = mock(MensajeObserverAlta.class);
 		when(msj.getMuestra()).thenReturn(muestra);
 		when(epicentro.calcularDistancia(muestra.getUbicacion())).thenReturn(50.00);
-		zonaCobertura.updateNotificacion(msj);
+		zonaCobertura.update(muestra, msj);
 		verify(obs, never()).update(zonaCobertura, msj);
 	}
 	
 	@Test
-	public void testUpdateNotificacionNoDisparaEventoObserverCuandoLaMuestraNoEstaEnAreaDeCobertura(){
+	public void testUpdateNotificacionNoDisparaEventoObserverCuandoLaMuestraEstaEnAreaDeCobertura(){
 		Organizacion obs = mock(Organizacion.class);
 		zonaCobertura.addObserver(obs);
 		
-		MensajeObserver msj = mock(MensajeObserver.class);
+		MensajeObserverAlta msj = mock(MensajeObserverAlta.class);
 		when(msj.getMuestra()).thenReturn(muestra);
 		when(epicentro.calcularDistancia(muestra.getUbicacion())).thenReturn(6.00);
-		zonaCobertura.updateNotificacion(msj);
+		zonaCobertura.update(zonaCobertura, msj);
 		verify(obs).update(zonaCobertura, msj);
 		
 	}

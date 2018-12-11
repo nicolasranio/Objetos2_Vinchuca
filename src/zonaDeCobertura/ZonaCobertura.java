@@ -5,12 +5,12 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
-import Observer.IGestorObserver;
-import Observer.MensajeObserver;
 import app.AplicacionWeb;
-import muestra.*;
+import muestra.Muestra;
+import muestra.Ubicacion;
+import observer.MensajeObserver;
 
-public class ZonaCobertura extends Observable implements IGestorObserver{
+public class ZonaCobertura extends Observable implements Observer{
 
 	//observable por las organizaciones
 	//observador del gestor
@@ -79,12 +79,15 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 		return this.distanciaDeMuestra(muestra) < radio;
 	}
 	
+	
+	
+	
 	@Override
-	public void updateNotificacion(MensajeObserver mensaje) {
-		if (this.incluyeMuestra(mensaje.getMuestra())){
-			enviarNotificacion(mensaje);
-		}
+	public void update(Observable obs, Object obj) {
+		MensajeObserver msj = (MensajeObserver) obj;
+		if (this.incluyeMuestra(msj.getMuestra())) enviarNotificacion(msj);
 	}
+	
 
 	/**
 	 * Notifica a sus observadores del cambio
@@ -95,13 +98,6 @@ public class ZonaCobertura extends Observable implements IGestorObserver{
 		this.setChanged();
 		this.notifyObservers(mensaje);
 	}
-
-
-	
-	
-	
-	
-	
 
 
 }
