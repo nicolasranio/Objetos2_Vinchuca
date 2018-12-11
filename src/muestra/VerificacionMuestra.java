@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
 
+import participante.NivelConocimientoExperto;
 import participante.Participante;
 
 public class VerificacionMuestra {
@@ -78,6 +79,11 @@ public class VerificacionMuestra {
 		
 		Period period =Period.between(this.getFechaVerificacion(), LocalDate.now());
 		return period.getDays()<dias;
+	}
+
+	public boolean fueRealizadaPorExperto() {
+		// TODO Auto-generated method stub
+		return this.getParticipante().getNivel() instanceof NivelConocimientoExperto;
 	}
 	
 }
