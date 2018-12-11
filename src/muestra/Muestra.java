@@ -30,6 +30,7 @@ public class Muestra extends Observable{
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	private List<VerificacionMuestra> verificaciones;
 	private LocalDate fechaEnvio;
+	private ConsensoDeVotos censista;
 	
 
 	/**
@@ -54,6 +55,7 @@ public class Muestra extends Observable{
 		this.nivelVerificacion= new NivelVerificacionBajo(this); 
 		this.verificaciones= new ArrayList<VerificacionMuestra>();
 		this.fechaEnvio=LocalDate.now(); //fecha actual
+		this.censista = new ConsensoDeVotos();
 	}
 	
 	
@@ -92,7 +94,7 @@ public class Muestra extends Observable{
 	 * @return El tipo de vinchuca detectado en la muestra.
 	 */
 	public TipoVinchuca getTipoVinchuca() {
-		return this.veredictoVerificacion();
+		return this.censista.getTipoVinchuca(this.verificaciones);
 	}
 	
 
@@ -152,6 +154,8 @@ public class Muestra extends Observable{
 	 * Devuelve la máxima cantidad de validaciones coincidentes de una muestra
 	 * @return numero de coincidencias en la validacion
 	 */
+	
+	
 	public int verificacionesValidas(){
 
 		Map<TipoVinchuca, Long> frecuencias = verificaciones.stream()
@@ -166,12 +170,12 @@ public class Muestra extends Observable{
 		
 		return Integer.valueOf(frecuencias.values().stream().findFirst().get().intValue());
 	}
-
 	
 	/**
 	 * Devuelve la máxima cantidad de validaciones coincidentes de una muestra
 	 * @return numero de coincidencias en la validacion
 	 */
+	/*
 	public TipoVinchuca veredictoVerificacion(){
 
 		Map<TipoVinchuca, Long> frecuencias = verificaciones.stream()
@@ -186,7 +190,7 @@ public class Muestra extends Observable{
 		
 		return frecuencias.keySet().stream().findFirst().get();
 	}
-
+*/
 	
 	
 	

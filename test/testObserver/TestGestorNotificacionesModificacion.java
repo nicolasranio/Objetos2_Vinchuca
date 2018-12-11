@@ -9,6 +9,8 @@ import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import muestra.Muestra;
 import observer.GestorNotificacionesAlta;
 import observer.GestorNotificacionesModificacion;
@@ -45,9 +47,9 @@ public class TestGestorNotificacionesModificacion {
 		when(mensajeModificacion.getMuestra()).thenReturn(muestra);
 		
 		gestorModificacion.agregarObserver(zona);
-		gestorModificacion.update(gestorModificacion, muestra);
+		gestorModificacion.update(gestorModificacion, new MensajeObserverAlta(muestra));
 		
-		verify(zona).update(isA(MensajeObserverModificacion));
+		verify(zona).update(isA(ZonaCobertura.class),isA(MensajeObserverModificacion.class));
 		
 	}
 

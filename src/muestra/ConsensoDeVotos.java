@@ -5,6 +5,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ConsensoDeVotos {
+	private static ConsensoDeVotos censista;
+	public  static ConsensoDeVotos getConsensoDeVotos() {
+		 if (censista==null) {
+			 censista = new ConsensoDeVotos();
+		 }
+		 return censista;
+	}
+	
+	public ConsensoDeVotos() {
+
+	}
+	
 
 	public TipoVinchuca getTipoVinchuca(List<VerificacionMuestra> verificaciones) {
 		if(this.verificacionesPorExpertos(verificaciones).isEmpty()) {

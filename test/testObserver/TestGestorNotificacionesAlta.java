@@ -8,7 +8,6 @@ import org.junit.Test;
 import muestra.Muestra;
 import observer.EMensajesObservables;
 import observer.GestorNotificacionesAlta;
-import observer.IGestorObserver;
 import observer.MensajeObserver;
 import observer.MensajeObserverAlta;
 import observer.MensajeObserverModificacion;
@@ -48,7 +47,7 @@ public class TestGestorNotificacionesAlta {
 		gestorAlta.agregarObserver(zona);
 		gestorAlta.update(gestorAlta, muestra);
 		
-		verify(zona).update(isA(MensajeObserverAlta));
+		verify(zona).update(isA(ZonaCobertura.class),isA(MensajeObserverAlta.class));
 		
 	}
 	
