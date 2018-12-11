@@ -138,7 +138,7 @@ public class TestMuestra {
 		muestra.verificar(verificacionB);
 		muestra.verificar(verificacionC);
 		
-		assertEquals(TipoVinchuca.Vinchuca,muestra.veredictoVerificacion());
+		assertEquals(TipoVinchuca.Vinchuca,muestra.getTipoVinchuca());
 	}
 	
 	
@@ -158,13 +158,12 @@ public class TestMuestra {
 		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
 		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
 		VerificacionMuestra verificacionD = mock(VerificacionMuestra.class);
-		ConsensoDeVotos consensoVotos = new ConsensoDeVotos();
 		
 		when(verificacion.fueRealizadaPorExperto()).thenReturn(false);
 		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Imagen_poco_clara);
-		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(true);
 		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacionC.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
 		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
 		when(verificacionD.fueRealizadaPorExperto()).thenReturn(false);
 		when(verificacionD.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
@@ -175,7 +174,7 @@ public class TestMuestra {
 		muestra.verificar(verificacionC);
 		muestra.verificar(verificacionD);
 		
-		assertEquals(TipoVinchuca.Vinchuca,consensoVotos.getTipoVinchuca(muestra.getVerificaciones()));
+		assertEquals(TipoVinchuca.Indefinido,muestra.getTipoVinchuca());
 		
 	}
 }

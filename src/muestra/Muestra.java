@@ -94,8 +94,18 @@ public class Muestra extends Observable{
 	 * 
 	 * @return El tipo de vinchuca detectado en la muestra.
 	 */
+	public TipoVinchuca getTipoVinchucaOriginal() {
+		
+		return this.tipoVinchuca;
+	}
+	
+	/**
+	 * Retorna el tipo de vinchuca detectado en la muestra.
+	 * 
+	 * @return El tipo de vinchuca detectado en la muestra.
+	 */
 	public TipoVinchuca getTipoVinchuca() {
-		return this.censista.getTipoVinchuca(this.verificaciones);
+		return this.censista.getTipoVinchuca(this);
 
 	}
 	
@@ -245,6 +255,7 @@ public class Muestra extends Observable{
 		this.setChanged();
 		this.notifyObservers(mensajeObserver);
 	}
+
 }
 
 
