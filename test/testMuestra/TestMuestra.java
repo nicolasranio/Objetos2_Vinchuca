@@ -153,4 +153,29 @@ public class TestMuestra {
 		verify(gestor).update(isA(Muestra.class),isA(MensajeObserver.class));
 	}
 	
+	@Test
+	public void consensoDeVotosDeUnaMuestra() {//solo para probar funcionalidad de consenso de votos
+		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
+		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
+		VerificacionMuestra verificacionD = mock(VerificacionMuestra.class);
+		ConsensoDeVotos consensoVotos = new ConsensoDeVotos();
+		
+		when(verificacion.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Imagen_poco_clara);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacionD.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionD.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+
+		
+		muestra.verificar(verificacion);
+		muestra.verificar(verificacionB);
+		muestra.verificar(verificacionC);
+		muestra.verificar(verificacionD);
+		
+		assertEquals(TipoVinchuca.Vinchuca,consensoVotos.getTipoVinchuca(muestra.getVerificaciones()));
+		
+	}
 }
