@@ -30,6 +30,7 @@ public class Muestra extends Observable{
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	private List<VerificacionMuestra> verificaciones;
 	private LocalDate fechaEnvio;
+	private ConsensoDeVotos consenso;
 	
 
 	/**
@@ -92,7 +93,7 @@ public class Muestra extends Observable{
 	 * @return El tipo de vinchuca detectado en la muestra.
 	 */
 	public TipoVinchuca getTipoVinchuca() {
-		return this.veredictoVerificacion();
+		return this.consenso.getTipoVinchuca(this.getVerificaciones());
 	}
 	
 
