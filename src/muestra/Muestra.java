@@ -30,7 +30,11 @@ public class Muestra extends Observable{
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	private List<VerificacionMuestra> verificaciones;
 	private LocalDate fechaEnvio;
+<<<<<<< HEAD
 	private ConsensoDeVotos censista;
+=======
+	private ConsensoDeVotos consenso;
+>>>>>>> branch 'master' of https://github.com/nicolasranio/Objetos2_Vinchuca.git
 	
 
 	/**
@@ -95,6 +99,7 @@ public class Muestra extends Observable{
 	 */
 	public TipoVinchuca getTipoVinchuca() {
 		return this.censista.getTipoVinchuca(this.verificaciones);
+
 	}
 	
 
