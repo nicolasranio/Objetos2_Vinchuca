@@ -2,18 +2,9 @@ package app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import muestra.Muestra;
-import observer.GestorNotificacionesAlta;
-import observer.GestorNotificacionesModificacion;
-import observer.MensajeObserver;
 import zonaDeCobertura.ZonaCobertura;
 
 
@@ -21,8 +12,7 @@ public class AplicacionWeb  {
 	
 	private List <Muestra> muestras;
 	private List <ZonaCobertura> zonasCobertura;
-	private GestorNotificacionesAlta gestorNotificacionesAlta;
-	private GestorNotificacionesModificacion gestorNotificacionesModificacion;
+	
 	
 	/**
 	 * Construye una aplicacion web a partir por una lista de muestra, una lista de
@@ -34,8 +24,6 @@ public class AplicacionWeb  {
 	public AplicacionWeb(){
 		this.muestras =   new ArrayList<Muestra>();
 		this.zonasCobertura = new ArrayList<ZonaCobertura>();
-		this.gestorNotificacionesAlta= GestorNotificacionesAlta.getGestorNotificaciones();
-		this.gestorNotificacionesModificacion = GestorNotificacionesModificacion.getGestorNotificaciones();
 	}
 
 
@@ -50,10 +38,19 @@ public class AplicacionWeb  {
 	
 	public void agregarMuestra(Muestra muestra) {
 		this.muestras.add(muestra);
-		muestra.addObserver(this.gestorNotificacionesAlta);
-		muestra.addObserver(this.gestorNotificacionesModificacion);
+		this.agregarZonasInteresadas(muestra);
 	}
 	
+	/**
+	 * Suscribe una muestra a todas las zonas donde esa muestra esta incluida
+	 * @param muestra
+	 */
+	private void agregarZonasInteresadas(Muestra muestra) {
+		this.zonasCobertura.stream().filter(zona -> zona.incluyeMuestra(muestra))
+									.forEach(zona -> muestra.addObserver(zona));
+	}
+
+
 	/**
 	 * Retorna una lista de todas las muestras registradas en la aplicacion web.
 	 * 
@@ -73,11 +70,19 @@ public class AplicacionWeb  {
 	 */
 	public void agregarZonaCobertura(ZonaCobertura zona) {
 		this.zonasCobertura.add(zona);
-		this.gestorNotificacionesAlta.agregarObserver(zona);
-		this.gestorNotificacionesModificacion.agregarObserver(zona);
+		this.suscribirZonaAMuestras(zona);
 	}
 
-	
+	/**
+	 * Suscribe una zona a las muestras que estan ubicadas dentro su perimetro
+	 * @param zona
+	 */
+	private void suscribirZonaAMuestras(ZonaCobertura zona) {
+		this.muestras.stream().filter(muestra -> zona.incluyeMuestra(muestra))
+							  .forEach(muestra -> muestra.addObserver(zona));		
+	}
+
+
 	/**
 	 * Retorna una lista de todas las zonas de cobertura registradas en la aplicacion web.
 	 * 

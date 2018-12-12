@@ -1,7 +1,13 @@
+/app/
+/exceptions/
 /muestra/
-/testMuestra/
-/testOrganizacion/
 /observer/
-/testObserver/
+/organizacion/
 /participante/
+/testApplicacionWeb/
+/testMuestra/
+/testObserver/
+/testOrganizacion/
 /testParticipante/
+/testZonaDeCobertura/
+/zonaDeCobertura/

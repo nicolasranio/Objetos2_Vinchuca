@@ -1,24 +1,28 @@
 package testMuestra;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import static org.mockito.Mockito.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import muestra.*;
-import observer.GestorNotificacionesAlta;
-import observer.MensajeObserver;
+import app.AplicacionWeb;
+import muestra.Muestra;
+import muestra.NivelVerificacionAlto;
+import muestra.TipoVinchuca;
+import muestra.Ubicacion;
+import muestra.VerificacionMuestra;
+import observer.MensajeObserverAlta;
 import participante.NivelConocimientoBasico;
 import participante.NivelConocimientoExperto;
 import participante.Participante;
+import zonaDeCobertura.ZonaCobertura;
 
 
 
@@ -35,6 +39,7 @@ public class TestMuestra {
 	private VerificacionMuestra verificacion;
 	private VerificacionMuestra verificacionB;
 	private VerificacionMuestra verificacionC;
+	private AplicacionWeb aplicacion;
 	
 	@Before
 	public void setUp() {
@@ -50,7 +55,7 @@ public class TestMuestra {
 		verificacion = mock(VerificacionMuestra.class);
 		verificacionB = mock(VerificacionMuestra.class);
 		verificacionC = mock(VerificacionMuestra.class);
-		
+		aplicacion = mock(AplicacionWeb.class);
 	}
 	
 	
@@ -209,13 +214,29 @@ public class TestMuestra {
 	
 	@Test 
 	public void testUnaMuestraNotificaCargaASusObservadores() {
-		GestorNotificacionesAlta gestor = mock(GestorNotificacionesAlta.class);
-		
-		muestra.addObserver(gestor);
-		muestra.informarCarga();
-		
-		verify(gestor).update(isA(Muestra.class),isA(MensajeObserver.class));
+		//mockear una zona a la cual pertenezca la muestra
+//		
+//		
+//		ZonaCobertura zona = mock(ZonaCobertura.class);
+//		when(zona.getEpicentro()).thenReturn(ubicacion);
+//		
+//		doCallRealMethod().when(aplicacion).agregarMuestra(any(isA(Muestra.class)));
+//		muestra.addObserver(zona);
+//		muestra.informarCarga();
+//		
+//		verify(zona).update(isA(Muestra.class),isA(MensajeObserverAlta.class));
 	}
+	
+	@Test
+	public void testUnaMuestraNoNotificaASusNoObservadores(){
+		
+//		ZonaCobertura zona = mock(ZonaCobertura.class);
+//		when(zona.getEpicentro()).thenReturn(ubicacion3);
+//		
+//		
+		
+	}
+	
 	
 	
 }

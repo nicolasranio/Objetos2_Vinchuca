@@ -2,6 +2,7 @@ package muestra;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ConsensoDeVotos {
@@ -26,9 +27,7 @@ public class ConsensoDeVotos {
 		if(this.verificacionesPorExpertos(muestra.getVerificaciones()).isEmpty()) {
 			return this.votacionTipoVinchuca(this.tiposVinchucaTotales(muestra.getVerificaciones()));
 		}
-		else {
-			return this.votacionTipoVinchuca(this.tiposVinchucaPorExpertos(muestra.getVerificaciones()));
-		}
+		return this.votacionTipoVinchuca(this.tiposVinchucaPorExpertos(muestra.getVerificaciones()));
 	}
 	
 	
@@ -78,16 +77,14 @@ public class ConsensoDeVotos {
 	 * La lista de vinchucas a buscar los tipos de vinchuca con mayor ocurrencia.
 	 * 
 	 * @return El tipo de vinchuca con mas ocurrencias si solo existe una,caso contrario
-	 * 			como no hay acuerdo y hay mas de una, es indifinido. 
+i	 * 			como no hay acuerdo y hay mas de una, es indifinido. 
 	 */
 	public TipoVinchuca votacionTipoVinchuca(List<TipoVinchuca> tiposVinchuca) {
 		
 		if(this.tiposDeVinchucaMasVotados(tiposVinchuca).size() == 1) {
 			return this.tipoVinchucaMayorOcurrencia(tiposVinchuca);
 		}
-		else {
-			return TipoVinchuca.Indefinido;
-		}
+		return TipoVinchuca.Indefinido;
 	}
 	
 	
@@ -116,7 +113,7 @@ public class ConsensoDeVotos {
 	 * @return El tipo de vinchuca con mas ocurrencia en una determinada lista
 	 */
 	public TipoVinchuca tipoVinchucaMayorOcurrencia(List<TipoVinchuca> tiposVinchuca){
-	    TipoVinchuca conMayorOcurrencia = tiposVinchuca.get(0);
+		TipoVinchuca conMayorOcurrencia = tiposVinchuca.get(0);
 	    for(int i=1; i<tiposVinchuca.size(); i++){
 	        if(ocurrencias(conMayorOcurrencia,tiposVinchuca)<ocurrencias(tiposVinchuca.get(i),tiposVinchuca))
 	        	conMayorOcurrencia = tiposVinchuca.get(i);
@@ -137,11 +134,13 @@ public class ConsensoDeVotos {
 	 * @return Las ocurrencias de vinchuca en determinada lista
 	 */
 	public int ocurrencias(TipoVinchuca vinchuca, List<TipoVinchuca> tiposVinchuca){
-	    int cuantos = 0;//contador, neutro del +
-	    for(int i=0; i<tiposVinchuca.size(); i++){
-	         if(vinchuca == tiposVinchuca.get(i))   //si vinchuca es igual al elemento i
-	            cuantos++;    //el contador incrementa en 1.
-	    }
-	    return cuantos;//devuelve al contador.
+		return tiposVinchuca.stream().filter(tipo -> tipo.equals(vinchuca)).collect(Collectors.toList()).size();
+		
+//	    int cuantos = 0;//contador, neutro del +
+//	    for(int i=0; i<tiposVinchuca.size(); i++){
+//	         if(vinchuca == tiposVinchuca.get(i))   //si vinchuca es igual al elemento i
+//	            cuantos++;    //el contador incrementa en 1.
+//	    }
+//	    return cuantos;//devuelve al contador.
 	}
 }

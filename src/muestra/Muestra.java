@@ -7,16 +7,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import com.sun.prism.impl.BaseMesh.FaceMembers;
 
 import observer.EMensajesObservables;
 import observer.FactoryMensajes;
 import observer.MensajeObserver;
-import observer.MensajeObserverAlta;
-import observer.MensajeObserverModificacion;
 import participante.Participante;
 
 public class Muestra extends Observable{
