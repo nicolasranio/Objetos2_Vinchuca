@@ -82,8 +82,8 @@ public class VerificacionMuestra {
 	}
 
 	public boolean fueRealizadaPorExperto() {
-		// TODO Auto-generated method stub
-		return this.getParticipante().getNivel() instanceof NivelConocimientoExperto;
+		
+		return this.getParticipante().getNivel().esDefinitorio();
 	}
 	
 }

@@ -19,7 +19,7 @@ import participante.NivelConocimientoExperto;
 import participante.Participante;
 
 public class TestConocimientoBasico {
-	private NivelConocimientoBasico rookie;
+	private NivelConocimientoBasico basico;
 	private Participante participante;
 	private List<Muestra> mockList;
 
@@ -28,7 +28,13 @@ public class TestConocimientoBasico {
 	public void setUp() throws Exception {
 		mockList = mock(ArrayList.class);
 		participante = mock(Participante.class);
-		rookie = new NivelConocimientoBasico();
+		basico = new NivelConocimientoBasico();
 	}
 	
+	@Test
+	public void testNivelConocimientoBasicoDevuelveFalsoCuandoLeConsultanEsDefinitorio() {
+		
+		assertEquals(basico.esDefinitorio(),false);
+	}
+
 }	

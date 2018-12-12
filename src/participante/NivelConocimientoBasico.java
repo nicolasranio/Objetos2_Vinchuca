@@ -9,4 +9,9 @@ public class NivelConocimientoBasico extends INivelConocimiento {
 		//no hace nada
 	}
 
+	@Override
+	public boolean esDefinitorio() {
+		return false;
+	}
+
 }

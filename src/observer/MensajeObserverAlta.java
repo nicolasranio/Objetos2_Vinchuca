@@ -12,7 +12,7 @@ public class MensajeObserverAlta extends MensajeObserver {
 
 	@Override
 	public void ejecutarFuncionalidad(ZonaCobertura zona, Organizacion organizacion) {
-		organizacion.ejecucionFuncionalidadTrasCarga(zona, this.muestra);
+		organizacion.ejecucionFuncionalidadTrasCarga(zona, this.getMuestra());
 		
 	}
 

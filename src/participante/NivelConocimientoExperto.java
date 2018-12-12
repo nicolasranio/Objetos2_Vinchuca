@@ -11,6 +11,11 @@ public class NivelConocimientoExperto extends INivelConocimiento {
 	@Override
 	public void verificarMuestra(Muestra muestra) {
 		muestra.setNivelVerificacion(new NivelVerificacionAlto(muestra));
+	}
+
+	@Override
+	public boolean esDefinitorio() {
+		return true;
 	}	
 
 }

@@ -11,6 +11,8 @@ import muestra.Muestra;
 import muestra.Ubicacion;
 import observer.EMensajesObservables;
 import observer.MensajeObserver;
+import observer.MensajeObserverAlta;
+import observer.MensajeObserverModificacion;
 import organizacion.*;
 import zonaDeCobertura.ZonaCobertura;
 
@@ -23,7 +25,8 @@ public class TestOrganizacion {
 	private FuncionalidadExterna funcionalidadCarga;
 	private FuncionalidadExterna funcionalidadVerificacion;
 	
-	private MensajeObserver mensaje;
+	private MensajeObserverAlta mensajeAlta;
+	private MensajeObserverModificacion mensajeModificacion;
 	private Muestra muestra;
 	private ZonaCobertura zona;
 	
@@ -38,7 +41,8 @@ public class TestOrganizacion {
 		
 		organizacion = new Organizacion(ubicacion,tipoOrganizacion,trabajadores,funcionalidadCarga,funcionalidadVerificacion);
 		
-		mensaje = mock(MensajeObserver.class);
+		mensajeAlta = mock(MensajeObserverAlta.class);
+		mensajeModificacion = mock(MensajeObserverModificacion.class);
 		muestra = mock(Muestra.class);
 		zona = mock(ZonaCobertura.class);
 	
@@ -47,24 +51,28 @@ public class TestOrganizacion {
 	@Test
 	public void testSeEjecutaElUpdateDeOrganizacionCuandoSeCargaUnaMuestra() {
 		
-		when(mensaje.getMensaje()).thenReturn(EMensajesObservables.Alta);
-		when(mensaje.getMuestra()).thenReturn(muestra);
+		
+		when(mensajeAlta.getMuestra()).thenReturn(muestra);
+		doCallRealMethod().when(mensajeAlta).ejecutarFuncionalidad(zona, organizacion);
 		
 		organizacion.setFuncionalidadCarga(funcionalidadCarga);
-		organizacion.update(zona, mensaje);
+		organizacion.update(zona, mensajeAlta);
 		
+		verify(mensajeAlta).ejecutarFuncionalidad(zona, organizacion);
 		verify(funcionalidadCarga).nuevoEvento(organizacion, zona, muestra);
 	}
 	
 	@Test
 	public void testSeEjecutaElUpdateDeOrganizacionCuandoSeVerificaUnaMuestra() {
 		
-		when(mensaje.getMensaje()).thenReturn(EMensajesObservables.Modificacion);
-		when(mensaje.getMuestra()).thenReturn(muestra);
+		
+		when(mensajeModificacion.getMuestra()).thenReturn(muestra);
+		doCallRealMethod().when(mensajeModificacion).ejecutarFuncionalidad(any(ZonaCobertura.class), any(Organizacion.class));
 		
 		organizacion.setFuncionalidadValidacion(funcionalidadVerificacion);
-		organizacion.update(zona, mensaje);
+		organizacion.update(zona, mensajeModificacion);
 		
+		verify(mensajeModificacion).ejecutarFuncionalidad(zona, organizacion);
 		verify(funcionalidadVerificacion).nuevoEvento(organizacion, zona, muestra);
 	}
 	

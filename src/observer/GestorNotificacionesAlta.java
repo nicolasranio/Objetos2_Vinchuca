@@ -37,7 +37,8 @@ public class GestorNotificacionesAlta extends Observable implements Observer {
 	@Override
 	public void update(Observable o, Object obj) {
 		MensajeObserver mensaje = (MensajeObserver) obj;
-		if (mensaje.getClass().equals(MensajeObserverAlta.class)){
+		if (mensaje instanceof MensajeObserverAlta){
+			this.setChanged();
 			this.notifyObservers(obj);
 		}
 	}

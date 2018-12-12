@@ -29,5 +29,12 @@ public class TestConocimientoExperto {
 		
 		verify(muestra).setNivelVerificacion(isA(NivelVerificacionAlto.class));
 	}
+	
+	@Test
+	public void testNivelConocimientoExpertoDevuelveVerdaderoCuandoLeConsultanEsDefinitorio() {
+		
+		assertEquals(experto.esDefinitorio(),true);
+	}
+
 
 }

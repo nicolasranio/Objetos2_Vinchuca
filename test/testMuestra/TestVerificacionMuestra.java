@@ -36,5 +36,11 @@ public class TestVerificacionMuestra {
 		assert(verificacion.getTipoVinchuca().equals(TipoVinchuca.Imagen_poco_clara));
 		assert(verificacion.getFechaVerificacion().isEqual(LocalDate.now()));
 	}
+	
+	@Test
+	public void testFechaDeVerificacionEsMenorA31Dias(){
+
+		assertTrue(verificacion.esMenorAXDias(31));
+	}
 
 }

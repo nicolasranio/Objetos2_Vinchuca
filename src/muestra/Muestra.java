@@ -23,10 +23,9 @@ public class Muestra extends Observable{
 
 	//observable por Gestor de notificaciones
 	
-	private TipoVinchuca tipoVinchuca;
 	private String fotoVinchuca;  //url de la imagen
 	private Ubicacion ubicacion;
-	private String aliasRecolector;
+	private Participante participanteRecolector;
 	private INivelVerificacion nivelVerificacion;  //Patron state
 	private List<VerificacionMuestra> verificaciones;
 	private LocalDate fechaEnvio;
@@ -47,16 +46,16 @@ public class Muestra extends Observable{
 	 * Es es alias de quien recolecto la muestra.
 	 * 
 	 */
-	public Muestra(TipoVinchuca tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion, String alias){
+	public Muestra(TipoVinchuca tipoVinchuca, String fotoVinchuca, Ubicacion ubicacion,Participante recolector){
 		super();
-		this.tipoVinchuca=tipoVinchuca;
 		this.fotoVinchuca= fotoVinchuca;
 		this.ubicacion= ubicacion;
-		this.aliasRecolector=alias;
+		this.participanteRecolector=recolector;
 		this.nivelVerificacion= new NivelVerificacionBajo(this); 
 		this.verificaciones= new ArrayList<VerificacionMuestra>();
 		this.fechaEnvio=LocalDate.now(); //fecha actual
 		this.censista = new ConsensoDeVotos();
+		this.verificar(new VerificacionMuestra(this,recolector,tipoVinchuca));
 	}
 	
 	
@@ -89,15 +88,7 @@ public class Muestra extends Observable{
 		return this.ubicacion;
 	}
 	
-	/**
-	 * Retorna el tipo de vinchuca detectado en la muestra.
-	 * 
-	 * @return El tipo de vinchuca detectado en la muestra.
-	 */
-	public TipoVinchuca getTipoVinchucaOriginal() {
-		
-		return this.tipoVinchuca;
-	}
+	
 	
 	/**
 	 * Retorna el tipo de vinchuca detectado en la muestra.

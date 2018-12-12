@@ -16,6 +16,8 @@ import org.junit.Test;
 import muestra.*;
 import observer.GestorNotificacionesAlta;
 import observer.MensajeObserver;
+import participante.NivelConocimientoBasico;
+import participante.NivelConocimientoExperto;
 import participante.Participante;
 
 
@@ -27,31 +29,29 @@ public class TestMuestra {
 	private Muestra muestraC;
 	private Ubicacion ubicacion;
 	private Ubicacion ubicacionB;
+	private Participante recolector;
+	private NivelConocimientoExperto experto;
+	private NivelConocimientoBasico basico;
 	private VerificacionMuestra verificacion;
+	private VerificacionMuestra verificacionB;
+	private VerificacionMuestra verificacionC;
 	
 	@Before
 	public void setUp() {
 		
 		ubicacion = mock(Ubicacion.class);
 		ubicacionB = mock(Ubicacion.class);
-		muestra = new Muestra(TipoVinchuca.Chinche_Foliada,"foto",ubicacion,"Rogelio");
-		muestraB = new Muestra(TipoVinchuca.Imagen_poco_clara,"foto2",ubicacionB,"Fort");
-		muestraC = new Muestra(TipoVinchuca.Ninguna,"foto3",ubicacion,"Comandante");
+		recolector = mock(Participante.class);
+		experto = mock(NivelConocimientoExperto.class);
+		basico = mock(NivelConocimientoBasico.class);
+		muestra = new Muestra(TipoVinchuca.Chinche_Foliada,"foto",ubicacion,recolector);
+		muestraB = new Muestra(TipoVinchuca.Imagen_poco_clara,"foto2",ubicacionB,recolector);
+		muestraC = new Muestra(TipoVinchuca.Vinchuca,"foto3",ubicacion,recolector);
 		verificacion = mock(VerificacionMuestra.class);
+		verificacionB = mock(VerificacionMuestra.class);
+		verificacionC = mock(VerificacionMuestra.class);
 		
 	}
-	
-	/*@Test
-	public void testConstructorDeMuestraYGetters() {
-		
-		
-		assertTrue(muestra.getTipoVinchuca().equals(TipoVinchuca.Chinche_Foliada));
-		assertTrue(muestra.getFotoVinchuca().equals("foto"));
-		assertTrue(muestra.getUbicacion().equals(ubicacion));
-		assertTrue(muestra.getAliasRecolector().equals("Rogelio"));
-		assertTrue(muestra.getNivelVerificacion() instanceof NivelVerificacionBajo);
-	}*/
-	
 	
 	
 	@Test
@@ -110,9 +110,6 @@ public class TestMuestra {
 	@Test
 	public void testMaximaCantidadDeValidacionesCoincidentesDeUnaMuestra() {
 		
-		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
-		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
-		
 		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
 		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
 		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
@@ -125,22 +122,89 @@ public class TestMuestra {
 	}
 
 	@Test
-	public void testVeredictosDeUnaMuestra() {
+	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaIndefinidaCuandoLaEnviaUnBasicoYLaVerificanBasicos() {
 		
-		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
-		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
+		when(recolector.getNivel()).thenReturn(basico);
+		when(experto.esDefinitorio()).thenReturn(false);
 		
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacion.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(false);
 		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		
 		
 		muestra.verificar(verificacion);
 		muestra.verificar(verificacionB);
 		muestra.verificar(verificacionC);
 		
-		assertEquals(TipoVinchuca.Vinchuca,muestra.getTipoVinchuca());
+		assertEquals(TipoVinchuca.Indefinido,muestra.getTipoVinchuca());
+		
 	}
 	
+	@Test
+	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaCuandoLaEnviaUnBasicoYLaVerificanExpertos() {
+		
+		when(recolector.getNivel()).thenReturn(basico);
+		when(experto.esDefinitorio()).thenReturn(false);
+		
+		when(verificacion.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
+		
+		muestraB.verificar(verificacion);
+		muestraB.verificar(verificacionB);
+		muestraB.verificar(verificacionC);
+		
+		assertEquals(TipoVinchuca.Vinchuca,muestraB.getTipoVinchuca());
+		
+	}
+	
+	@Test
+	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaCuandoLaEnviaUnExpertoYLaVerificanBasicos() {
+		
+		when(recolector.getNivel()).thenReturn(experto);
+		when(experto.esDefinitorio()).thenReturn(true);
+		
+		when(verificacion.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Ninguna);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Ninguna);
+		
+		muestraC.verificar(verificacion);
+		muestraC.verificar(verificacionB);
+		muestraC.verificar(verificacionC);
+		
+		assertEquals(TipoVinchuca.Vinchuca,muestraC.getTipoVinchuca());
+		
+	}
+	
+	@Test
+	public void consensoDeVotosDeUnaMuestraDeterminaCuandoLaEnviaUnExpertoYLaVerificaUnBasicoConDosExpertos() {
+		
+		when(recolector.getNivel()).thenReturn(experto);
+		when(experto.esDefinitorio()).thenReturn(true);
+		
+		when(verificacion.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Phtia_Chinche);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Phtia_Chinche);
+		
+		muestraC.verificar(verificacion);
+		muestraC.verificar(verificacionB);
+		muestraC.verificar(verificacionC);
+		
+		assertEquals(TipoVinchuca.Phtia_Chinche,muestraC.getTipoVinchuca());
+		
+	}
 	
 	
 	@Test 
@@ -153,28 +217,5 @@ public class TestMuestra {
 		verify(gestor).update(isA(Muestra.class),isA(MensajeObserver.class));
 	}
 	
-	@Test
-	public void consensoDeVotosDeUnaMuestra() {//solo para probar funcionalidad de consenso de votos
-		VerificacionMuestra verificacionB = mock(VerificacionMuestra.class);
-		VerificacionMuestra verificacionC = mock(VerificacionMuestra.class);
-		VerificacionMuestra verificacionD = mock(VerificacionMuestra.class);
-		
-		when(verificacion.fueRealizadaPorExperto()).thenReturn(false);
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Imagen_poco_clara);
-		when(verificacionB.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-		when(verificacionD.fueRealizadaPorExperto()).thenReturn(false);
-		when(verificacionD.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-
-		
-		muestra.verificar(verificacion);
-		muestra.verificar(verificacionB);
-		muestra.verificar(verificacionC);
-		muestra.verificar(verificacionD);
-		
-		assertEquals(TipoVinchuca.Indefinido,muestra.getTipoVinchuca());
-		
-	}
+	
 }

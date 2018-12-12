@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import app.AplicacionWeb;
 import muestra.Muestra;
+import muestra.Ubicacion;
 import observer.EMensajesObservables;
 import observer.GestorNotificacionesAlta;
 import observer.MensajeObserver;
@@ -21,7 +23,7 @@ public class TestGestorNotificacionesAlta {
 	
 	private GestorNotificacionesAlta gestorAlta;
 	private ZonaCobertura zona;
-	private MensajeObserver mensajeAlta;
+	private MensajeObserverAlta mensajeAlta;
 	private Muestra muestra;
 	
 	@Before
@@ -42,12 +44,13 @@ public class TestGestorNotificacionesAlta {
 	
 	@Test
 	public void testSeRealizaUpdateConMensajeDeAltaYEnviaNotificacionAObservadores(){
+		
 		when(mensajeAlta.getMuestra()).thenReturn(muestra);
 		
 		gestorAlta.agregarObserver(zona);
-		gestorAlta.update(gestorAlta, muestra);
+		gestorAlta.update(muestra, mensajeAlta);
 		
-		verify(zona).update(isA(ZonaCobertura.class),isA(MensajeObserverAlta.class));
+		verify(zona).update(isA(GestorNotificacionesAlta.class),isA(MensajeObserverAlta.class));
 		
 	}
 	

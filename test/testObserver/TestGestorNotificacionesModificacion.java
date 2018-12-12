@@ -44,12 +44,13 @@ public class TestGestorNotificacionesModificacion {
 	
 	@Test
 	public void testSeRealizaUpdateConMensajeDeModificacionYEnviaNotificacionAObservadores(){
+		
 		when(mensajeModificacion.getMuestra()).thenReturn(muestra);
 		
 		gestorModificacion.agregarObserver(zona);
-		gestorModificacion.update(gestorModificacion, new MensajeObserverAlta(muestra));
+		gestorModificacion.update(muestra, mensajeModificacion);
 		
-		verify(zona).update(isA(ZonaCobertura.class),isA(MensajeObserverModificacion.class));
+		verify(zona).update(isA(GestorNotificacionesModificacion.class),isA(MensajeObserverModificacion.class));
 		
 	}
 
