@@ -6,8 +6,19 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ConsensoDeVotos {
+		private static ConsensoDeVotos censista;
+		
+	public  static ConsensoDeVotos getConsensoDeVotos() {
+		 if (censista==null) {
+			 censista = new ConsensoDeVotos();
+		 }
+		 return censista;
+	}
+		
+	public ConsensoDeVotos() {
 
-	
+	}
+
 	
 	/**
 	 * Retorna el tipo de vinchuca mas votada de una muestra determinados por participantes 
