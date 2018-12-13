@@ -1,5 +1,6 @@
 package muestra;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collector;
@@ -35,9 +36,22 @@ public class ConsensoDeVotos {
 		
 		//List<VerificacionMuestra> verificaciones = muestra.getVerificaciones();
 		//verificaciones.add(new VerificacionMuestra(muestra,muestra.getRecolector(),muestra.getTipoVinchucaOriginal()));
-		if(this.verificacionesPorExpertos(muestra.getVerificaciones()).isEmpty()) {
-			return this.votacionTipoVinchuca(this.tiposVinchucaTotales(muestra.getVerificaciones()));
+		if(noFueVerificadoPorExpertos(muestra)) {
+			return this.veredictoParticipantesBasicoDe(muestra);
 		}
+		return veredictoParticipantesExpertosDe(muestra);
+	}
+
+	
+	private boolean noFueVerificadoPorExpertos(Muestra muestra) {
+		return this.verificacionesPorExpertos(muestra.getVerificaciones()).isEmpty();
+	}
+	
+	private TipoVinchuca veredictoParticipantesBasicoDe(Muestra muestra) {
+		return this.votacionTipoVinchuca(this.tiposVinchucaTotales(muestra.getVerificaciones()));
+	}
+	
+	private TipoVinchuca veredictoParticipantesExpertosDe(Muestra muestra) {
 		return this.votacionTipoVinchuca(this.tiposVinchucaPorExpertos(muestra.getVerificaciones()));
 	}
 	
@@ -50,8 +64,10 @@ public class ConsensoDeVotos {
 	 * 
 	 * @return La lista de todos los tipos de vinchuca de verificaciones realizadas por expertos
 	 */
-	public List<TipoVinchuca> tiposVinchucaPorExpertos(List<VerificacionMuestra> verificaciones){
-		return this.verificacionesPorExpertos(verificaciones).stream().map(ver -> ver.getTipoVinchuca()).collect(Collectors.toList());
+	private List<TipoVinchuca> tiposVinchucaPorExpertos(List<VerificacionMuestra> verificaciones){
+		return this.verificacionesPorExpertos(verificaciones).stream()
+															.map(ver -> ver.getTipoVinchuca())
+															.collect(Collectors.toList());
 	}
 	
 	/**
@@ -63,7 +79,7 @@ public class ConsensoDeVotos {
 	 * 
 	 * @return La lista de verificaciones realizadas por participantes expertos 
 	 */
-	public List<VerificacionMuestra> verificacionesPorExpertos(List<VerificacionMuestra> verificaciones) {
+	private List<VerificacionMuestra> verificacionesPorExpertos(List<VerificacionMuestra> verificaciones) {
 		return verificaciones.stream().filter(ver -> ver.fueRealizadaPorExperto()).collect(Collectors.toList());
 	}
 	
@@ -75,7 +91,7 @@ public class ConsensoDeVotos {
 	 * 
 	 * @return La lista de todos los tipos de vinchuca
 	 */
-	public List<TipoVinchuca> tiposVinchucaTotales(List<VerificacionMuestra> verificaciones){
+	private List<TipoVinchuca> tiposVinchucaTotales(List<VerificacionMuestra> verificaciones){
 		return verificaciones.stream().map(ver -> ver.getTipoVinchuca()).collect(Collectors.toList());
 	}
 	
@@ -90,7 +106,7 @@ public class ConsensoDeVotos {
 	 * @return El tipo de vinchuca con mas ocurrencias si solo existe una,caso contrario
 i	 * 			como no hay acuerdo y hay mas de una, es indifinido. 
 	 */
-	public TipoVinchuca votacionTipoVinchuca(List<TipoVinchuca> tiposVinchuca) {
+	private TipoVinchuca votacionTipoVinchuca(List<TipoVinchuca> tiposVinchuca) {
 		
 		if(this.tiposDeVinchucaMasVotados(tiposVinchuca).size() == 1) {
 			return this.tipoVinchucaMayorOcurrencia(tiposVinchuca);
@@ -107,11 +123,11 @@ i	 * 			como no hay acuerdo y hay mas de una, es indifinido.
 	 * 
 	 * @return El conjunto de los tipos de vinchuca con mas ocurrencia. 
 	 */
-	public Set<TipoVinchuca> tiposDeVinchucaMasVotados(List<TipoVinchuca> tiposVinchuca){
+	private Set<TipoVinchuca> tiposDeVinchucaMasVotados(List<TipoVinchuca> tiposVinchuca){
 		return tiposVinchuca.stream()
-				.filter(vinchuca -> this.ocurrencias(this.tipoVinchucaMayorOcurrencia(tiposVinchuca), tiposVinchuca) 
-																					== this.ocurrencias(vinchuca, tiposVinchuca))
-				.collect(Collectors.toSet());
+							.filter(vinchuca -> this.ocurrencias(this.tipoVinchucaMayorOcurrencia(tiposVinchuca), tiposVinchuca)
+									== this.ocurrencias(vinchuca, tiposVinchuca))
+							.collect(Collectors.toSet());
 	}
 	
 	
@@ -123,12 +139,13 @@ i	 * 			como no hay acuerdo y hay mas de una, es indifinido.
 	 * 
 	 * @return El tipo de vinchuca con mas ocurrencia en una determinada lista
 	 */
-	public TipoVinchuca tipoVinchucaMayorOcurrencia(List<TipoVinchuca> tiposVinchuca){
+	private TipoVinchuca tipoVinchucaMayorOcurrencia(List<TipoVinchuca> tiposVinchuca){
 		TipoVinchuca conMayorOcurrencia = tiposVinchuca.get(0);
-	    for(int i=1; i<tiposVinchuca.size(); i++){
-	        if(ocurrencias(conMayorOcurrencia,tiposVinchuca)<ocurrencias(tiposVinchuca.get(i),tiposVinchuca))
-	        	conMayorOcurrencia = tiposVinchuca.get(i);
+	    for(TipoVinchuca x:tiposVinchuca){
+	        if(ocurrencias(conMayorOcurrencia,tiposVinchuca)<ocurrencias(x,tiposVinchuca))
+	        	conMayorOcurrencia = x;
 	    }
+	    
 	    return conMayorOcurrencia;
 	}
 	
@@ -144,7 +161,7 @@ i	 * 			como no hay acuerdo y hay mas de una, es indifinido.
 	 * 
 	 * @return Las ocurrencias de vinchuca en determinada lista
 	 */
-	public int ocurrencias(TipoVinchuca vinchuca, List<TipoVinchuca> tiposVinchuca){
+	private int ocurrencias(TipoVinchuca vinchuca, List<TipoVinchuca> tiposVinchuca){
 		return tiposVinchuca.stream().filter(tipo -> tipo.equals(vinchuca)).collect(Collectors.toList()).size();
 		
 //	    int cuantos = 0;//contador, neutro del +
