@@ -102,6 +102,21 @@ public class TestConsensoDeVotos {
 	}
 	
 	@Test
+	public void consensoDeVotosDeUnaMuestraDeterminaPhtia_ChincheCuandoLaEnviaUnExpertoYLaVerificaUnBasicoConDosExpertos() {
+		ls.add(verificacionC);		
+		when(verificacion.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Ninguna);
+		when(verificacionB.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Phtia_Chinche);
+		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
+		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Phtia_Chinche);
+		when(muestra.getVerificaciones()).thenReturn(ls);
+		
+		assertEquals(TipoVinchuca.Phtia_Chinche,censista.getTipoVinchuca(muestra));
+		
+	}	
+	
+	@Test
 	public void consensoDeVotosDeUnaMuestraDeterminaCuandoLaEnviaUnExpertoYLaVerificaUnBasicoConDosExpertos() {
 		ls.add(verificacionC);		
 		when(verificacion.fueRealizadaPorExperto()).thenReturn(true);

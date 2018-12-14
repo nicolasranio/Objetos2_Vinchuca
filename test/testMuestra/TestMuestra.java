@@ -2,6 +2,7 @@ package testMuestra;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import static org.mockito.Mockito.*;
@@ -112,6 +113,12 @@ public class TestMuestra {
 	public void testFechaDeEnvioDeMuestraEsMenorA31Dias(){
 
 		assertTrue(muestra.esMenorAXDias(31));
+	}
+	
+	@Test
+	public void testFechaDeEnvioDeMuestraNoEsMenorA0Dias(){
+
+		assertFalse(muestra.esMenorAXDias(0));
 	}
 	
 	@Test

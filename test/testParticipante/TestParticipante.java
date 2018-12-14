@@ -35,6 +35,7 @@ public class TestParticipante {
 	private List<Muestra> mockList;
 	private List<VerificacionMuestra> mockList2;
 	private Participante participanteSpy;
+	private VerificacionMuestra verificacion;
 
 	@Before
 	public void setUp() throws Exception {
@@ -48,6 +49,7 @@ public class TestParticipante {
 		validacion = TipoVinchuca.Chinche_Foliada;
 		mockList = mock(List.class);
 		mockList2 = mock(List.class);
+		verificacion = mock(VerificacionMuestra.class);
 			
 	}
 	
@@ -68,6 +70,16 @@ public class TestParticipante {
 		assertTrue(participanteSpy.getNivel() instanceof NivelConocimientoExperto);		
 	}
 	
+	@Test
+	public void testParticipanteBasicoVerificaConocimientoYEsteNocambia() {
+		when(mockList.size()).thenReturn(30);
+		when(mockList2.size()).thenReturn(5);
+		when(participanteSpy.getMuestrasEnviadasUltimoMes()).thenReturn(mockList);
+		when(participanteSpy.getMuestrasVerificadasUltimoMes()).thenReturn(mockList2);
+		participanteSpy.verificarConocimiento();
+		assertTrue(participanteSpy.getNivel() instanceof NivelConocimientoBasico);		
+	}
+
 	
 	@Test
 	public void testParticipanteEnviaMuestraAAplicacionYSumaUnaMuestraEnviada() {
@@ -85,7 +97,10 @@ public class TestParticipante {
 		
 		participante.enviarMuestra(muestra, aplicacion);		
 		participante.verificarMuestra(muestra, validacion);
+		
 	}
+	
+	
 	
 	
 	
@@ -112,16 +127,12 @@ public class TestParticipante {
 	}
 	
 	@Test
-	public void testParticipanteMuestrasEnviadasUltimoMes(){
+	public void testParticipanteNoTieneMuestrasEnviadasUltimoMes(){
 		
 		when(muestra.esMenorAXDias(31)).thenReturn(false);
 		participante.enviarMuestra(muestra, aplicacion);
-		Muestra muestra2 = mock(Muestra.class);
-		when(muestra2.esMenorAXDias(31)).thenReturn(true);
-		participante.enviarMuestra(muestra2, aplicacion);
-		assertEquals(1, participante.getMuestrasEnviadasUltimoMes().size());
-		assertEquals(muestra2,participante.getMuestrasEnviadasUltimoMes().get(0));
+		
+		assertTrue(participante.getMuestrasEnviadasUltimoMes().isEmpty());
 	}
-	
 
 }

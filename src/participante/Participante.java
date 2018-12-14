@@ -82,9 +82,10 @@ public class Participante {
 		if (this.condicionAVerificar()){
 			this.nivelConocimiento = new NivelConocimientoExperto();
 		}
-		else {
+		else{
 			this.nivelConocimiento = new NivelConocimientoBasico();
 		}
+		
 	}
 	/**
 	 * Condición por la que un participante cambiaría su nivelDeConociemiento
