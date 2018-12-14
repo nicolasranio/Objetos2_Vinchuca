@@ -51,7 +51,7 @@ public class Muestra extends Observable{
 		this.nivelVerificacion= new NivelVerificacionBajo(this); 
 		this.verificaciones= new ArrayList<VerificacionMuestra>();
 		this.fechaEnvio=LocalDate.now(); //fecha actual
-		this.censista = new ConsensoDeVotos();
+		this.censista = ConsensoDeVotos.getConsensoDeVotos();
 		this.verificar(new VerificacionMuestra(this,recolector,tipoVinchuca));
 	}
 	

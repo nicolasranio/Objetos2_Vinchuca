@@ -12,12 +12,15 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import app.AplicacionWeb;
 import muestra.Muestra;
 import muestra.NivelVerificacionAlto;
 import muestra.TipoVinchuca;
 import muestra.Ubicacion;
 import muestra.VerificacionMuestra;
+import observer.EMensajesObservables;
+import observer.FactoryMensajes;
 import observer.MensajeObserverAlta;
 import participante.NivelConocimientoBasico;
 import participante.NivelConocimientoExperto;
@@ -34,28 +37,25 @@ public class TestMuestra {
 	private Ubicacion ubicacion;
 	private Ubicacion ubicacionB;
 	private Participante recolector;
-	private NivelConocimientoExperto experto;
-	private NivelConocimientoBasico basico;
 	private VerificacionMuestra verificacion;
 	private VerificacionMuestra verificacionB;
 	private VerificacionMuestra verificacionC;
-	private AplicacionWeb aplicacion;
-	
+	private ZonaCobertura zona;
+
 	@Before
 	public void setUp() {
 		
 		ubicacion = mock(Ubicacion.class);
 		ubicacionB = mock(Ubicacion.class);
 		recolector = mock(Participante.class);
-		experto = mock(NivelConocimientoExperto.class);
-		basico = mock(NivelConocimientoBasico.class);
 		muestra = new Muestra(TipoVinchuca.Chinche_Foliada,"foto",ubicacion,recolector);
 		muestraB = new Muestra(TipoVinchuca.Imagen_poco_clara,"foto2",ubicacionB,recolector);
 		muestraC = new Muestra(TipoVinchuca.Vinchuca,"foto3",ubicacion,recolector);
 		verificacion = mock(VerificacionMuestra.class);
 		verificacionB = mock(VerificacionMuestra.class);
 		verificacionC = mock(VerificacionMuestra.class);
-		aplicacion = mock(AplicacionWeb.class);
+		zona = mock(ZonaCobertura.class);
+
 	}
 	
 	
@@ -125,52 +125,21 @@ public class TestMuestra {
 		
 		assertEquals(2,muestra.verificacionesValidas());
 	}
-
-	@Test
-	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaIndefinidaCuandoLaEnviaUnBasicoYLaVerificanBasicos() {
-		
-		when(recolector.getNivel()).thenReturn(basico);
-		when(experto.esDefinitorio()).thenReturn(false);
-		
-		when(verificacion.fueRealizadaPorExperto()).thenReturn(false);
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
-		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacionC.fueRealizadaPorExperto()).thenReturn(false);
-		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-		
-		
-		muestra.verificar(verificacion);
-		muestra.verificar(verificacionB);
-		muestra.verificar(verificacionC);
-		
-		assertEquals(TipoVinchuca.Indefinido,muestra.getTipoVinchuca());
-		
-	}
 	
 	@Test
-	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaCuandoLaEnviaUnBasicoYLaVerificanExpertos() {
+	public void MuestraInformaSuCargaYsusObservadoresRealizanAccion(){
+		muestra.addObserver(zona);
+		muestra.informarCarga();
 		
-		when(recolector.getNivel()).thenReturn(basico);
-		when(experto.esDefinitorio()).thenReturn(false);
-		
-		when(verificacion.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-		when(verificacionB.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Vinchuca);
-		
-		muestraB.verificar(verificacion);
-		muestraB.verificar(verificacionB);
-		muestraB.verificar(verificacionC);
-		
-		assertEquals(TipoVinchuca.Vinchuca,muestraB.getTipoVinchuca());
-		
+		verify(zona).update(isA(Muestra.class), isA(MensajeObserverAlta.class));
 	}
-	
 	@Test
 	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaCuandoLaEnviaUnExpertoYLaVerificanBasicos() {
+	
+		NivelConocimientoExperto experto;
+		NivelConocimientoBasico basico;
+		experto = mock(NivelConocimientoExperto.class);
+		basico = mock(NivelConocimientoBasico.class);
 		
 		when(recolector.getNivel()).thenReturn(experto);
 		when(experto.esDefinitorio()).thenReturn(true);
@@ -189,54 +158,4 @@ public class TestMuestra {
 		assertEquals(TipoVinchuca.Vinchuca,muestraC.getTipoVinchuca());
 		
 	}
-	
-	@Test
-	public void consensoDeVotosDeUnaMuestraDeterminaCuandoLaEnviaUnExpertoYLaVerificaUnBasicoConDosExpertos() {
-		
-		when(recolector.getNivel()).thenReturn(experto);
-		when(experto.esDefinitorio()).thenReturn(true);
-		
-		when(verificacion.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacion.getTipoVinchuca()).thenReturn(TipoVinchuca.Phtia_Chinche);
-		when(verificacionB.fueRealizadaPorExperto()).thenReturn(false);
-		when(verificacionB.getTipoVinchuca()).thenReturn(TipoVinchuca.Chinche_Foliada);
-		when(verificacionC.fueRealizadaPorExperto()).thenReturn(true);
-		when(verificacionC.getTipoVinchuca()).thenReturn(TipoVinchuca.Phtia_Chinche);
-		
-		muestraC.verificar(verificacion);
-		muestraC.verificar(verificacionB);
-		muestraC.verificar(verificacionC);
-		
-		assertEquals(TipoVinchuca.Phtia_Chinche,muestraC.getTipoVinchuca());
-		
-	}
-	
-	
-	@Test 
-	public void testUnaMuestraNotificaCargaASusObservadores() {
-		//mockear una zona a la cual pertenezca la muestra
-//		
-//		
-//		ZonaCobertura zona = mock(ZonaCobertura.class);
-//		when(zona.getEpicentro()).thenReturn(ubicacion);
-//		
-//		doCallRealMethod().when(aplicacion).agregarMuestra(any(isA(Muestra.class)));
-//		muestra.addObserver(zona);
-//		muestra.informarCarga();
-//		
-//		verify(zona).update(isA(Muestra.class),isA(MensajeObserverAlta.class));
-	}
-	
-	@Test
-	public void testUnaMuestraNoNotificaASusNoObservadores(){
-		
-//		ZonaCobertura zona = mock(ZonaCobertura.class);
-//		when(zona.getEpicentro()).thenReturn(ubicacion3);
-//		
-//		
-		
-	}
-	
-	
-	
 }
