@@ -14,6 +14,7 @@ import org.junit.Test;
 
 
 import app.AplicacionWeb;
+import muestra.ConsensoDeVotos;
 import muestra.Muestra;
 import muestra.NivelVerificacionAlto;
 import muestra.TipoVinchuca;
@@ -55,6 +56,7 @@ public class TestMuestra {
 		verificacionB = mock(VerificacionMuestra.class);
 		verificacionC = mock(VerificacionMuestra.class);
 		zona = mock(ZonaCobertura.class);
+
 
 	}
 	
@@ -133,11 +135,13 @@ public class TestMuestra {
 		
 		verify(zona).update(isA(Muestra.class), isA(MensajeObserverAlta.class));
 	}
+	
 	@Test
-	public void consensoDeVotosDeUnaMuestraDeterminaVinchucaCuandoLaEnviaUnExpertoYLaVerificanBasicos() {
+	public void MuestraObtieneSuConsensoDeVotosCuandoUnExpertoenvíaLaMuestraYDosBasicosVerifican() {
 	
 		NivelConocimientoExperto experto;
 		NivelConocimientoBasico basico;
+		
 		experto = mock(NivelConocimientoExperto.class);
 		basico = mock(NivelConocimientoBasico.class);
 		
@@ -158,4 +162,6 @@ public class TestMuestra {
 		assertEquals(TipoVinchuca.Vinchuca,muestraC.getTipoVinchuca());
 		
 	}
+	
+	
 }
